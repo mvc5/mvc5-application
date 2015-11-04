@@ -7,11 +7,11 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
+         stopOnFailure="true"
          syntaxCheck="false">
     <testsuites>
         <testsuite name="Mvc5 Test Suite">
-            <directory>./vendor/mvc5/mvc5-tests/src</directory>
+            <directory>./vendor/mvc5/tests/src</directory>
         </testsuite>
     </testsuites>
     <filter>
