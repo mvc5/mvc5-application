@@ -1,0 +1,15 @@
+<div class="jumbotron">
+    <h1><a href="<?= $this->url('blog') ?>">Blog</a></h1>
+    <p class="lead">Demo application page.</p>
+    <pre><?= __FILE__; ?></pre>
+    <p>
+        <a class="btn btn-lg btn-success" href="<?= $this->url('blog/create', ['author' => 'owner', 'category' => 'oop']) ?>" role="button">Create Blog Action</a>
+        <a style="margin-left:10px;" class="btn btn-lg btn-success" href="<?= $this->url('blog/remove') ?>" role="button">Remove Blog Action</a>
+    </p>
+</div>
+<?php
+
+if (isset($args)) {
+    echo '<h4>Variables</h4>';
+    var_dump($this->assigned());
+}
