@@ -1,20 +1,20 @@
 <?php
+/**
+ *
+ */
 
 namespace Blog;
 
-use Mvc5\View\Model\Base;
-use Mvc5\View\Model\Plugin;
-use Mvc5\View\Model\ViewModel;
-use Mvc5\View\ViewPlugin;
+use Mvc5\Model\Plugin;
+use Mvc5\Model\ViewModel;
 
 class Model
-    implements Plugin, ViewModel
+    implements ViewModel
 {
     /**
      *
      */
-    use Base;
-    use ViewPlugin;
+    use Plugin;
 
     /**
      *

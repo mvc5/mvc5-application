@@ -7,11 +7,11 @@ return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
     'controller' => 'Home\Controller', //callable
-    //'controller' => 'Blog2->Home',
+    //'controller' => 'blog2->home',
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@Blog->Controller.test', //specific method
+            'controller' => '@blog->controller.test', //specific method
             'children' => [
                 'remove' => [
                     'route' => '/remove',

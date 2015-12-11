@@ -1,8 +1,11 @@
 <?php
+/**
+ *
+ */
 
 namespace Home;
 
-use Mvc5\View\ViewModel as View;
+use Mvc5\View\Model as ViewModel;
 use Request\Request;
 use Response\Response;
 
@@ -11,7 +14,7 @@ class Controller
     /**
      *
      */
-    use View;
+    use ViewModel;
 
     /**
      * @param Model $model

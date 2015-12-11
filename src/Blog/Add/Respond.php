@@ -1,8 +1,11 @@
 <?php
+/**
+ *
+ */
 
 namespace Blog\Add;
 
-use Mvc5\View\Model\ViewModel;
+use Mvc5\Model\ViewModel;
 use Response\Response;
 
 class Respond

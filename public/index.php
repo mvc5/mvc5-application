@@ -2,8 +2,9 @@
 /**
  *
  */
-use Mvc5\Application\App;
-use Mvc5\Application\Args;
+//declare(strict_types = 1);
+
+use Mvc5\App;
 
 /**
  *
@@ -25,7 +26,15 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new App(include __DIR__ . '/../config/config.php'))->call(Args::WEB);
+//try {
+
+    (new App(include __DIR__ . '/../config/config.php'))->call('mvc');
+
+//} catch(Throwable $exception) {
+
+    //include '../vendor/mvc5/mvc5/view/exception.phtml';
+
+//}
 
 /**
  *

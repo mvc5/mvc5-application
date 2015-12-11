@@ -3,12 +3,10 @@
  *
  */
 
-namespace Service\Config\Manager;
+namespace Plugin;
 
-use Mvc5\Service\Resolver\Resolvable;
-
-class Manager
-    implements Resolvable, ServiceManager
+class Controller
+    implements Gem\Controller
 {
     /**
      * @var string

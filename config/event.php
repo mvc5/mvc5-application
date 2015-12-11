@@ -9,7 +9,6 @@ return [
         Blog\Add\Save::class,
         Blog\Add\Respond::class
     ],
-
     'blog:remove' => [
         function() {
             ob_start();
@@ -26,9 +25,10 @@ return [
         }
     ],
 
-    'Service\Provider' => [
-        'Service\Resolver\Manager',
-        'Service\DefaultResolver' //throws exception
+    'service\resolver' => [
+        'service\provider',
+        'service\manager',
+        'resolver\exception'
     ],
 
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/event.php';

@@ -1,9 +1,12 @@
 <?php
+/**
+ *
+ */
 
 namespace Blog\Add;
 
-use Mvc5\View\ViewModel;
-use Mvc5\View\Model\ViewModel as Model;
+use Mvc5\View\Model;
+use Mvc5\Model\ViewModel;
 use Request\Request;
 
 class Validate
@@ -11,11 +14,11 @@ class Validate
     /**
      *
      */
-    use ViewModel;
+    use Model;
 
     /**
      * @param Request $request
-     * @return Model
+     * @return ViewModel
      */
     public function __invoke(Request $request)
     {

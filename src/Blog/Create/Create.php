@@ -1,23 +1,28 @@
 <?php
+/**
+ *
+ */
 
 namespace Blog\Create;
 
-use Mvc5\Event\Base;
+use Mvc5\Arg;
 use Mvc5\Event\Event;
-use Mvc5\View\ViewModel;
-use Mvc5\Service\Resolver\Signal;
+use Mvc5\Event\Signal;
+use Mvc5\View\Model;
 
 class Create
-    implements Creator, Event
+    implements Event
 {
     /**
      *
      */
-    use Base;
     use Signal;
-    use ViewModel;
+    use Model;
 
-    const EVENT = self::CREATE;
+    /**
+     *
+     */
+    const EVENT = 'blog:create';
 
     /**
      * @return array
@@ -25,8 +30,8 @@ class Create
     protected function args()
     {
         return [
-            Args::EVENT => $this,
-            Args::MODEL => $this->model()
+            Arg::EVENT => $this,
+            Arg::MODEL => $this->model()
         ];
     }
 
