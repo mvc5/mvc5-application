@@ -146,6 +146,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Plugin.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/App.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Layout.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Template.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc.php';
 
 /**
@@ -159,7 +160,7 @@ include __DIR__ . '/src/Response/HttpResponse.php';
 /**
  *
  */
-/*include __DIR__ . '/src/Blog/Model.php';
+include __DIR__ . '/src/Blog/Model.php';
 include __DIR__ . '/src/Blog/Controller.php';
 include __DIR__ . '/src/Blog/Create/Create.php';
 include __DIR__ . '/src/Blog/Add/Validate.php';
@@ -174,9 +175,9 @@ include __DIR__ . '/src/Plugin/Gem/Route.php';
 include __DIR__ . '/src/Plugin/Controller.php';
 include __DIR__ . '/src/Plugin/Route.php';
 include __DIR__ . '/src/Service/ServiceProvider.php';
-include __DIR__ . '/src/Service/ServiceManager.php';*/
+include __DIR__ . '/src/Service/ServiceManager.php';
 
 /**
  *
  */
-include __DIR__ . '/vendor/autoload.php';
+//include __DIR__ . '/vendor/autoload.php';
