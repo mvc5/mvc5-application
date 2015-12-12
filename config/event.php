@@ -20,7 +20,7 @@ return [
         },
         function($layout) {
             echo '<h1>Respond</h1>';
-            $layout->child(ob_get_clean());
+            $layout->model(ob_get_clean());
             return $layout;
         }
     ],
