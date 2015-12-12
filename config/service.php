@@ -9,6 +9,7 @@ use Mvc5\Container;
 use Mvc5\Model;
 use Mvc5\Model\ViewModel;
 use Mvc5\Plugin\Args;
+use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\Hydrator;
@@ -63,7 +64,7 @@ return [
 
     //'Home\Controller' => new Factory(Home\Factory::class),
 
-    //'Home\Controller' => new Controller(Home\Controller::class),
+    'Home\Controller' => new Controller(Home\Controller::class),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
@@ -77,6 +78,7 @@ return [
 
     'service\provider' => new Service(ServiceProvider::class),
     'service\manager'  => new Hydrator(ServiceManager::class, [
+        'config'   => new ConfigLink,
         'aliases'  => new Param('alias'),
         'services' => new Param('services'),
         'events'   => new Param('events')
