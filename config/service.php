@@ -40,7 +40,7 @@ return [
                 'services' => new Config([
                     'controller2' => [Blog\Controller::class, 'template' => new Param('templates.blog')],
                     'controller' => 'controller2', //locally resolved
-                    'service\container' => [], //new Config, //local container
+                    'container' => [], //new Config, //local container
                 ]),
                 'templates' => [
                     'blog' => __DIR__ . '/../view/blog/index.phtml',
@@ -49,8 +49,8 @@ return [
         ],
         [
             //share existing container
-            'container' => new Dependency('service\container'),
-            ['configure', 'service\container', new Dependency('service\container')]
+            'container' => new Dependency('container'),
+            ['configure', 'container', new Dependency('container')]
         ]
     ),
 
@@ -68,11 +68,11 @@ return [
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
-    'response' => new Dependency('http\response'),
-    'Response\Response' => 'response',
-    'http\response' => Response\HttpResponse::class,
+    'response' => new Dependency('response', Response\HttpResponse::class),
 
-    'route' => new Route(Mvc5\Route\Config::class),
+    'Response\Response' => 'response',
+
+    'route' => new Dependency('route', new Route(Mvc5\Route\Config::class)),
 
     ViewModel::class => Model::class,
 
