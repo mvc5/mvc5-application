@@ -64,7 +64,7 @@ return [
 
     //'Home\Controller' => new Factory(Home\Factory::class),
 
-    'Home\Controller' => new Controller(Home\Controller::class),
+    //'Home\Controller' => new Controller(Home\Controller::class),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
