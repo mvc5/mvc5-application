@@ -4,7 +4,7 @@
  */
 //declare(strict_types = 1);
 
-use Mvc5\App;
+use Mvc5\Web;
 
 /**
  *
@@ -26,15 +26,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-//try {
-
-    (new App(include __DIR__ . '/../config/config.php'))->call('mvc');
-
-//} catch(Throwable $exception) {
-
-    //include '../vendor/mvc5/mvc5/view/exception.phtml';
-
-//}
+call_user_func(new Web(include __DIR__ . '/../config/config.php'));
 
 /**
  *

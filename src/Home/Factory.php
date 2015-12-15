@@ -24,7 +24,7 @@ class Factory
     {
         /** @var Model $model */
 
-        $model = $this->create(Model::class, ['home']);
+        $model = $this->plugin(Model::class, ['home']);
 
         return new Controller($model);
     }

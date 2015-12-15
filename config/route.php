@@ -3,6 +3,8 @@
  *
  */
 
+use Mvc5\Plugin\Plugin;
+
 return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
@@ -11,11 +13,11 @@ return [
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@blog->controller.test', //specific method
+            'controller' => 'blog->controller.test', //specific method
             'children' => [
                 'remove' => [
                     'route' => '/remove',
-                    'controller' => '@blog:remove' //call event
+                    'controller' => 'blog:remove' //call event
                 ],
                 'create' => [
                     'route'      => '/:author[/:category]',
@@ -24,7 +26,7 @@ return [
                         'category' => 'web'
                     ],
                     'wildcard'   => false,
-                    'controller' => '@blog:create', //call event
+                    'controller' => 'blog:create', //call event
                     //'controller'  => function($request) { //named args
                         //var_dump($request->getPathInfo());
                     //},

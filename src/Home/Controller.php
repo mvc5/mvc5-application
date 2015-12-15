@@ -25,12 +25,20 @@ class Controller
     }
 
     /**
-     * @param Response $hint
+     * @param Model $model
+     */
+    public static function test(Model $model)
+    {
+        var_dump($model);exit;
+    }
+
+    /**
+     * @param Response $response
      * @param Request $request
      * @param array $args
      * @return Model
      */
-    public function __invoke(Response $hint, Request $request, array $args = [])
+    public function __invoke(Response $response, Request $request, array $args = [])
     {
         return $this->model(['args' => [__FUNCTION__]] + $args);
     }

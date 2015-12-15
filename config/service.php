@@ -65,14 +65,16 @@ return [
     //'Home\Controller' => new Factory(Home\Factory::class),
 
     //'Home\Controller' => new Controller(Home\Controller::class),
+    //'Home\Controller' => new Plugin(Home\Controller::class),
+    //'Home\Controller' => new Plugin(Home\Controller::class),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
-    'response' => new Dependency('response', Response\HttpResponse::class),
+    'response' => Response\HttpResponse::class,
 
     'Response\Response' => 'response',
 
-    'route' => new Dependency('route', new Route(Mvc5\Route\Config::class)),
+    'route' => new Route(Mvc5\Route\Config::class),
 
     ViewModel::class => Model::class,
 
