@@ -5,8 +5,10 @@
 
 namespace Service;
 
+use Home\Model as HomeModel;
 use Mvc5\Plugin;
 use Mvc5\Resolvable;
+use Plugin\Gem\Controller;
 
 class ServiceProvider
 {
@@ -21,6 +23,12 @@ class ServiceProvider
      */
     public function __invoke(Resolvable $plugin)
     {
-        return $plugin;
+        if (!$plugin instanceof Controller) {
+            return $plugin;
+        }
+
+        $home = $plugin->config();
+
+        return new $home(new HomeModel);
     }
 }

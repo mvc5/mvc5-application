@@ -27,7 +27,6 @@ return [
 
     'service\resolver' => [
         'service\provider',
-        'service\manager',
         'resolver\exception'
     ],
 

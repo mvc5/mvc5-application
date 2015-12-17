@@ -3,6 +3,7 @@
  *
  */
 
+use Mvc5\Arg;
 use Mvc5\App;
 use Mvc5\Config;
 use Mvc5\Container;
@@ -13,6 +14,7 @@ use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\Hydrator;
+use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Param;
@@ -78,13 +80,7 @@ return [
 
     ViewModel::class => Model::class,
 
-    'service\provider' => new Service(ServiceProvider::class),
-    'service\manager'  => new Hydrator(ServiceManager::class, [
-        'config'   => new ConfigLink,
-        'aliases'  => new Param('alias'),
-        'services' => new Param('services'),
-        'events'   => new Param('events')
-    ]),
-
+    'service\provider' => new Service(ServiceProvider::class, [], [Arg::SERVICE => new Plugin('service\manager')]),
+    'service\manager'  => new Manager(ServiceManager::class),
 
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';
