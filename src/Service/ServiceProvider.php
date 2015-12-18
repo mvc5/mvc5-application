@@ -29,6 +29,6 @@ class ServiceProvider
 
         $home = $plugin->config();
 
-        return new $home(new HomeModel);
+        return new $home($this->plugin(HomeModel::class));
     }
 }
