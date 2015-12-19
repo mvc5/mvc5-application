@@ -23,6 +23,7 @@ class ServiceManager
      * @param $config
      * @param array $args
      * @return array|callable|Plugin|null|object|Resolvable|string
+     * @throws \RuntimeException
      */
     protected function resolve($config, array $args = [])
     {
