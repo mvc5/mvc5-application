@@ -56,10 +56,10 @@ return [
         ]
     ),
 
-    /*'Home\Controller' => new Plugin(
-        Home\Controller::class,
-        [new service(Home\Model::class, ['home'])],
-        ['setModel' => new Plugin('home\model', ['home'])]
+    /*'home\controller' => new Plugin(
+        Home\Controller::class
+        //,[new service(Home\Model::class, ['home'])],
+        //['setModel' => new Plugin('home\model', ['home3'])]
     ),*/
 
     //'home\model' => new Plugin(Home\Model::class, ['home']),
@@ -67,8 +67,7 @@ return [
     //'Home\Controller' => new Factory(Home\Factory::class),
 
     //'Home\Controller' => new Controller(Home\Controller::class),
-    //'Home\Controller' => new Plugin(Home\Controller::class),
-    //'Home\Controller' => new Plugin(Home\Controller::class),
+    //'home\controller' => new Plugin(Home\Controller::class),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 

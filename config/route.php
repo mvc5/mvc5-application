@@ -3,12 +3,11 @@
  *
  */
 
-use Mvc5\Plugin\Plugin;
-
 return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
     'controller' => 'Home\Controller', //callable
+    //'controller' => 'home\controller', //callable
     //'controller' => 'blog2->home',
     'children' => [
         'blog' => [
