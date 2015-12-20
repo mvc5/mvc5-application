@@ -71,7 +71,7 @@ return [
     //'Home\Controller' => new Controller(Home\Controller::class),
     //'home\controller' => new Plugin(Home\Controller::class),
 
-    'Home\Controller' => Home\Controller::class,
+    'Home\Controller' => new Plugin(Home\Controller::class),
     //'Home\Controller' => new Plugin('blog->home'),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
