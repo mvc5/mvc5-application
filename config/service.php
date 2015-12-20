@@ -24,6 +24,9 @@ use Service\ServiceProvider;
 use Service\ServiceManager;
 
 return [
+    //'blog:create' => new Plugin('Blog\Create\Create'),
+    'blog:create' => new Plugin('blog2->create'),
+
     //'blog' => blog\controller::class,
     //'blog' => new Service(blog\controller::class, ['template' => new Param('templates.blog')]),
     'blog2' => new Container([
@@ -37,9 +40,8 @@ return [
         App::class,
         [
             'config' => [
-                'alias'  => [],
-                'events' => [],
                 'services' => new Config([
+                    'home' => Home\Controller::class,
                     'controller2' => [Blog\Controller::class, 'template' => new Param('templates.blog')],
                     'controller' => 'controller2', //locally resolved
                     'container' => [], //new Config, //local container
@@ -68,6 +70,9 @@ return [
 
     //'Home\Controller' => new Controller(Home\Controller::class),
     //'home\controller' => new Plugin(Home\Controller::class),
+
+    'Home\Controller' => Home\Controller::class,
+    //'Home\Controller' => new Plugin('blog->home'),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 

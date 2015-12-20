@@ -84,7 +84,6 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc/Layout.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc/Response.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc/Route.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc/View.php';
-include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Alias.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Exception.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Generator.php';
