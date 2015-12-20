@@ -32,7 +32,7 @@ class ServiceManager
                 return $this->make($config->config());
             }
 
-            return $this->resolver($config);
+            return $config;
         });
     }
 }
