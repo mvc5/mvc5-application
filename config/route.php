@@ -25,7 +25,8 @@ return [
                         'category' => 'web'
                     ],
                     'wildcard'   => false,
-                    'controller' => 'blog:create', //call event
+                    'controller' => 'blog:add', //call event
+                    //'controller' => 'blog2->add',
                     //'controller'  => function($request) { //named args
                         //var_dump($request->getPathInfo());
                     //},
