@@ -7,6 +7,7 @@ return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
     'controller' => 'Home\Controller', //callable
+    //'controller' => '@Home\Controller.test', //callable
     //'controller' => 'home\controller', //callable
     //'controller' => 'blog2->home',
     'children' => [
