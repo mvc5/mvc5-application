@@ -15,6 +15,7 @@ use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\Hydrator;
 use Mvc5\Plugin\Invoke;
+use Mvc5\Plugin\Invokable;
 use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Service;
@@ -87,5 +88,16 @@ return [
 
     'service\provider' => new Service(ServiceProvider::class, [], [Arg::SERVICE => new Plugin('service\manager')]),
     'service\manager'  => new Manager(ServiceManager::class),
+
+    //test false but not null container value
+
+    /*'user\authenticated' => function() {
+        var_dump(__FILE__);
+        return false;
+    },*/
+
+    //'user\authenticated' => false,
+
+    //'authenticated' => new Invokable(new Dependency('user\authenticated'))
 
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';
