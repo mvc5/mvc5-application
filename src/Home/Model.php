@@ -20,4 +20,17 @@ class Model
      *
      */
     const TEMPLATE_NAME = 'home';
+
+    /**
+     * @var string
+     */
+    private $blogTitle = 'Blog';
+
+    /**
+     * @return string
+     */
+    private function blogTitle()
+    {
+        return $this->blogTitle;
+    }
 }
