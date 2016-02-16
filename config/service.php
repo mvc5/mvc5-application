@@ -13,6 +13,7 @@ use Mvc5\Plugin\Args;
 use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Factory;
+use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Hydrator;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Invokable;
@@ -41,17 +42,7 @@ return [
     'blog' => new Plugin(
         App::class,
         [
-            'config' => [
-                'services' => new Config([
-                    'home' => Home\Controller::class,
-                    'controller2' => [Blog\Controller::class, 'template' => new Param('templates.blog')],
-                    'controller' => 'controller2', //locally resolved
-                    'container' => [], //new Config, //local container
-                ]),
-                'templates' => [
-                    'blog' => __DIR__ . '/../view/blog/index.phtml',
-                ]
-            ]
+            'config' => new FileInclude(__DIR__ . '/blog.php')
         ],
         [
             //share existing container
