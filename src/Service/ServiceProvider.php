@@ -17,10 +17,11 @@ class ServiceProvider
 
     /**
      * @param Resolvable $plugin
+     * @param array $params
      * @return mixed
      */
-    public function __invoke(Resolvable $plugin)
+    public function __invoke(Resolvable $plugin, array $params = [])
     {
-        return $this->plugin($plugin);
+        return $this->plugin($plugin, $params);
     }
 }

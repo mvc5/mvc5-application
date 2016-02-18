@@ -62,7 +62,7 @@ return [
 
     //'Home\Controller' => new Factory(Home\Factory::class),
 
-    'Home\Controller' => new Controller(Home\Controller::class),
+    //'Home\Controller' => new Controller(Home\Controller::class),
     //'home\controller' => new Plugin(Home\Controller::class),
 
     //'Home\Controller' => Home\Controller::class,

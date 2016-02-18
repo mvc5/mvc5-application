@@ -27,7 +27,7 @@ class ServiceManager
      */
     protected function resolve($config, array $args = [])
     {
-        return $this->resolvable($config, $args, function($config) {
+        return $this->resolvable($config, $args, function($config, array $args = []) {
             if ($config instanceof Controller) {
                 return $this->make($config->config());
             }
