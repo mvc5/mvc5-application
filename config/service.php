@@ -21,6 +21,7 @@ use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Param;
+use Mvc5\Plugin\Plug;
 use Plugin\Controller;
 use Plugin\Route;
 use Service\ServiceProvider;
@@ -61,7 +62,7 @@ return [
 
     //'Home\Controller' => new Factory(Home\Factory::class),
 
-    //'Home\Controller' => new Controller(Home\Controller::class),
+    'Home\Controller' => new Controller(Home\Controller::class),
     //'home\controller' => new Plugin(Home\Controller::class),
 
     //'Home\Controller' => Home\Controller::class,
@@ -70,6 +71,8 @@ return [
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
     'response' => Response\HttpResponse::class,
+    //'http\response' => new Plugin(Response\HttpResponse::class),
+    //'response'      => new Plug('http\response'),
 
     'Response\Response' => 'response',
 
