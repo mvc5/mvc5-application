@@ -32,7 +32,7 @@ class Provider
                 return $this->make($config->config());
             }
 
-            return $config;
-        });
+            return null;
+        }) ?? $config;
     }
 }
