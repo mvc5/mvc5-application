@@ -24,8 +24,7 @@ use Mvc5\Plugin\Param;
 use Mvc5\Plugin\Plug;
 use Plugin\Controller;
 use Plugin\Route;
-use Service\ServiceProvider;
-use Service\ServiceManager;
+use Service\Provider;
 
 return [
     //'blog:create' => new Plugin('Blog\Create\Create'),
@@ -80,8 +79,7 @@ return [
 
     ViewModel::class => Model::class,
 
-    'service\provider' => new Service(ServiceProvider::class, [], [Arg::SERVICE => new Plugin('service\manager')]),
-    'service\manager'  => new Manager(ServiceManager::class),
+    'service\provider' => new Manager(Provider::class),
 
     //test false but not null container value
 

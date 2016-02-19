@@ -11,7 +11,7 @@ use Mvc5\Resolver\Resolver;
 use Mvc5\Service\Manager;
 use Mvc5\Resolvable;
 
-class ServiceManager
+class Provider
     implements Manager
 {
     /**
