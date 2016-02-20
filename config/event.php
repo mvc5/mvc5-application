@@ -26,6 +26,9 @@ return [
     ],
 
     'service\resolver' => [
+        function() {
+            return null;
+        },
         'service\provider',
         'resolver\exception'
     ],

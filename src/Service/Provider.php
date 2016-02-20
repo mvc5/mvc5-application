@@ -33,6 +33,6 @@ class Provider
             }
 
             return null;
-        }) ?? $config;
+        });
     }
 }
