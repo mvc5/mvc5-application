@@ -105,6 +105,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Config/Child.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Config/Hydrator.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Config/Name.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Gem/Gem.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Gem/Plugin.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Gem/Args.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Gem/Call.php';
