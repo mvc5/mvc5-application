@@ -11,6 +11,7 @@ use Mvc5\Model;
 use Mvc5\Model\ViewModel;
 use Mvc5\Plugin\Args;
 use Mvc5\Plugin\Config as ConfigLink;
+use Mvc5\Plugin\Copy;
 use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\FileInclude;
@@ -62,6 +63,7 @@ return [
     //'Home\Controller' => new Factory(Home\Factory::class),
 
     'Home\Controller' => new Controller(Home\Controller::class),
+    //'Home\Controller' => new Copy(new Controller(Home\Controller::class)),
     //'home\controller' => new Plugin(Home\Controller::class),
 
     //'Home\Controller' => Home\Controller::class,
