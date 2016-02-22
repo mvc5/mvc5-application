@@ -175,8 +175,7 @@ include __DIR__ . '/src/Plugin/Gem/Controller.php';
 include __DIR__ . '/src/Plugin/Gem/Route.php';
 include __DIR__ . '/src/Plugin/Controller.php';
 include __DIR__ . '/src/Plugin/Route.php';
-include __DIR__ . '/src/Service/ServiceProvider.php';
-include __DIR__ . '/src/Service/ServiceManager.php';*/
+include __DIR__ . '/src/Service/Provider.php';*/
 
 /**
  *
