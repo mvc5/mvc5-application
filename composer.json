@@ -14,6 +14,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "5.1.*",
-        "mvc5/mvc5-tests": "1.*"
+        "mvc5/mvc5-tests": "2.*"
     }
 }
