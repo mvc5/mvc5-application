@@ -59,4 +59,12 @@ class HttpResponse
     {
         parent::setStatusCode($code);
     }
+
+    /**
+     * @return int
+     */
+    public function status()
+    {
+        return parent::getStatusCode();
+    }
 }

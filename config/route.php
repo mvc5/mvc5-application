@@ -17,6 +17,9 @@ return [
             'children' => [
                 'remove' => [
                     'route' => '/remove',
+                    'method' => ['GET'],
+                    //'scheme' => ['https'],
+                    //'hostname' => ['localhost'],
                     'controller' => 'blog:remove' //call event
                 ],
                 'create' => [
