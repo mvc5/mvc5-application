@@ -21,6 +21,8 @@ return [
         function($layout, $model = null) {
             $model .= '<h1>Respond</h1>';
 
+            $model .= '<form method="POST"><input type="submit" name="submit" value="submit"></form><br>';
+
             $layout->model($model);
 
             return $layout;

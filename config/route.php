@@ -17,10 +17,18 @@ return [
             'children' => [
                 'remove' => [
                     'route' => '/remove',
-                    'method' => ['GET'],
+                    'allow' => ['GET', 'POST'],
                     //'scheme' => ['https'],
                     //'hostname' => ['localhost'],
-                    'controller' => 'blog:remove' //call event
+                    //'controller' => 'blog:remove', //call event
+                    'method' => [
+                        'GET' => 'blog:remove',
+                        'POST' => function($layout) {
+                            $layout->model('<h1>Success</h1>');
+
+                            return $layout;
+                        }
+                    ]
                 ],
                 'create' => [
                     'route'      => '/:author[/:category]',
