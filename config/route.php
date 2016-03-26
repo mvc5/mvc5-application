@@ -23,10 +23,12 @@ return [
                     //'controller' => 'blog:remove', //call event
                     'action' => [
                         'GET' => 'blog:remove',
-                        'POST' => function($layout) {
-                            $layout->model('<h1>Success</h1>');
+                        'POST' => function($layout, $url) {
+                            return new Response\RedirectResponse($url(), 201);
 
-                            return $layout;
+                            //$layout->model('<h1>Success</h1>');
+
+                            //return $layout;
                         }
                     ]
                 ],
@@ -36,7 +38,7 @@ return [
                         'author'   => 'owner',
                         'category' => 'web'
                     ],
-                    'wildcard'   => false,
+                    'wildcard'   => true,
                     'controller' => 'blog:add', //call event
                     //'controller' => 'blog2->add',
                     //'controller'  => function($request) { //named args

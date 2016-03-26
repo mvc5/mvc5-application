@@ -10,6 +10,7 @@ include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundat
 include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ApacheRequest.php';
 include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ResponseHeaderBag.php';
 include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/RedirectResponse.php';
 
 /**
  *
@@ -74,6 +75,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Route.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Definition.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Generator.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Action.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Hostname.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Method.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Path.php';
@@ -171,7 +173,9 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc.php';
 include __DIR__ . '/src/Request/Request.php';
 include __DIR__ . '/src/Request/HttpRequest.php';
 include __DIR__ . '/src/Response/Response.php';
+include __DIR__ . '/src/Response/Base.php';
 include __DIR__ . '/src/Response/HttpResponse.php';
+include __DIR__ . '/src/Response/RedirectResponse.php';
 
 /**
  *
