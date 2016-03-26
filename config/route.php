@@ -17,11 +17,11 @@ return [
             'children' => [
                 'remove' => [
                     'route' => '/remove',
-                    'allow' => ['GET', 'POST'],
+                    'method' => ['GET', 'POST'],
                     //'scheme' => ['https'],
                     //'hostname' => ['localhost'],
                     //'controller' => 'blog:remove', //call event
-                    'method' => [
+                    'action' => [
                         'GET' => 'blog:remove',
                         'POST' => function($layout) {
                             $layout->model('<h1>Success</h1>');
