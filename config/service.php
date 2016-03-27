@@ -10,6 +10,7 @@ use Mvc5\Container;
 use Mvc5\Model;
 use Mvc5\Model\ViewModel;
 use Mvc5\Plugin\Args;
+use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Copy;
 use Mvc5\Plugin\Dependency;
@@ -18,6 +19,7 @@ use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Hydrator;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Invokable;
+use Mvc5\Plugin\Link;
 use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Service;
@@ -78,6 +80,35 @@ return [
     'Response\Response' => 'response',
 
     'route' => new Route(Mvc5\Route\Config::class),
+
+    /**
+     * PSR-7 "compatibility" can be achieved using the Mvc\Psr7Mvc event.
+     *
+     * Customize the Response for Middleware "compliance".
+     *
+     * The Middleware demo requires the *\Middleware controllers to be uncommented in the route config and the 'web'
+     * event config must be changed to use 'middleware' instead of 'mvc'.
+     */
+
+    /*
+    'request'  => new Call(
+        '@Request\Psr7\HttpRequest::createFromEnvironment', [new Plugin('Slim\Http\Environment', [$_SERVER])]
+    ),
+    'response' => Response\Psr7\HttpResponse::class,
+    'route'    => new \Plugin\Psr7Route(Mvc5\Route\Config::class),
+    'mvc'      => new Plugin(\Mvc\Psr7Mvc::class, ['mvc', new Link], [new Dependency('route')]),
+    */
+
+    /*
+    'middleware'            => [Middleware\App::class, new Link, new Param('events.middleware')],
+    'middleware\controller' => new Service(Middleware\Controller::class),
+    'middleware\layout'     => new Service(Middleware\Layout::class, [new Plugin('layout')]),
+    'middleware\renderer'   => new Service(Middleware\Renderer::class),
+    'middleware\router'     => [Middleware\Router::class, new Invoke('route\dispatch')],
+    'response\send'         => Response\Psr7\Send::class,
+    'error\controller'      => new Hydrator(Middleware\Error::class, ['setModel' => new Plugin('error\model')]),
+    'Blog\Middleware' => new Plugin(Blog\Middleware::class, ['template' => __DIR__ . '/../view/blog/index.phtml']),
+    */
 
     ViewModel::class => Model::class,
 

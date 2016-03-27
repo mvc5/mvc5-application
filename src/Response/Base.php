@@ -46,18 +46,20 @@ trait Base
 
     /**
      * @param mixed $content
-     * @return void
+     * @return self
      */
     public function setContent($content)
     {
         /** @var HttpFoundationResponse $this */
 
         $this->content = $content;
+
+        return $this;
     }
 
     /**
      * @param int $code
-     * @return void
+     * @return self
      */
     public function setStatus($code)
     {

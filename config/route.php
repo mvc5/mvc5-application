@@ -7,6 +7,8 @@ return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
     'controller' => 'Home\Controller', //callable
+    //'controller' => 'Home\Middleware',
+    //'method' => 'POST',
     //'controller' => '@Home\Controller.test', //callable
     //'controller' => 'home\controller', //callable
     //'controller' => 'blog2->home',
@@ -14,6 +16,7 @@ return [
         'blog' => [
             'route'      => 'blog',
             'controller' => 'blog->controller.test', //specific method
+            //'controller' => 'Blog\Middleware',
             'children' => [
                 'remove' => [
                     'route' => '/remove',
@@ -23,6 +26,7 @@ return [
                     //'controller' => 'blog:remove', //call event
                     'action' => [
                         'GET' => 'blog:remove',
+                        //'GET' => 'Blog\Remove\Middleware',
                         'POST' => function($layout, $url) {
                             return new Response\RedirectResponse($url(), 201);
 
@@ -40,6 +44,7 @@ return [
                     ],
                     'wildcard'   => true,
                     'controller' => 'blog:add', //call event
+                    //'controller' => 'Blog\Add\Middleware',
                     //'controller' => 'blog2->add',
                     //'controller'  => function($request) { //named args
                         //var_dump($request->getPathInfo());

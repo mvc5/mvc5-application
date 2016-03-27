@@ -5,7 +5,8 @@
     "require": {
         "php": "^7.0",
         "symfony/http-foundation": "2.5.*",
-        "mvc5/mvc5": "2.*"
+        "mvc5/mvc5": "2.*",
+        "slim/http": "^0.1"
     },
     "autoload": {
         "psr-4": {
