@@ -7,8 +7,8 @@ namespace Middleware;
 
 use Mvc5\Arg;
 use Mvc5\Plugin;
-use Request\Psr7\HttpRequest as Request;
-use Response\Psr7\HttpResponse as Response;
+use Request\Psr\Request;
+use Response\Psr\Response;
 
 class Controller
 {

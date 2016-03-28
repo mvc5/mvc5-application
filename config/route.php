@@ -16,7 +16,7 @@ return [
         'blog' => [
             'route'      => 'blog',
             'controller' => 'blog->controller.test', //specific method
-            //'controller' => 'Blog\Middleware',
+            //'controller' => 'blog->middleware',
             'children' => [
                 'remove' => [
                     'route' => '/remove',

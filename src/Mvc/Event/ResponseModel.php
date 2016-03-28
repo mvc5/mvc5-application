@@ -3,16 +3,17 @@
  *
  */
 
-namespace Mvc;
+namespace Mvc\Event;
 
 use Mvc5\Mvc;
 
-class Psr7Mvc
+/**
+ * Assign the response to the container.
+ */
+class ResponseModel
     extends Mvc
 {
     /**
-     * Assigns response object back to the container
-     *
      * @param $model
      * @return array|callable|null|object|string
      */

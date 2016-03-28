@@ -7,9 +7,8 @@ namespace Middleware;
 
 use Mvc5\Arg;
 use Mvc5\Plugin;
-use Slim\Http\RequestBody;
-use Request\Psr7\HttpRequest as Request;
-use Response\Psr7\HttpResponse as Response;
+use Request\Psr\Request;
+use Response\Psr\Response;
 
 class Renderer
 {
@@ -30,10 +29,7 @@ class Renderer
 
         $body = $this->call(Arg::VIEW_RENDER, [Arg::MODEL => $model]);
 
-        $stream = new RequestBody;
-        $stream->write((string) $body);
-
-        $response = $response->withBody($stream);
+        $response = $response->setContent($body);
 
         return $next($request, $response);
     }

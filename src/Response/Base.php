@@ -59,13 +59,14 @@ trait Base
 
     /**
      * @param int $code
+     * @param string $text
      * @return self
      */
-    public function setStatus($code)
+    public function setStatus($code, $text = '')
     {
         /** @var HttpFoundationResponse $this */
 
-        $this->setStatusCode($code);
+        $this->setStatusCode($code, $text);
     }
 
     /**

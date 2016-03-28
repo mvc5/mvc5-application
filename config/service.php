@@ -28,6 +28,9 @@ use Mvc5\Plugin\Plug;
 use Plugin\Controller;
 use Plugin\Route;
 use Service\Provider;
+use Plugin\Mvc;
+use Plugin\PsrRequest;
+use Plugin\PsrRoute;
 
 return [
     //'blog:create' => new Plugin('Blog\Create\Create'),
@@ -79,35 +82,42 @@ return [
 
     'Response\Response' => 'response',
 
-    'route' => new Route(Mvc5\Route\Config::class),
+    'route' => new Route,
 
     /**
-     * PSR-7 "compatibility" can be achieved using the Mvc\Psr7Mvc event.
+     * PSR-7
      *
-     * Customize the Response for Middleware "compliance".
+     * For "compliance" use Response\Psr\Compliant\Response, Mvc\Event\Model and Mvc\Response.
      *
-     * The Middleware demo requires the *\Middleware controllers to be uncommented in the route config and the 'web'
-     * event config must be changed to use 'middleware' instead of 'mvc'.
+     * For "compatibility" use Response\Psr\Compatible\Response, Mvc\Event\ResponseModel.
+     *
+     * Read the event config for further information on error and exception handling.
      */
-
     /*
-    'request'  => new Call(
-        '@Request\Psr7\HttpRequest::createFromEnvironment', [new Plugin('Slim\Http\Environment', [$_SERVER])]
-    ),
-    'response' => Response\Psr7\HttpResponse::class,
-    'route'    => new \Plugin\Psr7Route(Mvc5\Route\Config::class),
-    'mvc'      => new Plugin(\Mvc\Psr7Mvc::class, ['mvc', new Link], [new Dependency('route')]),
+    'request'      => new PsrRequest,
+    'route'        => new PsrRoute,
+
+    //compliance
+    'mvc'          => new Mvc,
+    'mvc\response' => \Mvc\Response::class,
+    'response'     => Response\Psr\Compliant\Response::class,
+
+    //compatibility
+    //'response'     => Response\Psr\Compatible\Response::class,
+    //'mvc'          => new Mvc(\Mvc\Event\ResponseModel::class),
     */
 
+    /**
+     * The PSR-7 Middleware demo requires the *\Middleware controllers to be uncommented in the route config and
+     * the 'web' event config must be changed to use 'middleware' instead of 'mvc'.
+     */
     /*
-    'middleware'            => [Middleware\App::class, new Link, new Param('events.middleware')],
+    'middleware'            => new Service(Middleware\App::class, [new Param('middleware')]),
     'middleware\controller' => new Service(Middleware\Controller::class),
-    'middleware\layout'     => new Service(Middleware\Layout::class, [new Plugin('layout')]),
+    'middleware\layout'     => [Middleware\Layout::class, new Plugin('layout')],
     'middleware\renderer'   => new Service(Middleware\Renderer::class),
     'middleware\router'     => [Middleware\Router::class, new Invoke('route\dispatch')],
-    'response\send'         => Response\Psr7\Send::class,
-    'error\controller'      => new Hydrator(Middleware\Error::class, ['setModel' => new Plugin('error\model')]),
-    'Blog\Middleware' => new Plugin(Blog\Middleware::class, ['template' => __DIR__ . '/../view/blog/index.phtml']),
+    'response\send'         => Response\Psr\Send::class,
     */
 
     ViewModel::class => Model::class,

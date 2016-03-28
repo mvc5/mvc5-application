@@ -6,8 +6,8 @@
 namespace Blog;
 
 use Mvc5\Arg;
-use Request\Psr7\HttpRequest as Request;
-use Response\Psr7\HttpResponse as Response;
+use Request\Psr\Request;
+use Response\Psr\Response;
 
 class Middleware
 {
@@ -32,16 +32,16 @@ class Middleware
     }
 
     /**
-     * @param $request
-     * @param $response
-     * @param $next
-     * @return \Mvc5\Model\ViewModel
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return Response
      */
     public function __invoke(Request $request, Response $response, callable $next)
     {
         $this->model->template($this->template);
 
-        $request = $request->withAttributes([Arg::MODEL => $this->model]);
+        $request = $request->withAttribute(Arg::MODEL, $this->model);
 
         return $next($request, $response);
     }

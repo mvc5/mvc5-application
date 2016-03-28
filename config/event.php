@@ -47,46 +47,39 @@ return [
         'resolver\exception'
     ],
 
-    'middleware' => [
-        'middleware\router',
-        'middleware\controller',
-        'middleware\layout',
-        'middleware\renderer'
-    ],
-
     //uncomment for PSR-7
     /*'route\error' => [
         'error\handler',
         'error\status',
         'error\route',
-        // halt mvc event or new response object
-        //'error\controller',
-        new \Mvc5\Plugin\Plugin(\Mvc5\Route\Error\Controller::class, [], ['setModel' => new \Mvc5\Plugin\Plugin('error\model')]),
-        function($layout, $model, $response) {
-            $layout->model($model);
-            return $layout;
-        },
+        'error\controller',
+        'error\layout',
         'error\view',
         'error\response',
     ],*/
 
     //uncomment for mvc and PSR-7
-    /*'controller\exception' => [
+    /*
+    'controller\exception' => [
         'exception\status',
         'exception\controller',
         'exception\view',
         'exception\response'
-    ],*/
-
-    //uncomment for mvc and PSR-7
-    /*'route\exception' => [
+    ],
+    'route\exception' => [
         'exception\status',
         'exception\route',
-        //'exception\controller',
-        new \Mvc5\Plugin\Plugin(\Mvc5\Controller\Exception::class, [new \Mvc5\Plugin\Plugin('exception\model')]),
+        'exception\controller',
         'exception\view',
         'exception\response'
-    ],*/
+    ],
+    'view\exception' => [
+        'exception\status',
+        'exception\controller',
+        'exception\view',
+        'exception\response'
+    ],
+    */
 
     /**
      * Comment out 'mvc' and uncomment 'middleware' for the Middleware demo

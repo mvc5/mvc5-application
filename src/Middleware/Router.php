@@ -8,8 +8,8 @@ namespace Middleware;
 use Mvc5\Arg;
 use Mvc5\Signal;
 use Mvc5\Route\Route;
-use Request\Psr7\HttpRequest as Request;
-use Response\Psr7\HttpResponse as Response;
+use Request\Psr\Request;
+use Response\Psr\Response;
 use RuntimeException;
 
 class Router
@@ -40,10 +40,10 @@ class Router
      */
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        $result = $this->signal($this->router, [Arg::REQUEST => $request, Arg::RESPONSE => $response]);
+        $result = $this->signal($this->router);
 
         if ($result instanceof Route) {
-            $request = $request->withAttributes([Arg::ROUTE => $result]);
+            $request = $request->withAttribute(Arg::ROUTE, $result);
 
             return $next($request, $response);
         }

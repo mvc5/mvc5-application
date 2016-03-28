@@ -6,30 +6,36 @@
 namespace Blog\Remove;
 
 use Mvc5\Arg;
-use Request\Psr7\HttpRequest as Request;
-use Response\Psr7\HttpResponse as Response;
+use Mvc5\Model\ViewLayout;
+use Request\Psr\Request;
+use Response\Psr\Response;
 
 class Middleware
 {
     /**
-     * @param $layout
+     * @var ViewLayout
      */
-    public function __construct($layout)
+    protected $layout;
+
+    /**
+     * @param ViewLayout $layout
+     */
+    public function __construct(ViewLayout $layout)
     {
         $this->layout = $layout;
     }
 
     /**
-     * @param $request
-     * @param $response
-     * @param $next
-     * @return \Mvc5\Model\ViewModel
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return Response
      */
     public function __invoke(Request $request, Response $response, callable $next)
     {
         $this->layout->model('<h1>Demo Middleware Action</h1>');
 
-        $request = $request->withAttributes([Arg::MODEL => $this->layout]);
+        $request = $request->withAttribute(Arg::MODEL, $this->layout);
 
         return $next($request, $response);
     }

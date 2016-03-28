@@ -3,7 +3,7 @@
  *
  */
 
-namespace Response\Psr7;
+namespace Response\Psr;
 
 use Psr\Http\Message\StreamInterface;
 use Slim\Http\RequestBody;
@@ -11,12 +11,12 @@ use Slim\Http\RequestBody;
 class Send
 {
     /**
-     * @param HttpResponse $response
+     * @param Response $response
      * @copyright Copyright (c) 2011-2016 Josh Lockhart. (http://slimframework.com)
      * @license https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
      * @return void
      */
-    public function __invoke(HttpResponse $response)
+    public function __invoke(Response $response)
     {
         // Send response
         if (!headers_sent()) {

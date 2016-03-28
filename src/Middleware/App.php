@@ -6,15 +6,15 @@
 namespace Middleware;
 
 use Mvc5\Plugin;
-use Request\Psr7\HttpRequest as Request;
-use Response\Psr7\HttpResponse as Response;
+use Request\Psr\Request;
+use Response\Psr\Response;
 
 class App
 {
     /**
-     * @var Plugin
+     *
      */
-    protected $plugin;
+    use Plugin;
 
     /**
      * @var array
@@ -22,24 +22,20 @@ class App
     protected $stack;
 
     /**
-     * @param Plugin $plugin
      * @param array $stack
      */
-    public function __construct($plugin, $stack)
+    public function __construct(array $stack = [])
     {
-        $this->config = [current($stack)];
-        $this->plugin = $plugin;
-        $this->stack  = $stack;
+        $this->stack = $stack;
     }
 
     /**
      * @return \Closure
      */
-    protected function middleware()
+    protected function next()
     {
         return function(Request $request, Response $response) {
-            return ($next = next($this->stack)) ?
-                $this->plugin->call($next, [$request, $response, $this->middleware()]) : $response;
+            return ($next = next($this->stack)) ? $this->call($next, [$request, $response, $this->next()]) : $response;
         };
     }
 
@@ -50,6 +46,6 @@ class App
      */
     public function __invoke(Request $request, Response $response)
     {
-        return $this->plugin->call(current($this->config), [$request, $response, $this->middleware()]);
+        return $this->call(current($this->stack), [$request, $response, $this->next()]);
     }
 }

@@ -9,10 +9,10 @@ use Mvc5\Arg;
 use Mvc5\Plugin\Args;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Config\Plugin;
-use Mvc5\Plugin\Gem\Plugin as PluginGem;
+use Mvc5\Route\Config as RouteConfig;
 
-class Psr7Route
-    implements PluginGem
+class PsrRoute
+    implements Gem\Route
 {
     /**
      *
@@ -24,7 +24,7 @@ class Psr7Route
      * @param array $args
      * @param array $calls
      */
-    public function __construct($name, array $args = [], array $calls = [])
+    public function __construct($name = null, array $args = [], array $calls = [])
     {
         $this->config = [
             Arg::ARGS  => $args ?: [new Args([
@@ -34,7 +34,7 @@ class Psr7Route
                 'scheme'   => new Call('request.getUri.getScheme')
             ])],
             Arg::CALLS => $calls,
-            Arg::NAME  => $name
+            Arg::NAME  => $name ?? RouteConfig::class
         ];
     }
 }
