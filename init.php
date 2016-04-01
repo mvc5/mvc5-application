@@ -160,12 +160,14 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Plug.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Response.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Service.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/SignalArgs.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Request/Request.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/App.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Web.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Layout.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Template.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Mvc.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Middleware.php';
 
 /**
  *
