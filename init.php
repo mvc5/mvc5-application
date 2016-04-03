@@ -18,6 +18,7 @@ include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundat
 include __DIR__ . '/vendor/mvc5/mvc5/src/Arg.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Signal.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Resolvable.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Exception.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/ArrayAccess.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/Configuration.php';
