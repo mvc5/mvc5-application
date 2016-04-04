@@ -66,6 +66,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Model/Layout/Plugin.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Config/Definition.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Config/Route.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Definition/Dash.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Definition/Assemble.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Definition/Params.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Definition/Regex.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Definition/Tokens.php';
