@@ -22,6 +22,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Exception.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/ArrayAccess.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/Configuration.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Config/Scope.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Container.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Service.php';
@@ -159,6 +160,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Invoke.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Link.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Manager.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Plugin.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/App.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Plugins.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Provider.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Model.php';
@@ -205,7 +207,10 @@ include __DIR__ . '/src/Plugin/Gem/Controller.php';
 include __DIR__ . '/src/Plugin/Gem/Route.php';
 include __DIR__ . '/src/Plugin/Controller.php';
 include __DIR__ . '/src/Plugin/Route.php';
-include __DIR__ . '/src/Service/Provider.php';*/
+include __DIR__ . '/src/Service/Provider.php';
+include __DIR__ . '/src/Server/Config/Server.php';
+include __DIR__ . '/src/Server/Server.php';
+include __DIR__ . '/src/Server/Config.php';*/
 
 /**
  *
