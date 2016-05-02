@@ -22,7 +22,6 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Exception.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/ArrayAccess.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Config/Configuration.php';
-include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Config/Scope.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Container.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Service/Service.php';
