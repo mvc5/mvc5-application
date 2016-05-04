@@ -29,7 +29,7 @@ class Controller
      * @param Response $response
      * @return Model
      */
-    function __invoke(Request $request, $response)
+    function __invoke(Request $request, Response $response)
     {
         return $this->model(['request' => $request]);
     }
