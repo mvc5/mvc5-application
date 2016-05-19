@@ -59,7 +59,7 @@ return [
 
     'cookies' => new \Plugin\Cookies,
 
-    'response' => Response\Config::class,
+    'response\config' => new Plugin(Response\Config::class),
 
     'session' => new \Plugin\Session,
 
