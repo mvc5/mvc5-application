@@ -194,6 +194,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Invokable.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Invoke.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Link.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Manager.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Middleware.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Plugin.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/App.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Plugins.php';

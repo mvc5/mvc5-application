@@ -63,6 +63,9 @@ return [
 
     'session' => new \Plugin\Session,
 
+    //middleware demo
+    'web' => 'middleware',
+
     ViewModel::class => Model::class,
 
     'service\provider' => new Manager(Provider::class),
