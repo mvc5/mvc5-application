@@ -54,10 +54,4 @@ return [
         'resolver\exception'
     ],
 
-    'web' => [
-        'mvc',
-        'response\prepare',
-        'response\send'
-    ],
-
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/event.php';
