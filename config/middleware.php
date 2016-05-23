@@ -6,9 +6,11 @@
 return [
     'web' => [
         'web\route',
+        'web\error',
+        'web\service',
         'web\controller',
         'web\layout',
-        'web\view',
+        'web\render',
         'web\status',
         'web\version',
         'web\send',
