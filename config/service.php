@@ -64,7 +64,7 @@ return [
     'session' => new \Plugin\Session,
 
     //middleware demo
-    'web' => 'middleware',
+    'web' => 'web\middleware',
 
     ViewModel::class => Model::class,
 
