@@ -69,7 +69,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Headers.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Headers/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Request/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Response/Config.php';
-include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Response/StatusCode.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Status/ReasonPhrase.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Http/Uri/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Config/Response.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Status/Status.php';
