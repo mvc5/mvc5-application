@@ -8,11 +8,11 @@ use Mvc5\Plugin\Call;
 use Session\Session;
 
 return [
-    'blog:add' => (object) [
+    'blog:add' => new Mvc5\Object([
         Blog\Add\Validate::class,
         Blog\Add\Save::class,
         Blog\Add\Respond::class
-    ],
+    ]),
     'blog:remove' => [
         function() {
             return $model = '<h1>Validate</h1>';
