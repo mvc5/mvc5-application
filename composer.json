@@ -13,7 +13,7 @@
     "require": {
         "php": "^7.0",
         "symfony/http-foundation": "2.5.*",
-        "mvc5/mvc5": "3.*"
+        "mvc5/mvc5": "4.*"
     },
     "autoload": {
         "psr-4": {
@@ -22,6 +22,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "5.1.*",
-        "mvc5/mvc5-tests": "3.*"
+        "mvc5/mvc5-tests": "4.*"
     }
 }
