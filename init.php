@@ -74,6 +74,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Version/Version.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Response.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Dispatch.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Json.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Redirect.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Send.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Status.php';
