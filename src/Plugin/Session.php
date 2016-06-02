@@ -5,6 +5,7 @@
 
 namespace Plugin;
 
+use Mvc5\Arg;
 use Mvc5\Plugin\End;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Dependency;
@@ -21,7 +22,8 @@ class Session
     function __construct()
     {
         parent::__construct('session', new End(
-            new Call('@session_start'), new Plugin(SessionContainer::class, [new Plugin(SessionConfig::class)])
+            new Call('@session_start'),
+            new Plugin(SessionContainer::class, [new Plugin(SessionConfig::class, [new Plugin(Arg::COOKIES)])])
         ));
     }
 }
