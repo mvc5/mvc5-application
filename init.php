@@ -141,6 +141,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Method.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Path.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Scheme.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Wildcard.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Dispatch/Traverse.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Dispatch/Router.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Dispatch.php';
