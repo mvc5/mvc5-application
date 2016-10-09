@@ -9,8 +9,13 @@ use Mvc5\Url\Plugin as Url;
 
 return [
     'home' => [
-        'route'       => '/',
-        'controller'  => 'Home\Controller'
+        'route' => '/:home',
+        'controller' => 'Home\\Controller',
+        'constraints' => ['home' => '$'],
+        //var_export to create a cache (Definition/Build.php)
+        'tokens' => [['literal', '/'], ['param', 'home', null]],
+        'regex'  => '/(?P<param1>$)',
+        'map'    => ['param1' => 'home']
     ],
     'blog' => [
         'route'      => '/blog',
