@@ -8,26 +8,17 @@ use Mvc5\Session\Session;
 use Mvc5\Url\Plugin as Url;
 
 return [
-    'name'       => 'home', //for the url plugin in view templates
+    'name'       => 'home',
     'route'      => '/',
-    'controller' => 'Home\Controller', //callable
-    //'method' => 'POST',
-    //'controller' => '@Home\Controller.test', //callable
-    //'controller' => 'home\controller', //callable
-    //'controller' => 'blog2->home',
+    'controller' => 'Home\Controller',
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => 'blog->controller.test', //specific method
-            //'hostname' => 'localhost', // "//localhost/blog" (when no scheme specified, inc parent)
-            //'port' => '8080', // "http://localhost:8080/blog"
+            'controller' => 'blog->controller.test',
             'children' => [
                 'remove' => [
                     'route' => '/remove',
                     'method' => ['GET', 'POST'],
-                    //'scheme' => 'https',
-                    //'hostname' => 'localhost',
-                    //'controller' => 'blog:remove', //call event
                     'action' => [
                         'GET' => 'blog:remove',
                         'POST' => function(Request $request, Session $session, Url $url, callable $next = null) {
@@ -37,35 +28,20 @@ return [
                     ]
                 ],
                 'create' => [
-                    'route'      => '/{author}[/{category}[/{wildcard}]]',
+                    'route'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
                     'defaults'   => [
                         'author'   => 'owner',
                         'category' => 'web'
                     ],
                     'wildcard'   => true,
-                    'controller' => 'blog:add', //call event
-                    //'controller' => 'blog2->add',
-                    //'controller'  => function($request) { //named args
-                        //var_dump($request->getPathInfo());
-                    //},
-                    'constraints' => [
-                        'author'   => '[a-zA-Z0-9_-]+',
-                        'category' => '[a-zA-Z0-9_-]+',
-                        'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'
-                    ]
+                    'controller' => 'blog:add', //event
                 ]
             ],
         ],
         'app' => [
-            'options'     => ['separators' => ['_' => '_', '-' => '\\']],
-            //'regex' => '/(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',
-
-            'route'       => '{controller:[a-zA-Z][a-zA-Z0-9]+}[/{action:[a-zA-Z0-9_-]+}[/{wildcard:[a-zA-Z0-9/]+[a-zA-Z0-9]$}]]',
-
-            //'route'       => '/{controller}[/{action}[/{wildcard}]]',
-            //'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
-
-            'wildcard'    => true
+            'options'  => ['separators' => ['_' => '_', '-' => '\\']],
+            'route'    => '{controller::n}[/{action::s}[/{wildcard::*$}]]',
+            'wildcard' => true
         ]
     ]
 ];
