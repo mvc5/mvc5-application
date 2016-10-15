@@ -13,8 +13,8 @@ return [
         'route' => '/{$}',
         'controller' => 'Home\\Controller',
         //var_export to create a cache (Definition/Build.php)
-        //'tokens' => [['literal','/'],['param','','$']],
-        //'regex' => '/$'
+        'regex' => '/$',
+        'tokens' => [['literal','/'], ['param','','$']]
     ]),
     'blog' => [
         'route'      => '/blog',
