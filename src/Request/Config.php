@@ -5,19 +5,16 @@
 
 namespace Request;
 
-use Mvc5\Config\Configuration;
-use Mvc5\Request\Config as Mvc5Request;
+use Mvc5\Request\Config\Request as _Request;
 use Symfony\Component\HttpFoundation\ApacheRequest as HttpRequest;
 
 class Config
-    extends Mvc5Request
     implements \Request
 {
-
     /**
-     * @var array|Configuration
+     *
      */
-    protected $config = [];
+    use _Request;
 
     /**
      * @var HttpRequest
