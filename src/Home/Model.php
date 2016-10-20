@@ -19,7 +19,7 @@ class Model
     /**
      *
      */
-    const TEMPLATE_NAME = 'home';
+    const TEMPLATE_NAME = 'home/index';
 
     /**
      * @var string

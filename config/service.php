@@ -47,7 +47,7 @@ return [
 
     'message' => new Value('Demo web application.'), //string value
     'Home\Controller' => function($message, Request $request, $response, $cookie) {
-        $model = $this->plugin(Home\Model::class, ['home', ['message' => $message]]);
+        $model = $this->plugin(Home\Model::class, ['home/index', ['message' => $message]]);
         return new Home\Controller($model);
     },
 
