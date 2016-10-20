@@ -5,10 +5,13 @@
 
 namespace Response;
 
-use Mvc5\Response\Config as Mvc5Response;
+use Mvc5\Response\Config\Response as _Response;
 
 class Config
-    extends Mvc5Response
     implements \Response
 {
+    /**
+     *
+     */
+    use _Response;
 }

@@ -3,9 +3,9 @@
  *
  */
 
-use Mvc5\Request\Request as Mvc5Request;
+use Mvc5\Request\Request as _Request;
 
 interface Request
-    extends Mvc5Request
+    extends _Request
 {
 }

@@ -3,9 +3,9 @@
  *
  */
 
-use Mvc5\Response\Response as Mvc5Response;
+use Mvc5\Response\Response as _Response;
 
 interface Response
-    extends Mvc5Response
+    extends _Response
 {
 }
