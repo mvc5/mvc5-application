@@ -56,8 +56,11 @@ return [
         [
             'cookies' => new Plugin(Invoke::class, [new Link, ['cookie']]),
             'session' => new Plugin(Invoke::class, [new Link, ['session']]),
+            'user'    => new Plugin(Invoke::class, [new Link, ['user']]),
         ]
     ),
+
+    'user' => [User\Config::class, new Plugin('session\container', ['label' => 'user'])],
 
     'response' => [Response\Config::class, 'config' => new Args(['cookies' => new Plugin('cookie\container')])],
 

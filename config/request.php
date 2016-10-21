@@ -60,7 +60,7 @@ return [
             'query'  => $this->http->getQueryString(),
         ];
     }),
-    'user' => function(){},
+    'user' => null,
     'user_agent' => new Dependency('user_agent', function() {
         return $this->http->server->get('HTTP_USER_AGENT');
     }),
