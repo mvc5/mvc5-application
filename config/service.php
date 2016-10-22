@@ -28,6 +28,7 @@ use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Param;
 use Mvc5\Plugin\Plug;
 use Mvc5\Plugin\Plugins;
+use Mvc5\Plugin\Session;
 use Mvc5\Plugin\Value;
 use Plugin\Controller;
 use Service\Provider;
@@ -60,7 +61,7 @@ return [
         ]
     ),
 
-    'user' => [User\Config::class, new Plugin('session\container', ['label' => 'user'])],
+    'user' => new Dependency('user', new Session('user', User\Config::class)),
 
     'response' => [Response\Config::class, 'config' => new Args(['cookies' => new Plugin('cookie\container')])],
 
