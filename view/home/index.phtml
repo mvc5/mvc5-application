@@ -2,11 +2,6 @@
 
 /** @var Home\Model $this */
 
-if ($message = $this->plugin('session')->get('login')) {
-    echo '<div class="alert alert-info" role="alert"><strong>', $message, '</strong></div>';
-    $this->plugin('session')->remove('login');
-}
-
 ?>
 <div class="jumbotron">
     <h1><a href="<?= $this->url('blog') ?>"><?= $this->blogTitle() ?></a></h1>

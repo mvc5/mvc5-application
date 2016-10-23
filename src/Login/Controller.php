@@ -5,16 +5,27 @@
 
 namespace Login;
 
-use Mvc5\Response\Redirect;
+use Mvc5\Plugin;
 use Mvc5\View\Model;
+use Mvc5\Service;
+use Mvc5\Plugins\Flash;
+use Mvc5\Plugins\Log;
+use Mvc5\Plugins\Redirect;
+use Mvc5\Plugins\User;
 use Request;
 
 class Controller
+    implements Service
 {
     /**
      *
      */
+    use Flash;
+    use Log;
     use Model;
+    use Plugin;
+    use Redirect;
+    use User;
 
     /**
      * @param Request $request
@@ -22,26 +33,29 @@ class Controller
      */
     function __invoke(Request $request)
     {
-        $user = $request->user();
+        $user = $this->user();
 
         if ($user->authenticated()) {
-            $request->session()->set('login', 'Already logged in!');
-            return new Redirect('/');
+            $this->flash('Already logged in!', 'warning');
+            return $this->redirect('/');
         }
 
         if (!$request->data()) {
+            $this->flash('Demo login', 'warning', 'login');
             return $this->view('login/index');
         }
 
         if ('phpdev' !== $request->data('username') || 'home' !== $request->data('password')) {
-            return $this->view('login/index', ['message' => 'Invalid Login']);
+            $this->flash('Invalid Login', 'danger');
+            return $this->view('login/index');
         }
 
         $user['authenticated'] = true;
         $user['username'] = 'phpdev';
 
-        $request->session()->set('login', 'Login successful!');
+        $this->flash('Login successful!', 'success');
+        $this->log(new \Exception('Login successful!'));
 
-        return new Redirect('/');
+        return $this->redirect('/');
     }
 }
