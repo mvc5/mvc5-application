@@ -5,7 +5,6 @@
 
 use Mvc5\Model\Layout;
 use Mvc5\Plugin\Call;
-use Mvc5\Session\Session;
 
 return [
     'blog:add' => new Mvc5\Immutable([
@@ -20,14 +19,8 @@ return [
         function($model) {
             return $model . '<h1>Remove</h1>';
         },
-        function(Layout $layout, Session $session, $model = null) {
-            if ($session['success_message']) {
-                $model .= '<h1>'.$session['success_message'].'</h1>';
-                unset($session['success_message']);
-            } else {
-                $model .= '<h1>Respond</h1>';
-            }
-
+        function(Layout $layout, $model = null) {
+            $model .= '<h1>Respond</h1>';
             $model .= '<form method="POST"><input type="submit" name="submit" value="submit"></form><br>';
 
             $layout->model($model);

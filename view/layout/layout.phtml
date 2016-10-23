@@ -48,8 +48,14 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
-
 <div class="container" style="margin-top:55px">
+    <?php
+
+    if ($msg = $this->{'flash\messages'}()) {
+        echo '<div class="alert alert-' . $msg['type'] . '" role="alert"><strong>', $msg['message'], '</strong></div>';
+    }
+
+    ?>
     <div class="row">
         <div class="col-md-12">
             <?php

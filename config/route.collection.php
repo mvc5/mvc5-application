@@ -3,9 +3,10 @@
  *
  */
 
+use Mvc5\Plugin\Invoke;
 use Mvc5\Response\Redirect;
 use Mvc5\Route\Config as Route;
-use Mvc5\Session\Session;
+use Mvc5\Service\Service;
 use Mvc5\Url\Plugin as Url;
 
 return [
@@ -18,7 +19,7 @@ return [
     ]),
     'blog' => [
         'route'      => '/blog',
-        'controller' => 'blog->controller.test', //specific method
+        'controller' => new Invoke('blog->controller.test'), //specific method
         //'hostname' => 'localhost', // "//localhost/blog" (when no scheme specified, inc parent)
         //'port' => '8080', // "http://localhost:8080/blog"
         'children' => [
@@ -27,11 +28,11 @@ return [
                 'method' => ['GET', 'POST'],
                 //'scheme' => 'https',
                 //'hostname' => 'localhost',
-                //'controller' => 'blog:remove', //call event
+                //'controller' => new Invoke('blog:remove'), //call event
                 'action' => [
-                    'GET' => 'blog:remove',
-                    'POST' => function(Request $request, Session $session, Url $url, callable $next = null) {
-                        $session['success_message'] = 'Success';
+                    'GET' => new Invoke('blog:remove'),
+                    'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
+                        $sm->plugin('flash\messages')->flash('Action completed successfully!', 'success');
                         return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
                     }
                 ]
@@ -48,8 +49,8 @@ return [
                     'limit' => 10
                 ],
                 'wildcard'   => true,
-                'controller' => 'blog:add', //call event
-                //'controller' => 'blog2->add',
+                'controller' => new Invoke('blog:add'), //call event
+                //'controller' => new Invoke('blog2->add'),
                 //'controller'  => function($request) { //named args
                 //var_dump($request->getPathInfo());
                 //},

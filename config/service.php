@@ -100,5 +100,6 @@ return [
     //config for route.collection.php
     //'route\dispatch'  => new Service(Mvc5\Route\Dispatch\Collection::class, [new Param('routes')]),
     //'url\generator'   => [Mvc5\Url\Collection::class, new Param('routes')],
+    //'web\route' => new Service(Mvc5\Web\Route\Collection::class, [new Param('routes')]),
 
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';
