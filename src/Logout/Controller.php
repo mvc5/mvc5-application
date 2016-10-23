@@ -7,7 +7,7 @@ namespace Logout;
 
 use Mvc5\Plugin;
 use Mvc5\Service;
-use Mvc5\Plugins\Flash;
+use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Redirect;
 use Mvc5\Plugins\Session;
 
@@ -17,18 +17,18 @@ class Controller
     /**
      *
      */
-    use Flash;
+    use Messages;
     use Plugin;
     use Redirect;
     use Session;
 
     /**
-     * @return \Mvc5\Model\ViewModel|Redirect
+     * @return \Mvc5\Response\Redirect
      */
     function __invoke()
     {
         $this->session()->remove('user');
-        $this->flash('Logout successful!', 'success');
+        $this->success('Logout successful!');
         return $this->redirect('/');
     }
 }
