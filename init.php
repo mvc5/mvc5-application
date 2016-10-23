@@ -86,6 +86,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Send.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Status.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Response/Version.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Log/Error.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Log/Exception.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model/Template.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model/Layout.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model/ViewModel.php';
