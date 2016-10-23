@@ -32,7 +32,7 @@ return [
                 'action' => [
                     'GET' => new Invoke('blog:remove'),
                     'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
-                        $sm->plugin('flash\messages')->flash('Action completed successfully!', 'success');
+                        $sm->plugin('session\messages')->success('Action completed successfully!');
                         return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
                     }
                 ]
