@@ -10,8 +10,9 @@ use Mvc5\View\Model;
 use Mvc5\Service;
 use Mvc5\Plugins\Log;
 use Mvc5\Plugins\Messages;
-use Mvc5\Plugins\Redirect;
+use Mvc5\Plugins\Response;
 use Mvc5\Plugins\User;
+use Mvc5\Response\Redirect;
 use Request;
 
 class Controller
@@ -24,7 +25,7 @@ class Controller
     use Messages;
     use Model;
     use Plugin;
-    use Redirect;
+    use Response;
     use User;
 
     /**

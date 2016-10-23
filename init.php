@@ -227,7 +227,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Plugin/Value.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/Log.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/Messages.php';
-include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/Redirect.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/Response.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/Session.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Plugins/User.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Web/Controller.php';
