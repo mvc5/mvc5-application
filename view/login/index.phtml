@@ -1,6 +1,6 @@
 <?php
 
-if ($msg = $this->{'flash\messages'}('login')) {
+if ($msg = $this->{'session\messages'}('login')) {
     echo '<div class="alert alert-' . $msg['type'] . '" role="alert"><strong>', $msg['message'], '</strong></div>';
 }
 

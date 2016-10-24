@@ -8,10 +8,11 @@ namespace Login;
 use Mvc5\Plugin;
 use Mvc5\View\Model;
 use Mvc5\Service;
-use Mvc5\Plugins\Flash;
 use Mvc5\Plugins\Log;
-use Mvc5\Plugins\Redirect;
+use Mvc5\Plugins\Messages;
+use Mvc5\Plugins\Response;
 use Mvc5\Plugins\User;
+use Mvc5\Response\Redirect;
 use Request;
 
 class Controller
@@ -20,11 +21,11 @@ class Controller
     /**
      *
      */
-    use Flash;
     use Log;
+    use Messages;
     use Model;
     use Plugin;
-    use Redirect;
+    use Response;
     use User;
 
     /**
@@ -36,24 +37,24 @@ class Controller
         $user = $this->user();
 
         if ($user->authenticated()) {
-            $this->flash('Already logged in!', 'warning');
+            $this->warning('Already logged in!');
             return $this->redirect('/');
         }
 
         if (!$request->data()) {
-            $this->flash('Demo login', 'warning', 'login');
+            $this->warning('Demo login', 'login');
             return $this->view('login/index');
         }
 
         if ('phpdev' !== $request->data('username') || 'home' !== $request->data('password')) {
-            $this->flash('Invalid Login', 'danger');
+            $this->danger('Invalid Login');
             return $this->view('login/index');
         }
 
         $user['authenticated'] = true;
         $user['username'] = 'phpdev';
 
-        $this->flash('Login successful!', 'success');
+        $this->success('Login successful!');
         $this->log(new \Exception('Login successful!'));
 
         return $this->redirect('/');
