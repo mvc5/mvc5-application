@@ -3,7 +3,6 @@
  *
  */
 
-use Mvc5\Plugin\Invoke;
 use Mvc5\Response\Redirect;
 use Mvc5\Service\Service;
 use Mvc5\Url\Plugin as Url;
@@ -15,13 +14,13 @@ return [
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => new Invoke('blog->controller.test'),
+            'controller' => 'blog->controller.test',
             'children' => [
                 'remove' => [
                     'route' => '/remove',
                     'method' => ['GET', 'POST'],
                     'action' => [
-                        'GET' => new Invoke('blog:remove'),
+                        'GET' => 'blog:remove',
                         'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
                             $sm->plugin('session\messages')->success('Action completed successfully!');
                             return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
@@ -35,7 +34,7 @@ return [
                         'category' => 'web'
                     ],
                     'wildcard'   => true,
-                    'controller' => new Invoke('blog:add'), //event
+                    'controller' => 'blog:add', //event
                 ]
             ],
         ],

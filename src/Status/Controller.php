@@ -4,19 +4,17 @@
  */
 namespace Status;
 
-use Mvc5\Plugin;
 use Mvc5\Plugins\Response;
+use Mvc5\Plugins\Service;
 use Mvc5\Response\Json;
-use Mvc5\Service;
 
 class Controller
-    implements Service
 {
     /**
      *
      */
-    use Plugin;
     use Response;
+    use Service;
 
     /**
      * @return Json
