@@ -5,18 +5,16 @@
 
 namespace Login;
 
-use Mvc5\Plugin;
 use Mvc5\View\Model;
-use Mvc5\Service;
 use Mvc5\Plugins\Log;
 use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Response;
+use Mvc5\Plugins\Service;
 use Mvc5\Plugins\User;
 use Mvc5\Response\Redirect;
 use Request;
 
 class Controller
-    implements Service
 {
     /**
      *
@@ -24,8 +22,8 @@ class Controller
     use Log;
     use Messages;
     use Model;
-    use Plugin;
     use Response;
+    use Service;
     use User;
 
     /**

@@ -5,22 +5,20 @@
 
 namespace Logout;
 
-use Mvc5\Plugin;
-use Mvc5\Service;
 use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Response;
 use Mvc5\Plugins\Session;
+use Mvc5\Plugins\Service;
 
 class Controller
-    implements Service
 {
     /**
      *
      */
     use Messages;
-    use Plugin;
     use Response;
     use Session;
+    use Service;
 
     /**
      * @return \Mvc5\Response\Redirect
