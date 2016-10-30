@@ -3,7 +3,7 @@
  *
  */
 
-namespace Blog\Add;
+namespace Dashboard\Add;
 
 use Request;
 

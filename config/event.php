@@ -7,12 +7,12 @@ use Mvc5\Model\Layout;
 use Mvc5\Plugin\Call;
 
 return [
-    'blog:add' => new Mvc5\Immutable([
-        Blog\Add\Validate::class,
-        Blog\Add\Save::class,
-        Blog\Add\Respond::class
+    'dashboard:add' => new Mvc5\Immutable([
+        Dashboard\Add\Validate::class,
+        Dashboard\Add\Save::class,
+        Dashboard\Add\Respond::class
     ]),
-    'blog:remove' => [
+    'dashboard:remove' => [
         function() {
             return $model = '<h1>Validate</h1>';
         },
@@ -21,7 +21,7 @@ return [
         },
         function(Layout $layout, $model = null) {
             $model .= '<h1>Respond</h1>';
-            $model .= '<form method="POST"><input type="submit" name="submit" value="submit"></form><br>';
+            $model .= '<form method="POST"><input class="btn btn-lg btn-primary" type="submit" name="submit" value="Submit"></form><br>';
 
             $layout->model($model);
 
@@ -29,9 +29,9 @@ return [
         }
     ],
 
-    /*'blog:remove' => new Call(function($event, $response, $args) {
+    /*'dashboard:remove' => new Call(function($event, $response, $args) {
         yield function($layout, $model = null) {
-            $model .= '<h1>Blog\Remove</h1>';
+            $model .= '<h1>Dashboard\Remove</h1>';
 
             $layout->model($model);
 

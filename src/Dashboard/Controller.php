@@ -3,14 +3,16 @@
  *
  */
 
-namespace Blog;
+namespace Dashboard;
+
+use Mvc5\View\Model as _ViewModel;
 
 class Controller
 {
     /**
-     * @var Model
+     *
      */
-    protected $model;
+    use _ViewModel;
 
     /**
      * @var string
@@ -32,8 +34,6 @@ class Controller
      */
     function test()
     {
-        $this->model->template($this->template);
-
-        return $this->model;
+        return $this->view($this->template);
     }
 }

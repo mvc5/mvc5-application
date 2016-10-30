@@ -16,20 +16,20 @@ return [
         'regex' => '/$',
         'tokens' => [['literal','/'], ['param','','$']]
     ]),
-    'blog' => [
-        'route'      => '/blog',
-        'controller' => 'blog->controller.test', //specific method
-        //'hostname' => 'localhost', // "//localhost/blog" (when no scheme specified, inc parent)
-        //'port' => '8080', // "http://localhost:8080/blog"
+    'dashboard' => [
+        'route'      => '/dashboard',
+        'controller' => 'dashboard->controller.test', //specific method
+        //'hostname' => 'localhost', // "//localhost/dashboard" (when no scheme specified, inc parent)
+        //'port' => '8080', // "http://localhost:8080/dashboard"
         'children' => [
             'remove' => [
                 'route' => '/remove',
                 'method' => ['GET', 'POST'],
                 //'scheme' => 'https',
                 //'hostname' => 'localhost',
-                //'controller' => 'blog:remove', //call event
+                //'controller' => 'dashboard:remove', //call event
                 'action' => [
-                    'GET' => 'blog:remove',
+                    'GET' => 'dashboard:remove',
                     'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
                         $sm->plugin('session\messages')->success('Action completed successfully!');
                         return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
@@ -48,8 +48,8 @@ return [
                     'limit' => 10
                 ],
                 'wildcard'   => true,
-                'controller' => 'blog:add', //call event
-                //'controller' => 'blog2->add',
+                'controller' => 'dashboard:add', //call event
+                //'controller' => 'dashboard2->',
                 //'controller'  => function($request) { //named args
                 //var_dump($request->getPathInfo());
                 //},

@@ -5,32 +5,28 @@
 
 namespace Home;
 
-use Mvc5\Model\ViewModel;
-use Mvc5\View\Model as _ViewModel;
+use Mvc5\Plugins\Service;
+use Mvc5\Plugins\ViewModel;
 use Request;
-use Response;
 
 class Controller
 {
     /**
      *
      */
-    use _ViewModel;
+    use Service;
+    use ViewModel;
 
     /**
-     * @param Model $model
+     *
      */
-    function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    const VIEW_MODEL = Model::class;
 
     /**
      * @param Request $request
-     * @param Response $response
-     * @return ViewModel
+     * @return string
      */
-    function __invoke(Request $request, Response $response)
+    function __invoke(Request $request)
     {
         return $this->model(['request' => $request]);
     }

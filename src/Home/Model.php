@@ -24,13 +24,13 @@ class Model
     /**
      * @var string
      */
-    private $blogTitle = 'Blog';
+    private $dashboardTitle = 'Mvc5';
 
     /**
      * @return string
      */
-    private function blogTitle()
+    private function dashboardTitle()
     {
-        return $this->blogTitle;
+        return $this->dashboardTitle;
     }
 }

@@ -34,23 +34,23 @@ use Plugin\Controller;
 use Service\Provider;
 
 return [
-    'About\Controller' => new Plugin(About\Controller::class, ['Mvc5 Demo Application']),
+    'About\Controller' => new Plugin(About\Controller::class, ['A PHP Web Application']),
 
-    'blog2' => new Container([
-        'add' => ['event\model', 'event' => 'blog:add'],
-        'home'   => 'blog3->home2',
+    'dashboard2' => new Container([
+        'add' => ['event\model', 'event' => 'dashboard:add'],
+        'home'   => 'dashboard3->home2',
     ]),
-    'blog3' => new Config([
+    'dashboard3' => new Config([
         'home2' => new Plugin('Home\Controller')
     ]),
 
-    'blog' => new App(new FileInclude(__DIR__ . '/blog.php')),
+    'dashboard' => new App(new FileInclude(__DIR__ . '/dashboard.php')),
 
-    'message' => new Value('Demo web application.'), //string value
+    'message' => new Value('Demo Application'), //string value
     'Home\Controller' => function($message, Request $request, $response, $cookie) {
-        $model = $this->plugin(Home\Model::class, ['home/index', ['message' => $message]]);
-        return new Home\Controller($model);
+        return new Home\Controller($this);
     },
+    'Home\Model' => new Plugin(Home\Model::class, [null, new Args(['message' => new Plug('message')])]),
 
     'request' => new \Plugin\Request(
         new FileInclude(__DIR__ . '/request.php'),
@@ -65,7 +65,7 @@ return [
 
     'response' => [Response\Config::class, 'config' => new Args(['cookies' => new Plugin('cookie\container')])],
 
-    //middleware demo
+    //middleware dashboard
     //'web' => 'web\middleware',
 
     ViewModel::class => Model::class,
@@ -74,11 +74,11 @@ return [
 
     'sm' => new Link,
 
-    //'blog:create' => new Plugin('Blog\Create\Create'),
-    //'blog:create' => new Plugin('blog2->create'),
+    //'dashboard:create' => new Plugin('Dashboard\Create\Create'),
+    //'dashboard:create' => new Plugin('dashboard2->create'),
 
-    //'blog' => blog\controller::class,
-    //'blog' => new Service(blog\controller::class, ['template' => new Param('templates.blog')]),
+    //'dashboard' => dashboard\controller::class,
+    //'dashboard' => new Service(dashboard\controller::class, ['template' => new Param('templates.dashboard')]),
 
     /*'home\controller' => new Plugin(
         Home\Controller::class
@@ -95,7 +95,7 @@ return [
     //'home\controller' => new Plugin(Home\Controller::class),
 
     //'Home\Controller' => Home\Controller::class,
-    //'Home\Controller' => new Plugin('blog->home'),
+    //'Home\Controller' => new Plugin('dashboard->home'),
 
     //config for route.collection.php
     //'route\dispatch'  => new Service(Mvc5\Route\Dispatch\Collection::class, [new Param('routes')]),
