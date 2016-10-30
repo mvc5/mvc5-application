@@ -10,6 +10,7 @@ use Mvc5\Plugins\Log;
 use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Response;
 use Mvc5\Plugins\Service;
+use Mvc5\Plugins\Url;
 use Mvc5\Plugins\User;
 use Mvc5\Response\Redirect;
 use Request;
@@ -24,7 +25,13 @@ class Controller
     use Model;
     use Response;
     use Service;
+    use Url;
     use User;
+
+    /**
+     *
+     */
+    const TEMPLATE_NAME = 'login/index';
 
     /**
      * @param Request $request
@@ -36,17 +43,17 @@ class Controller
 
         if ($user->authenticated()) {
             $this->warning('Already logged in!');
-            return $this->redirect('/');
+            return $this->redirect($this->url('home'));
         }
 
         if (!$request->data()) {
             $this->warning('Demo login', 'login');
-            return $this->view('login/index');
+            return $this->view();
         }
 
         if ('phpdev' !== $request->data('username') || 'home' !== $request->data('password')) {
             $this->danger('Invalid Login');
-            return $this->view('login/index');
+            return $this->view();
         }
 
         $user['authenticated'] = true;
@@ -55,6 +62,6 @@ class Controller
         $this->success('Login successful!');
         $this->log(new \Exception('Login successful!'));
 
-        return $this->redirect('/');
+        return $this->redirect($this->url('home'));
     }
 }
