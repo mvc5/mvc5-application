@@ -6,10 +6,8 @@
 namespace Home;
 
 use Mvc5\Plugin;
-use Mvc5\Service;
 
 class Factory
-    implements Service
 {
     /**
      *
@@ -22,10 +20,6 @@ class Factory
      */
     function __invoke(array $config)
     {
-        /** @var Model $model */
-
-        $model = $this->plugin(Model::class, ['home']);
-
-        return new Controller($model);
+        return new Controller($this->service);
     }
 }

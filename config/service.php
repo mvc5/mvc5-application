@@ -48,9 +48,9 @@ return [
 
     'message' => new Value('Demo web application.'), //string value
     'Home\Controller' => function($message, Request $request, $response, $cookie) {
-        $model = $this->plugin(Home\Model::class, ['home/index', ['message' => $message]]);
-        return new Home\Controller($model);
+        return new Home\Controller($this);
     },
+    'Home\Model' => new Plugin(Home\Model::class, [null, new Args(['message' => new Plug('message')])]),
 
     'request' => new \Plugin\Request(
         new FileInclude(__DIR__ . '/request.php'),
