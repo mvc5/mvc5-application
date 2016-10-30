@@ -42,7 +42,7 @@ class Controller
     {
         $this->warning('Documentation is maintained at <a href="https://mvc5.github.io">https://mvc5.github.io</a>');
 
-        $layout->model($this->model(['request' => $request]));
+        $layout->model($this->model());
 
         return $this->render($layout);
     }
