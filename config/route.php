@@ -12,17 +12,17 @@ return [
     'route'      => '/',
     'controller' => 'Home\Controller',
     'children' => [
-        'blog' => [
-            'route'      => 'blog',
-            'controller' => 'blog->controller.test',
+        'dashboard' => [
+            'route'      => 'dashboard',
+            'controller' => 'dashboard->controller.test',
             'children' => [
                 'remove' => [
                     'route' => '/remove',
                     'method' => ['GET', 'POST'],
                     'action' => [
-                        'GET' => 'blog:remove',
+                        'GET' => 'dashboard:remove',
                         'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
-                            $sm->plugin('session\messages')->success('Action completed successfully!');
+                            $sm->plugin('session\messages')->success('Action completed!');
                             return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
                         }
                     ]
@@ -34,7 +34,7 @@ return [
                         'category' => 'web'
                     ],
                     'wildcard'   => true,
-                    'controller' => 'blog:add', //event
+                    'controller' => 'dashboard:add', //event
                 ]
             ],
         ],

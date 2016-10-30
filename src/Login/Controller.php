@@ -43,11 +43,11 @@ class Controller
 
         if ($user->authenticated()) {
             $this->warning('Already logged in!');
-            return $this->redirect($this->url('home'));
+            return $this->redirect($this->url('dashboard'));
         }
 
         if (!$request->data()) {
-            $this->warning('Demo login', 'login');
+            $this->warning('Demo Login', 'login');
             return $this->view();
         }
 
@@ -62,6 +62,6 @@ class Controller
         $this->success('Login successful!');
         $this->log(new \Exception('Login successful!'));
 
-        return $this->redirect($this->url('home'));
+        return $this->redirect($this->url('dashboard'));
     }
 }

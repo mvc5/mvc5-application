@@ -35,11 +35,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/overview">Overview</a></li>
-                <li><a href="/blog">Demo Blog</a></li>
                 <?php
 
                 if ($this->plugin('user')->authenticated()) {
-                    echo '<li><a href="/logout">Logout</a></li>';
+                    echo '<li><a href="/dashboard">Dashboard</a></li>',
+                         '<li><a href="/logout">Logout</a></li>';
                 } else {
                     echo '<li><a href="/login">Login</a></li>';
                 }

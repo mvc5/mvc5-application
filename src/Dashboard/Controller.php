@@ -3,7 +3,7 @@
  *
  */
 
-namespace Blog;
+namespace Dashboard;
 
 use Mvc5\View\Model as _ViewModel;
 

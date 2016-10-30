@@ -40,7 +40,7 @@ class Controller
      */
     function __invoke(Request $request, ViewLayout $layout)
     {
-        $this->warning('Documentation is maintained at <a href="http://mvc5.github.io">http://mvc5.github.io</a>');
+        $this->warning('Documentation is maintained at <a href="https://mvc5.github.io">https://mvc5.github.io</a>');
 
         $layout->model($this->model(['request' => $request]));
 
