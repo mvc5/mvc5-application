@@ -16,7 +16,7 @@ class Validate
      */
     function __invoke(Request $request, Model $model)
     {
-        $model->vars(['args' => [__CLASS__]]);
+        $model->vars(['params' => $request->params(), 'args' => [__CLASS__]]);
 
         return $model;
     }

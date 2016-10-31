@@ -4,19 +4,14 @@
  */
 
 use Mvc5\Plugin\Param;
+use Mvc5\Plugin\Plugin;
 
 return [
     'services' => [
-        'home' => Home\Controller::class,
-        'controller2' => function(Request $request) {
-            return $this->plugin(Dashboard\Controller::class, ['template' => new Param('templates.dashboard')]);
-        },
-        'Home\Controller2' => function(Request $request, Dashboard\Model $model) {
-            return new Dashboard\Controller($model, __DIR__ . '/../view/dashboard/index.phtml');
-        },
-
-        //'controller' => 'controller2', //locally resolved
-        'controller' => 'Home\Controller2', //locally resolved
+        'action' => new Mvc5\Container(['add' => ['event\model', 'event' => 'dashboard:add']]),
+        'home'   => Home\Controller::class,
+        'model'  => Dashboard\Model::class,
+        'controller' => new Plugin(Dashboard\Controller::class, [new Plugin('model'), new Param('templates.dashboard')]),
     ],
     'templates' => [
         'dashboard' => __DIR__ . '/../view/dashboard/index.phtml',

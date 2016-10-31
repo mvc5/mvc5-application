@@ -170,6 +170,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Generator.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Initializer.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Resolver/Resolver.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Session/Config/Container.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Session/Config/Messages.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Session/Config/Session.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Session/Session.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Session/Config.php';

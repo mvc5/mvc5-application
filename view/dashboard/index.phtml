@@ -3,13 +3,8 @@
     <p class="lead">Demo Application</p>
     <pre><?= __FILE__; ?></pre>
     <p>
-        <a class="btn btn-lg btn-primary" href="<?= $this->url('dashboard/create', ['author' => 'owner', 'category' => 'oop']) ?>" role="button">Create</a>
+        <a class="btn btn-lg btn-primary" href="<?= $this->url('dashboard/add', ['author' => 'owner', 'category' => 'oop']) ?>" role="button">Add</a>
         <a style="margin-left:10px;" class="btn btn-lg btn-primary" href="<?= $this->url('dashboard/remove') ?>" role="button">Remove</a>
     </p>
 </div>
-<?php
 
-if (isset($args)) {
-    echo '<h4>Variables</h4>';
-    var_dump($this->vars());
-}

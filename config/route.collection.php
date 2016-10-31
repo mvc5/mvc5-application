@@ -8,6 +8,12 @@ use Mvc5\Route\Config as Route;
 use Mvc5\Service\Service;
 use Mvc5\Url\Plugin as Url;
 
+function dashboard_remove(Service $sm, Request $request, Url $url, callable $next = null)
+{
+    $sm->plugin('session\messages')->success('Action completed!');
+    return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
+}
+
 return [
     'home' => new Route([
         'route' => '/{$}',
@@ -19,48 +25,32 @@ return [
     'dashboard' => [
         'route'      => '/dashboard',
         'controller' => 'dashboard->controller.test', //specific method
+        //'scheme' => 'https',
         //'hostname' => 'localhost', // "//localhost/dashboard" (when no scheme specified, inc parent)
         //'port' => '8080', // "http://localhost:8080/dashboard"
         'children' => [
             'remove' => [
                 'route' => '/remove',
                 'method' => ['GET', 'POST'],
-                //'scheme' => 'https',
-                //'hostname' => 'localhost',
-                //'controller' => 'dashboard:remove', //call event
                 'action' => [
                     'GET' => 'dashboard:remove',
-                    'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
-                        $sm->plugin('session\messages')->success('Action completed successfully!');
-                        return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
-                    }
+                    'POST' => '@dashboard_remove'
                 ]
             ],
-            'create' => [
+            'add' => [
                 'route'      => '[/{author::s}][/{category::s}[/{wildcard::*$}]]',
-
-                //'route'      => '/:author[/:category[/:wildcard]]',
-
-
                 'defaults'   => [
                     //'author'   => 'owner',
                     //'category' => 'web',
                     'limit' => 10
                 ],
                 'wildcard'   => true,
-                'controller' => 'dashboard:add', //call event
-                //'controller' => 'dashboard2->',
-                //'controller'  => function($request) { //named args
-                //var_dump($request->getPathInfo());
-                //},
+                'controller' => 'dashboard->action->add', //call event
                 'constraints' => [
                     //'author'   => '[a-zA-Z_-]+',
                     //'category' => '[a-zA-Z_-]+',
                     //'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'
-                ],
-                'map' => [
-                    'author' => '__author'
-                ],
+                ]
             ]
         ],
     ],

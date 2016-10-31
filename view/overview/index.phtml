@@ -1,3 +1,10 @@
+<?php
+
+if ($msg = $this->{'session\messages'}('overview')) {
+    echo '<div class="alert alert-' . $msg['type'] . '" role="alert"><strong>', $msg['message'], '</strong></div>';
+}
+
+?>
 <h2 id="features">Features</h2>
 <ul>
     <li><a href="#action-controller">Action Controller</a></li>
@@ -201,9 +208,9 @@ $request-&gt;set(Arg::NAME, 'home');
     'route'      =&gt; '/',
     'controller' =&gt; 'Home\Controller',
     'children' =&gt; [
-        'blog' =&gt; [
-            'route'      =&gt; 'blog',
-            'controller' =&gt; 'Blog\Controller'
+        'dashboard' =&gt; [
+            'route'      =&gt; 'dashboard',
+            'controller' =&gt; 'Dashboard\Controller'
         ]
     ]
 ]
@@ -215,13 +222,13 @@ $request-&gt;set(Arg::NAME, 'home');
         'route' =&gt; '/{$}',
         'controller' =&gt; 'Home\Controller',
     ],
-    'blog' =&gt; [
-        'route' =&gt; '/blog{$}',
-        'controller' =&gt; 'Blog\Controller'
+    'dashboard' =&gt; [
+        'route' =&gt; '/dashboard{$}',
+        'controller' =&gt; 'Dashboard\Controller'
     ]
-    'blog:create' =&gt; [
-        'route' =&gt; '/blog/create',
-        'controller' =&gt; 'Blog\Create\Controller'
+    'dashboard:add' =&gt; [
+        'route' =&gt; '/dashboard/add',
+        'controller' =&gt; 'Dashboard\Add\Controller'
     ]
 ]
 </code></pre>
@@ -255,11 +262,11 @@ $request-&gt;set(Arg::NAME, 'home');
 <h2 id="url-generator">Url Generator</h2>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> can be used to <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php">generate</a> a url.</p>
 
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>echo $this-&gt;url('blog/create', ['author' =&gt; 'owner', 'category' =&gt; 'oop'], ['canonical' =&gt; true]);
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>echo $this-&gt;url('dashboard/add', ['author' =&gt; 'owner', 'category' =&gt; 'oop'], ['canonical' =&gt; true]);
 </code></pre>
 </div>
 
-<p>The <a href="https://github.com/mvc5/mvc5-application/blob/master/config/route.php">base route</a> must have a name, which is typically the homepage, e.g <a href="https://github.com/mvc5/mvc5-application/blob/master/config/route.php#L7"><code>home</code></a>. For a standard configuration, <a href="https://github.com/mvc5/mvc5-application/blob/master/config/route.php#L18">child</a> routes, except for the first level, will automatically have their parent name <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Dispatch/Router.php#L94">prepended</a>. This simplifies their name when <a href="https://github.com/mvc5/mvc5-application/blob/master/view/blog/create.phtml#L2">specifying</a> the <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php">route</a> to <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php#L77">generate</a>, e.g. <code>blog</code> instead of <code>home/blog</code>. Wild card parameters can also be used with the route expression <code>{wildcard::*$}</code> and enabling it with <code>'wildcard' =&gt; true</code>.</p>
+<p>The <a href="https://github.com/mvc5/mvc5-application/blob/master/config/route.php">base route</a> must have a name, which is typically the homepage, e.g <a href="https://github.com/mvc5/mvc5-application/blob/master/config/route.php#L7"><code>home</code></a>. For a standard configuration, <a href="https://github.com/mvc5/mvc5-application/blob/master/config/route.php#L18">child</a> routes, except for the first level, will automatically have their parent name <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Dispatch/Router.php#L94">prepended</a>. This simplifies their name when <a href="https://github.com/mvc5/mvc5-application/blob/master/view/dashboard/add.phtml#L2">specifying</a> the <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php">route</a> to <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php#L77">generate</a>, e.g. <code>dashboard</code> instead of <code>home/dashboard</code>. Wild card parameters can also be used with the route expression <code>{wildcard::*$}</code> and enabling it with <code>'wildcard' =&gt; true</code>.</p>
 
 <h2 id="rest-api-methods">REST API Methods</h2>
 <p>Routes can be configured with actions for specific HTTP Methods. The default action is specified with the controller configuration.</p>
@@ -470,7 +477,6 @@ return $render();
 
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>[
     'home'        =&gt; Home\Controller::class,
-    'blog'        =&gt; [Blog\Controller::class, 'template' =&gt; 'blog'],
     'request'     =&gt; Mvc5\Request\Config::class,
     'response'    =&gt; Response\HttpResponse::class,
     'url'         =&gt; new Dependency('url\plugin'),
@@ -486,7 +492,7 @@ return $render();
 <p>However, when the dependencies of a class require their own dependencies, then the depth of the dependency graph increases. In this case, a class object can also be created using a <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolvable.php">resolvable</a> <a href="#plugins">plugin</a> instead of using an anonymous function or factory method. This provides inversion of control and is a configuration domain specific language. Each <a href="#plugins">plugin</a> must implement the <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolvable.php">resolvable</a> interface so that the system can distinguish them from other objects and invoke their associated function. Plugins can be used by each other and chained together to form a composite <a href="#plugins">plugin</a> and are only required when an explicit configuration is needed.</p>
 
 <h2 id="service-container">Service Container</h2>
-<p><a href="#plugins">Plugins</a> can be grouped together and accessed via the <a href="http://php.net/manual/en/class.arrayaccess.php">ArrayAccess</a> interface or using the <a href="https://github.com/mvc5/mvc5/blob/master/src/Arg.php#L279">arrow</a> notation, e.g. <code>blog-&gt;home</code>.</p>
+<p><a href="#plugins">Plugins</a> can be grouped together and accessed via the <a href="http://php.net/manual/en/class.arrayaccess.php">ArrayAccess</a> interface or using the <a href="https://github.com/mvc5/mvc5/blob/master/src/Arg.php#L279">arrow</a> notation, e.g. <code>dashboard-&gt;home</code>.</p>
 
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>use Mvc5\App;
 use Mvc5\Plugin\Plugins;
@@ -494,14 +500,14 @@ use Mvc5\Plugin\Value;
 
 $app = new App([
     'services' =&gt; [
-        'blog' =&gt; new Plugins(
+        'dashboard' =&gt; new Plugins(
             [
                 'home' =&gt; function($template) {
                     return function($view, $form) use($template) {
                         return $this-&gt;call($view, [$template, $form + ['message' =&gt; 'Demo Page']]);
                     };
                 },
-                'template' =&gt; new Value('blog/home')
+                'template' =&gt; new Value('dashboard/index')
             ],
             new Link, //reference to parent container
             true //use current container as the scope for anonymous functions
@@ -514,10 +520,10 @@ $app = new App([
     ]
 ]);
 
-//$app['blog']['home'];
-//$app['blog-&gt;home'];
+//$app['dashboard']['home'];
+//$app['dashboard-&gt;home'];
 
-$app-&gt;call('blog-&gt;home', ['form' =&gt; []]);
+$app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 </code></pre>
 </div>
 
@@ -540,7 +546,7 @@ $app-&gt;call('blog-&gt;home', ['form' =&gt; []]);
 <p>Various types of plugins are available to use and custom plugins can be created.</p>
 
 <h3 id="apphttpsgithubcommvc5mvc5blobmastersrcpluginappphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/App.php">App</a></h3>
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>'blog' =&gt; new App(new FileInclude(__DIR__ . '/blog.php')),
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>'dashboard' =&gt; new App(new FileInclude(__DIR__ . '/dashboard.php')),
 </code></pre>
 </div>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/App.php">app</a> plugin is used to provide a scoped instance of the <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">Mvc5\App</a> and uses the current application as its fallback service provider.</p>
@@ -879,9 +885,9 @@ return [
 </code></pre>
 </div>
 
-<p>For example, the <code>blog:remove</code> event uses three functions to create a model and to return a <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L35">layout</a> object. It does not have its own <a href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a> class, so an instance of the <a href="https://github.com/mvc5/mvc5/blob/master/src/Event.php">default event model</a> is used.</p>
+<p>For example, the <code>dashboard:remove</code> event uses three functions to create a model and to return a <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L35">layout</a> object. It does not have its own <a href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a> class, so an instance of the <a href="https://github.com/mvc5/mvc5/blob/master/src/Event.php">default event model</a> is used.</p>
 
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>'blog:remove' =&gt; [
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>'dashboard:remove' =&gt; [
     function() {
         return $model = '<span class="nt">&lt;h1&gt;</span>Validate<span class="nt">&lt;/h1&gt;</span>';
     },

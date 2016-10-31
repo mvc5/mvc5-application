@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <h1><a href="<?= $this->url('dashboard/add', ['author' => 'owner', 'category' => 'oop']) ?>">Add</a></h1>
+    <p class="lead">Demo Action</p>
+    <pre><?= __FILE__; ?></pre>
+    <p>
+        <a style="margin-left:10px;" class="btn btn-lg btn-primary" href="<?= $this->url('dashboard/remove') ?>" role="button">Remove</a>
+    </p>
+</div>
+<?php
+
+if (isset($args)) {
+    echo '<h4>Variables</h4>';
+    var_dump($this->vars());
+}
