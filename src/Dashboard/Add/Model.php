@@ -19,5 +19,5 @@ class Model
     /**
      *
      */
-    const TEMPLATE_NAME = 'dashboard:create';
+    const TEMPLATE_NAME = 'dashboard/add';
 }

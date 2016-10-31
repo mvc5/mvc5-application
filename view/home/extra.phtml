@@ -1,3 +1,10 @@
 <?php
 
-var_dump($uri);
+/**
+ * @var Request $request
+ */
+
+var_dump([
+    'name' => $request->name(),
+    'uri'  => $request->uri()
+]);

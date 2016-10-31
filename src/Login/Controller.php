@@ -48,7 +48,7 @@ class Controller
 
         if (!$request->data()) {
             $this->warning('Demo Login', 'login');
-            return $this->view();
+            return $this->model(['params' => $request->params()]);
         }
 
         if ('phpdev' !== $request->data('username') || 'home' !== $request->data('password')) {

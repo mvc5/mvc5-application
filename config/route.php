@@ -23,11 +23,11 @@ return [
                         'GET' => 'dashboard:remove',
                         'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
                             $sm->plugin('session\messages')->success('Action completed!');
-                            return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
+                            return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
                         }
                     ]
                 ],
-                'create' => [
+                'add' => [
                     'route'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
                     'defaults'   => [
                         'author'   => 'owner',
