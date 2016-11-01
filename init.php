@@ -109,6 +109,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Model/Config.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model/Plugin.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Model/Layout/Plugin.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/View/Layout/Model.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/View/Model/Service.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/View/Template/Layout.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/View/Template/Templates.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/View/Template/Render.php';
