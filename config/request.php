@@ -3,39 +3,39 @@
  *
  */
 
-use Mvc5\Plugin\Dependency;
+use Mvc5\Plugin\Shared;
 
 return [
-    'accept' => new Dependency('accept', function() {
+    'accept' => new Shared('accept', function() {
         return $this->http->getAcceptableContentTypes();
     }),
-    'args' => new Dependency('args', function() {
+    'args' => new Shared('args', function() {
         return $this->http->query->all();
     }),
-    'body' => new Dependency('body', function() {
+    'body' => new Shared('body', function() {
         return $this->http->getContent();
     }),
-    'client_address' => new Dependency('client_address', function() {
+    'client_address' => new Shared('client_address', function() {
         return $this->http->getClientIp();
     }),
-    'content_type' => new Dependency('content_type', function() {
+    'content_type' => new Shared('content_type', function() {
         return $this->http->getContentType();
     }),
     'controller' => function(){},
     'cookies'    => null,
-    'data' => new Dependency('data', function() {
+    'data' => new Shared('data', function() {
         return $this->http->request->all();
     }),
     'error'     => function() {},
     'exception' => function() {},
-    'files' => new Dependency('files', function() {
+    'files' => new Shared('files', function() {
         return $this->http->files->all();
     }),
-    'headers' => new Dependency('headers', function() {
+    'headers' => new Shared('headers', function() {
         return getallheaders(); //$this->http->headers->all();
     }),
     'length' => function(){},
-    'method' => new Dependency('method', function() {
+    'method' => new Shared('method', function() {
         return $this->http->getMethod();
     }),
     'name'   => function(){},
@@ -49,7 +49,7 @@ return [
     'stream'  => function() {
         return $this->http->getContent(true);
     },
-    'uri' => new Dependency('uri', function() {
+    'uri' => new Shared('uri', function() {
         return [
             'scheme' => $this->http->getScheme(),
             'host'   => $this->http->getHost(),
@@ -61,10 +61,10 @@ return [
         ];
     }),
     'user' => null,
-    'user_agent' => new Dependency('user_agent', function() {
+    'user_agent' => new Shared('user_agent', function() {
         return $this->http->server->get('HTTP_USER_AGENT');
     }),
-    'version' => new Dependency('version', function() {
+    'version' => new Shared('version', function() {
         return substr($this->http->server->get('SERVER_PROTOCOL'), strlen('HTTP/'));
     }),
 ];

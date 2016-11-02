@@ -5,18 +5,17 @@
 
 use Mvc5\Plugin\App;
 use Mvc5\Plugin\Args;
-use Mvc5\Plugin\Copy;
-use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Link;
 use Mvc5\Plugin\Manager;
-use Mvc5\Plugin\Plugin;
-use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Param;
 use Mvc5\Plugin\Plug;
+use Mvc5\Plugin\Plugin;
+use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Session;
+use Mvc5\Plugin\Shared;
 use Mvc5\Plugin\Value;
 use Service\Provider;
 
@@ -50,7 +49,7 @@ return [
 
     'sm' => new Link,
 
-    'user' => new Dependency('user', new Session('user', User\Config::class)),
+    'user' => new Shared('user', new Session('user', User\Config::class)),
 
     //middleware
     //'web' => 'web\middleware',
