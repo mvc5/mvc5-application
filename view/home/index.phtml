@@ -9,12 +9,13 @@
     <pre><?= __FILE__; ?></pre>
     <div id="ajax-result"></div>
     <p>
-        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return ajaxAction();">Info</a>
-        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return ajaxHtmlAction();">About</a>
+        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return info();">Info</a>
+        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return about();">About</a>
+        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return demo();">Demo</a>
     </p>
 </div>
 <script type="text/javascript">
-function ajaxAction() {
+function info() {
     $('#ajax-result').empty();
     $.getJSON('<?php echo $this->url('app', ['controller' => 'status']); ?>', [], function(data) {
         var $div = $('#ajax-result');
@@ -35,7 +36,7 @@ function ajaxAction() {
 
     return false;
 }
-function ajaxHtmlAction() {
+function about() {
     $('#ajax-result').empty();
     $.get('<?php echo $this->url('app', ['controller' => 'about']); ?>', [], function(data) {
         var $div = $('#ajax-result');
@@ -43,6 +44,18 @@ function ajaxHtmlAction() {
         $div.addClass('alert alert-success');
 
         $div.append('<p>'+data+'</p>');
+    });
+
+    return false;
+}
+function demo() {
+    $('#ajax-result').empty();
+    $.get('<?php echo $this->url('app', ['controller' => 'demo']); ?>', [], function(data) {
+        var $div = $('#ajax-result');
+
+        $div.removeClass('alert alert-success');
+
+        $div.append('<pre>'+data+'</pre>');
     });
 
     return false;
