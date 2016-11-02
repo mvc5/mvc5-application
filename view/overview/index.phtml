@@ -479,8 +479,8 @@ return $render();
     'home'        =&gt; Home\Controller::class,
     'request'     =&gt; Mvc5\Request\Config::class,
     'response'    =&gt; Response\HttpResponse::class,
-    'url'         =&gt; new Dependency('url\plugin'),
-    'url\plugin'  =&gt; [Mvc5\Url\Plugin::class, new Dependency('request'), new Plugin('url\generator')],
+    'url'         =&gt; new Shared('url\plugin'),
+    'url\plugin'  =&gt; [Mvc5\Url\Plugin::class, new Shared('request'), new Plugin('url\generator')],
     'view\render' =&gt; new Service(Mvc5\View\Render::class, [new Param('templates')]),
     'web'         =&gt; new Response('web')
 ];
@@ -609,17 +609,6 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Copy.php">copy</a> plugin can be <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L252">used</a> to <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L500">resolve</a> and <a href="http://php.net/manual/en/internals2.opcodes.clone.php">clone</a> an object.</p>
-
-<h3 id="dependencyhttpsgithubcommvc5mvc5blobmastersrcplugindependencyphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Dependency.php">Dependency</a></h3>
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>new Dependency('response')
-</code></pre>
-</div>
-
-<p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Dependency.php">dependency</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L191">used</a> to create a <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Initializer.php#L44">shared</a> value. When used as a configuration value, it should specify another configuration in order to prevent a recursion error. Alternatively, a configuration can be passed as a second argument to its constructor.</p>
-
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>'response' =&gt; new Dependency('response', new Plugin(Http\Response::class))
-</code></pre>
-</div>
 
 <h3 id="endhttpsgithubcommvc5mvc5blobmastersrcpluginendphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/End.php">End</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new End(new Call('@session_start'), new Plugin(Session\Config::class));
@@ -809,6 +798,17 @@ new Invoke(function() { var_dump(func_get_args()); }),
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Session.php">session</a> plugin is a <a href="#registerhttpsgithubcommvc5mvc5blobmastersrcpluginregisterphp">register</a> plugin that retrieves a session variable. The first parameter is the name of the session variable, the optional second parameter is the plugin configuration for the object to create if it does not already exist in the session. If a value already exists in the session, it will be returned and a new object will not be created.</p>
+
+<h3 id="sharedhttpsgithubcommvc5mvc5blobmastersrcpluginsharedphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Shared.php">Shared</a></h3>
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>new Shared('response')
+</code></pre>
+</div>
+
+<p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Shared.php">shared</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L250">used</a> to create a <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Initializer.php#L44">shared</a> value. When used as a configuration value, it should specify another configuration in order to prevent a recursion error. Alternatively, a configuration can be passed as a second argument to its constructor.</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>'response' =&gt; new Shared('response', new Plugin(Http\Response::class))
+</code></pre>
+</div>
 
 <h3 id="valuehttpsgithubcommvc5mvc5blobmastersrcpluginvaluephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Value.php">Value</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Value('A demo web page')
