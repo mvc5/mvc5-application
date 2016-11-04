@@ -54,6 +54,21 @@ return [
             ]
         ],
     ],
+    'more' => [
+        'route' => '/more',
+        'options' => ['prefix' => 'Demo\\'],
+        'defaults' => [
+            'controller' => 'more'
+        ],
+        'children' => [
+            'other' => [
+                'route' => '/other',
+                'defaults' => [
+                    'controller' => 'other'
+                ]
+            ]
+        ]
+    ],
     'app' => [
         'options'     => ['separators' => ['_' => '_', '-' => '\\']],
         //'regex' => '/(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',

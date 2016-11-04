@@ -150,6 +150,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Generator.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Action.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Controller.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Host.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Merge.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Method.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Path.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Scheme.php';
