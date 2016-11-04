@@ -38,6 +38,21 @@ return [
                 ]
             ],
         ],
+        'more' => [
+            'route' => 'more',
+            'options' => ['prefix' => 'Demo\\'],
+            'defaults' => [
+                'controller' => 'more'
+            ],
+            'children' => [
+                'other' => [
+                    'route' => '/other',
+                    'defaults' => [
+                        'controller' => 'other'
+                    ]
+                ]
+            ]
+        ],
         'app' => [
             'options'  => ['separators' => ['_' => '_', '-' => '\\']],
             'route'    => '{controller::n}[/{action::s}[/{wildcard::*$}]]',
