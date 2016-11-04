@@ -152,6 +152,7 @@ include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Controller.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Host.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Merge.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Method.php';
+include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Middleware.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Path.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Scheme.php';
 include __DIR__ . '/vendor/mvc5/mvc5/src/Route/Match/Wildcard.php';
