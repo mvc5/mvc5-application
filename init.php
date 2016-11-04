@@ -2,15 +2,15 @@
 /**
  *
  */
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ParameterBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/FileBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ServerBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/HeaderBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Request.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ApacheRequest.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ResponseHeaderBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/RedirectResponse.php';
+include __DIR__ . '/vendor/symfony/http-foundation/ParameterBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/FileBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/ServerBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/HeaderBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Request.php';
+include __DIR__ . '/vendor/symfony/http-foundation/ApacheRequest.php';
+include __DIR__ . '/vendor/symfony/http-foundation/ResponseHeaderBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Response.php';
+include __DIR__ . '/vendor/symfony/http-foundation/RedirectResponse.php';
 
 /**
  *
