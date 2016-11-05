@@ -38,17 +38,19 @@ return [
                 ]
             ],
         ],
-        'more' => [
-            'route' => 'more',
-            'options' => ['prefix' => 'Demo\\'],
+        'explore' => [
+            'route' => 'explore',
+            'options' => ['prefix' => 'About\\'],
+            'middleware' => ['web\authenticate'],
             'defaults' => [
-                'controller' => 'more'
+                'controller' => 'explore'
             ],
             'children' => [
-                'other' => [
-                    'route' => '/other',
+                'contact' => [
+                    'route' => '/contact',
+                    'middleware' => ['web\log'],
                     'defaults' => [
-                        'controller' => 'other'
+                        'controller' => 'contact'
                     ]
                 ]
             ]

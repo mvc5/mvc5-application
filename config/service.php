@@ -51,6 +51,9 @@ return [
 
     'user' => new Shared('user', new Session('user', User\Config::class)),
 
+    'web\authenticate' => Middleware\Authenticate::class,
+    'web\log' => Middleware\Logger::class,
+
     //middleware
     //'web' => 'web\middleware',
 

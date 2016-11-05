@@ -3,7 +3,7 @@
  *
  */
 
-namespace Demo\Other;
+namespace About\Contact;
 
 use Mvc5\Model\ViewModel;
 use Mvc5\View\Model;
@@ -20,6 +20,6 @@ class Controller
      */
     function __invoke()
     {
-        return $this->view('demo/other');
+        return $this->view('about/contact');
     }
 }
