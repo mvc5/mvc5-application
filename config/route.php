@@ -4,7 +4,7 @@
  */
 
 use Mvc5\Response\Redirect;
-use Mvc5\Service\Service;
+use Mvc5\Session\SessionMessages;
 use Mvc5\Url\Plugin as Url;
 
 return [
@@ -26,9 +26,9 @@ return [
                     'route' => '/remove',
                     'method' => 'POST',
                     'middleware' => ['web\authorize'],
-                    'controller' => function(Service $sm, Request $request, Url $url, callable $next = null) {
-                        $sm->plugin('session\messages')->success('Action completed!');
-                        return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
+                    'controller' => function(SessionMessages $messages, Request $request, Url $url, callable $next) {
+                        $messages->success('Action completed!');
+                        return $next($request, new Redirect($url('dashboard')));
                     }
                 ],
                 'add' => [

@@ -48,11 +48,10 @@ return [
 
     'service\provider' => new Manager(Provider::class),
 
-    'sm' => new Link,
-
     'user' => new Shared('user', new Session('user', User\Config::class)),
 
     'shared' => new Invokable(new Plugin(Shared::class)),
+    'messages' => 'session\messages',
 
     'web\authenticate' => Middleware\Authenticate::class,
     'web\authorize' => Middleware\Authorize::class,
