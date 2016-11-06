@@ -55,6 +55,7 @@ return [
     'shared' => new Invokable(new Plugin(Shared::class)),
 
     'web\authenticate' => Middleware\Authenticate::class,
+    'web\authorize' => Middleware\Authorize::class,
     'web\log' => Middleware\Logger::class,
 
     //middleware

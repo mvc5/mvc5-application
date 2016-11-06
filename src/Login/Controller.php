@@ -51,13 +51,13 @@ class Controller
             return $this->model(['params' => $request->params()]);
         }
 
-        if ('phpdev' !== $request->data('username') || 'home' !== $request->data('password')) {
+        if ('home' !== $request->data('password')) {
             $this->danger('Invalid Login');
             return $this->view();
         }
 
         $user['authenticated'] = true;
-        $user['username'] = 'phpdev';
+        $user['username'] = $request->data('username');
 
         $this->success('Login successful!');
         $this->log(new \Exception('Login successful!'));

@@ -25,6 +25,7 @@ return [
                 'remove:update' => [
                     'route' => '/remove',
                     'method' => 'POST',
+                    'middleware' => ['web\authorize'],
                     'controller' => function(Service $sm, Request $request, Url $url, callable $next = null) {
                         $sm->plugin('session\messages')->success('Action completed!');
                         return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
