@@ -18,14 +18,17 @@ return [
             'children' => [
                 'remove' => [
                     'route' => '/remove',
-                    'method' => ['GET', 'POST'],
-                    'action' => [
-                        'GET' => 'dashboard:remove',
-                        'POST' => function(Service $sm, Request $request, Url $url, callable $next = null) {
-                            $sm->plugin('session\messages')->success('Action completed!');
-                            return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
-                        }
-                    ]
+                    'method' => 'GET',
+                    'optional' => ['method'],
+                    'controller' => 'dashboard:remove'
+                ],
+                'remove:update' => [
+                    'route' => '/remove',
+                    'method' => 'POST',
+                    'controller' => function(Service $sm, Request $request, Url $url, callable $next = null) {
+                        $sm->plugin('session\messages')->success('Action completed!');
+                        return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
+                    }
                 ],
                 'add' => [
                     'route'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
@@ -46,11 +49,11 @@ return [
                 'controller' => 'explore'
             ],
             'children' => [
-                'contact' => [
-                    'route' => '/contact',
+                'more' => [
+                    'route' => '/more',
                     'middleware' => ['web\log'],
                     'defaults' => [
-                        'controller' => 'contact'
+                        'controller' => 'more'
                     ]
                 ]
             ]

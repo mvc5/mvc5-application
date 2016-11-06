@@ -29,13 +29,24 @@ return [
         //'hostname' => 'localhost', // "//localhost/dashboard" (when no scheme specified, inc parent)
         //'port' => '8080', // "http://localhost:8080/dashboard"
         'children' => [
-            'remove' => [
+            /*'remove' => [
                 'route' => '/remove',
                 'method' => ['GET', 'POST'],
                 'action' => [
                     'GET' => 'dashboard:remove',
                     'POST' => '@dashboard_remove'
                 ]
+            ],*/
+            'remove' => [
+                'route' => '/remove',
+                'method' => 'GET',
+                'optional' => ['method'],
+                'controller' => 'dashboard:remove'
+            ],
+            'remove:update' => [
+                'route' => '/remove',
+                'method' => 'POST',
+                'controller' => '@dashboard_remove'
             ],
             'add' => [
                 'route'      => '[/{author::s}][/{category::s}[/{wildcard::*$}]]',
@@ -62,11 +73,11 @@ return [
             'controller' => 'explore'
         ],
         'children' => [
-            'contact' => [
-                'route' => '/contact',
+            'more' => [
+                'route' => '/more',
                 'middleware' => ['web\log'],
                 'defaults' => [
-                    'controller' => 'contact'
+                    'controller' => 'more'
                 ]
             ]
         ]
