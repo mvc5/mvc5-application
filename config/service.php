@@ -8,6 +8,7 @@ use Mvc5\Plugin\Args;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Invoke;
+use Mvc5\Plugin\Invokable;
 use Mvc5\Plugin\Link;
 use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Param;
@@ -50,6 +51,8 @@ return [
     'sm' => new Link,
 
     'user' => new Shared('user', new Session('user', User\Config::class)),
+
+    'shared' => new Invokable(new Plugin(Shared::class)),
 
     'web\authenticate' => Middleware\Authenticate::class,
     'web\log' => Middleware\Logger::class,
