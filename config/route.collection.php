@@ -46,6 +46,7 @@ return [
             'remove:update' => [
                 'route' => '/remove',
                 'method' => 'POST',
+                'middleware' => ['web\authorize'],
                 'controller' => '@dashboard_remove'
             ],
             'add' => [
