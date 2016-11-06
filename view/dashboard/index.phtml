@@ -7,4 +7,15 @@
         <a style="margin-left:10px;" class="btn btn-lg btn-primary" href="<?= $this->url('dashboard/remove') ?>" role="button">Remove</a>
     </p>
 </div>
+<?php
 
+/**
+ * @var Request $request
+ */
+
+$request = $this->shared('request');
+
+var_dump([
+    'name' => $request->name(),
+    'uri'  => $request->uri()
+]);
