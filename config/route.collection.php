@@ -5,13 +5,13 @@
 
 use Mvc5\Response\Redirect;
 use Mvc5\Route\Config as Route;
-use Mvc5\Service\Service;
+use Mvc5\Session\SessionMessages;
 use Mvc5\Url\Plugin as Url;
 
-function dashboard_remove(Service $sm, Request $request, Url $url, callable $next = null)
+function dashboard_remove(SessionMessages $messages, Request $request, Url $url, callable $next)
 {
-    $sm->plugin('session\messages')->success('Action completed!');
-    return !$next ? new Redirect($url('dashboard')) : $next($request, new Redirect($url('dashboard')));
+    $messages->success('Action completed!');
+    return $next($request, new Redirect($url('dashboard')));
 }
 
 return [
