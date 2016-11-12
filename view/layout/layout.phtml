@@ -97,7 +97,7 @@
         <div class="col-md-12">
             <?php
 
-            echo $this->model();
+            echo $this->model() ?: $__env->yieldContent('content');
 
             ?>
 
