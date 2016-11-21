@@ -21,17 +21,18 @@ use Mvc5\Plugin\Value;
 use Service\Provider;
 
 return [
-    'About\Controller' => new Plugin(About\Controller::class, ['A PHP Web Application']),
+    'About\Controller' => [About\Controller::class, 'A PHP Web Application'],
     'dashboard'  => new App(new FileInclude(__DIR__ . '/dashboard.php')), //, null, true),
     'Home\Controller' => function($message, Request $request, $response, $cookie) {
         return new Home\Controller($this);
     },
+    //'Home\Controller' => [Home\Controller::class, new Link],
     //'Home\Controller' => new Factory(Home\Factory::class),
-    //'Home\Controller' => new Plugin\Controller(Home\Controller::class), //custom plugin
+    //'Home\Controller' => new \Plugin\Controller(Home\Controller::class), //custom plugin
     //'Home\Controller' => Home\Controller::class,
     //'Home\Controller' => 'dashboard->home',
 
-    'Home\Model' => new Plugin(Home\Model::class, [null, new Args(['message' => new Plug('message')])]),
+    'Home\Model' => [Home\Model::class, new Args(['message' => new Plug('message')])],
 
     'message' => new Value('Demo Application'), //string value
 
