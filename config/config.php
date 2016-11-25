@@ -14,4 +14,5 @@ return [
     'session'    => include __DIR__ . '/session.php',
     'templates'  => include __DIR__ . '/template.php',
     'view'       => __DIR__ . '/../view',
+    'web'        => include __DIR__ . '/web.php',
 ];
