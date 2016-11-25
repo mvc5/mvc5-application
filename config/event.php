@@ -5,6 +5,7 @@
 
 use Mvc5\Model\Layout;
 use Mvc5\Plugin\Call;
+use Mvc5\Plugin\Param;
 
 return [
     'dashboard:add' => new Mvc5\Immutable([
@@ -46,5 +47,7 @@ return [
         'service\provider',
         'resolver\exception'
     ],
+
+    'web' => new Param('web'),
 
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/event.php';
