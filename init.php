@@ -66,3 +66,5 @@ function exception_error_handler($severity, $message, $file, $line) {
 }
 
 set_error_handler('exception_error_handler');
+
+spl_autoload_register(new Mvc5\Service\Alias(include __DIR__ . '/config/alias.php'));
