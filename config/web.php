@@ -4,6 +4,7 @@
  */
 
 return [
+    'service\context',
     'route\dispatch',
     'request\error',
     'request\service',

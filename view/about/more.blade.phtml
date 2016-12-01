@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="jumbotron">
-    <h1><a href="{{ $this->url('explore/more') }}">More</a></h1>
+    <h1><a href="{{ url('explore/more') }}">More</a></h1>
     <p class="lead">{!! 'Demo Application.' !!}</p>
     <pre>{{ __FILE__ }}</pre>
     <p>
-        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="{{ $this->url('explore') }}" role="button">Explore</a>
+        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="{{ url('explore') }}" role="button">Explore</a>
     </p>
 </div>
 @php
