@@ -51,7 +51,6 @@ return [
 
     'user' => new Shared('user', new Session('user', User\Config::class)),
 
-    'shared' => new Invokable(new Plugin(Shared::class)),
     'messages' => 'session\messages',
 
     'web\authenticate' => Middleware\Authenticate::class,
@@ -66,5 +65,6 @@ return [
     //'url\generator'   => [Mvc5\Url\Collection::class, new Param('routes')],
     //'web\route' => new Service(Mvc5\Web\Route\Collection::class, [new Param('routes')]),
 
-] + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
+] + (include __DIR__ . '/../vendor/mvc5/facade/config/service.php')
+  + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';

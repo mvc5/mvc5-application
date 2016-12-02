@@ -5,23 +5,20 @@
 
 namespace About\More;
 
-use Mvc5\Model\ViewModel;
-use Mvc5\Plugins\Render;
-use Mvc5\Plugins\Service;
+use Arc5\Response;
+use Arc5\Service;
+use Message;
+use View;
 
 class Controller
 {
     /**
-     *
-     */
-    use Render;
-    use Service;
-
-    /**
-     * @return ViewModel
+     * @return \Response
      */
     function __invoke()
     {
-        return $this->render('about/more');
+        Message::info(Service::plugin('message'));
+
+        return Response::response(View::render('about/more'));
     }
 }
