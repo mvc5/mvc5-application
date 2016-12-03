@@ -50,21 +50,11 @@ include __DIR__ . '/src/Service/Provider.php';*/
 include __DIR__ . '/vendor/autoload.php';
 
 /**
- * @param $severity
- * @param $message
- * @param $file
- * @param $line
- * @throws ErrorException
- * @link http://php.net/manual/en/class.errorexception.php#variable.post.basic
+ *
  */
-function exception_error_handler($severity, $message, $file, $line) {
-    if (!(error_reporting() & $severity)) {
-        // This error code is not included in error_reporting
-        return;
-    }
-    throw new ErrorException($message, 0, $severity, $file, $line);
-}
+set_error_handler([Mvc5\Exception\ErrorException::class, 'handler']);
 
-set_error_handler('exception_error_handler');
-
+/**
+ *
+ */
 spl_autoload_register(new Mvc5\Service\Alias(include __DIR__ . '/config/alias.php'));
