@@ -23,7 +23,7 @@ use Service\Provider;
 return [
     'About\Controller' => [About\Controller::class, 'A PHP Web Application'],
     'dashboard'  => new App(new FileInclude(__DIR__ . '/dashboard.php')), //, null, true),
-    'Home\Controller' => function($message, Request $request, $response, $cookie) {
+    'Home\Controller' => function() {
         return new Home\Controller($this);
     },
     //'Home\Controller' => [Home\Controller::class, new Link],
