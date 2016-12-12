@@ -23,6 +23,7 @@ include __DIR__ . '/vendor/mvc5/facade/init.php';
  *
  */
 include __DIR__ . '/src/Request.php';
+include __DIR__ . '/src/Request/Config/Request.php';
 include __DIR__ . '/src/Request/Config.php';
 include __DIR__ . '/src/Request/Plugin.php';
 include __DIR__ . '/src/Request/Plugin/Args.php';
