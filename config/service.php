@@ -36,14 +36,7 @@ return [
 
     'message' => new Value('Demo Application'), //string value
 
-    'request' => new \Plugin\Request(
-        new FileInclude(__DIR__ . '/request.php'),
-        [
-            'cookies' => new Plugin(Invoke::class, [new Link, ['cookie']]),
-            'session' => new Plugin(Invoke::class, [new Link, ['session']]),
-            'user'    => new Plugin(Invoke::class, [new Link, ['user']]),
-        ]
-    ),
+    'request' => new Request\Plugin(include __DIR__ . '/request.php'),
 
     'response' => [Response\Config::class, 'config' => new Args(['cookies' => new Plugin('cookie\container')])],
 
