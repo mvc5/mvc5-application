@@ -28,13 +28,12 @@ trait Request
 
     /**
      * @param array|\ArrayAccess $config
-     * @param HttpRequest $http
      * @param Service $service
      */
-    function __construct($config, HttpRequest $http, Service $service)
+    function __construct($config, Service $service)
     {
         $this->config  = $config;
-        $this->http    = $http;
+        $this->http    = new HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
         $this->service = $service;
     }
 }
