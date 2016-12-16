@@ -48,6 +48,6 @@ return [
         'resolver\exception'
     ],
 
-    'web' => new Param('web'),
+    'web' => include __DIR__ . '/web.php',
 
 ] + include __DIR__ . '/../vendor/mvc5/mvc5/config/event.php';
