@@ -5,21 +5,33 @@
 
 namespace About\Explore;
 
-use Mvc5\Model\ViewModel;
-use Mvc5\View\Model;
+use Mvc5\Http\Request;
+use Mvc5\Http\Response;
+use Mvc5\Plugins\Render;
+use Mvc5\Plugins\Service;
+use Mvc5\Plugins\ViewModel;
 
 class Controller
 {
     /**
      *
      */
-    use Model;
+    use Render;
+    use Service;
+    use ViewModel;
 
     /**
-     * @return ViewModel
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return mixed
      */
-    function __invoke()
+    function __invoke(Request $request, Response $response, callable $next)
     {
-        return $this->view('about/explore');
+        $layout = $this->plugin('layout');
+
+        $layout->model($this->render('about/explore'));
+
+        return $next($request, $response->with('body', $this->render($layout)));
     }
 }
