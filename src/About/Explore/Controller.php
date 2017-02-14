@@ -30,8 +30,10 @@ class Controller
     {
         $layout = $this->plugin('layout');
 
-        $layout->model($this->render('about/explore'));
+        $layout->model($this->view('about/explore'));
 
-        return $next($request, $response->with('body', $this->render($layout)));
+        $response = $next($request, $response->with('body', $this->render($layout)));
+
+        return $response;
     }
 }
