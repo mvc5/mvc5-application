@@ -45,7 +45,7 @@ return [
         'explore' => [
             'route' => 'explore',
             'options' => ['prefix' => 'About\\'],
-            'middleware' => ['web\authenticate', 'controller\action', function($request, $response, $next) { return $next($request, $response); }],
+            'middleware' => ['web\authenticate', 'controller', function($request, $response, $next) { return $next($request, $response); }],
             'defaults' => [
                 'controller' => 'explore'
             ],
