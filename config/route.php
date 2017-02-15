@@ -3,9 +3,9 @@
  *
  */
 
+use Mvc5\Plugin\Callback;
 use Mvc5\Response\Redirect;
 use Mvc5\Session\SessionMessages;
-use Mvc5\Url\Plugin as Url;
 
 return [
     'name'       => 'home',
@@ -26,10 +26,15 @@ return [
                     'route' => '/remove',
                     'method' => 'POST',
                     'middleware' => ['web\authorize'],
-                    'controller' => function(SessionMessages $messages, Request $request, Url $url, callable $next) {
+                    'controller' => new Callback(function($req, $res, $next) {
+                        /** @var SessionMessages $messages */
+                        $messages = $this->plugin('messages');
+                        $url = $this->plugin('url');
+
                         $messages->success('Action completed!');
-                        return $next($request, new Redirect($url('dashboard')));
-                    }
+
+                        return $next($req, new Redirect($url('dashboard')));
+                    })
                 ],
                 'add' => [
                     'route'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
