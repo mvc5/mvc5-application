@@ -3,16 +3,10 @@
  *
  */
 
+use Mvc5\Plugin\Callback;
 use Mvc5\Response\Redirect;
 use Mvc5\Route\Config as Route;
 use Mvc5\Session\SessionMessages;
-use Mvc5\Url\Plugin as Url;
-
-function dashboard_remove(SessionMessages $messages, Request $request, Url $url, callable $next)
-{
-    $messages->success('Action completed!');
-    return $next($request, new Redirect($url('dashboard')));
-}
 
 return [
     'home' => new Route([
@@ -29,17 +23,9 @@ return [
         //'hostname' => 'localhost', // "//localhost/dashboard" (when no scheme specified, inc parent)
         //'port' => '8080', // "http://localhost:8080/dashboard"
         'children' => [
-            /*'remove' => [
-                'route' => '/remove',
-                'method' => ['GET', 'POST'],
-                'action' => [
-                    'GET' => 'dashboard:remove',
-                    'POST' => '@dashboard_remove'
-                ]
-            ],*/
             'remove' => [
                 'route' => '/remove',
-                'method' => 'GET',
+                'method' => 'GET', //['GET', 'POST']
                 'optional' => ['method'],
                 'controller' => 'dashboard:remove'
             ],
@@ -47,7 +33,15 @@ return [
                 'route' => '/remove',
                 'method' => 'POST',
                 'middleware' => ['web\authorize'],
-                'controller' => '@dashboard_remove'
+                'controller' => new Callback(function($req, $res, $next) {
+                    /** @var SessionMessages $messages */
+                    $messages = $this->plugin('messages');
+                    $url = $this->plugin('url');
+
+                    $messages->success('Action completed!');
+
+                    return $next($req, new Redirect($url('dashboard')));
+                })
             ],
             'add' => [
                 'route'      => '[/{author::s}][/{category::s}[/{wildcard::*$}]]',

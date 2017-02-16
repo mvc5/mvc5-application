@@ -24,7 +24,7 @@ class Controller
      * @param Request $request
      * @param Response $response
      * @param callable $next
-     * @return mixed
+     * @return Response
      */
     function __invoke(Request $request, Response $response, callable $next)
     {
@@ -32,8 +32,6 @@ class Controller
 
         $layout->model($this->view('about/explore'));
 
-        $response = $next($request, $response->with('body', $this->render($layout)));
-
-        return $response;
+        return $next($request, $response->with('body', $this->render($layout)));
     }
 }
