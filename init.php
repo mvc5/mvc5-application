@@ -15,6 +15,11 @@ include __DIR__ . '/vendor/symfony/http-foundation/RedirectResponse.php';
 /**
  *
  */
+include __DIR__ . '/vendor/psr/container/src/ContainerInterface.php';
+
+/**
+ *
+ */
 include __DIR__ . '/vendor/mvc5/mvc5/init.php';
 include __DIR__ . '/vendor/mvc5/view/init.php';
 include __DIR__ . '/vendor/mvc5/facade/init.php';
