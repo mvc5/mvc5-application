@@ -545,13 +545,13 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 <h2 id="plugins">Plugins</h2>
 <p>Various types of plugins are available to use and custom plugins can be created.</p>
 
-<h3 id="apphttpsgithubcommvc5mvc5blobmastersrcpluginappphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/App.php">App</a></h3>
+<h3 id="app"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/App.php">App</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'dashboard' =&gt; new App(new FileInclude(__DIR__ . '/dashboard.php')),
 </code></pre>
 </div>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/App.php">app</a> plugin is used to provide a scoped instance of the <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">Mvc5\App</a> and uses the current application as its fallback service provider.</p>
 
-<h3 id="argshttpsgithubcommvc5mvc5blobmastersrcpluginargsphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Args.php">Args</a></h3>
+<h3 id="args"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Args.php">Args</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'request' =&gt; [
     Request\Config::class,
     'config' =&gt; new Args([
@@ -566,21 +566,30 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Args.php">args</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L205">used</a> to return an array of values that are resolved just in time, e.g. when the class is being instantiated.</p>
 
-<h3 id="callhttpsgithubcommvc5mvc5blobmastersrcplugincallphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Call.php">Call</a></h3>
+<h3 id="call"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Call.php">Call</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Call('Home\Controller', ['response' =&gt; new Plugin('Response')])
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Call.php">call</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L199">used</a> to invoke an object or method and supports <a href="#named-arguments">named arguments and plugins</a>.</p>
 
-<h3 id="callshttpsgithubcommvc5mvc5blobmastersrcplugincallsphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Calls.php">Calls</a></h3>
+<h3 id="callback"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Callback.php">Callback</a></h3>
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>new Callback(function() {
+    $messages = $this-&gt;plugin('messages');
+})
+</code></pre>
+</div>
+
+<p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Callback.php">callback</a> plugin binds the scope of the application to a <a href="http://php.net/manual/en/class.closure.php">closure</a>. The <a href="http://php.net/manual/en/class.closure.php">closure</a> can then access the application’s public service methods.</p>
+
+<h3 id="calls"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Calls.php">Calls</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'route\dispatch' =&gt; new Calls(new Plugin(Mvc5\Route\Dispatch::class), ['service' =&gt; new Link])
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Calls.php">calls</a> plugin is similar to a <a href="#hydratorhttpsgithubcommvc5mvc5blobmastersrcpluginhydratorphp">hydrator</a> and is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L179">used</a> to resolve a plugin with a set of function calls and supports <a href="#named-arguments">named arguments</a>.</p>
 
-<h3 id="childhttpsgithubcommvc5mvc5blobmastersrcpluginchildphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Child.php">Child</a></h3>
+<h3 id="child"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Child.php">Child</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'manager'         =&gt; new Plugin(null),
 'service\manager' =&gt; new Child(Service\Manager::class, 'manager'),
 </code></pre>
@@ -588,14 +597,14 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Child.php">child</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L183">used</a> to extend a parent plugin. The first parameter is the name of the class to create and the second is the name of the parent plugin. Custom child configurations can also be created to allow another <a href="#pluginhttpsgithubcommvc5mvc5blobmastersrcpluginpluginphp">plugin</a> to be used without having to specify the name of its parent. Examples are the <a href="#controllerhttpsgithubcommvc5mvc5blobmastersrcplugincontrollerphp">controller</a>, <a href="#factoryhttpsgithubcommvc5mvc5blobmastersrcpluginfactoryphp">factory</a>, <a href="#formhttpsgithubcommvc5mvc5blobmastersrcpluginformphp">form</a> and <a href="#managerhttpsgithubcommvc5mvc5blobmastersrcpluginmanagerphp">manager</a> plugins.</p>
 
-<h3 id="confighttpsgithubcommvc5mvc5blobmastersrcpluginconfigphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Config.php">Config</a></h3>
+<h3 id="config"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Config.php">Config</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'Home\Controller' =&gt; [Home\Controller::class, 'config' =&gt; new Config]
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Config.php">config</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L209">used</a> to provide the main configuration array or object.</p>
 
-<h3 id="controllerhttpsgithubcommvc5mvc5blobmastersrcplugincontrollerphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Controller.php">Controller</a></h3>
+<h3 id="controller"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Controller.php">Controller</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'controller'      =&gt; new Hydrator(null, ['request' =&gt; new Plugin('request')]),
 'Home\Controller' =&gt; new Controller(Home\Controller::class),
 </code></pre>
@@ -603,21 +612,21 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Controller.php">controller</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L183">used</a> to provide the constructor arguments and call methods for a controller without having to specify the name of its parent <em>controller</em> plugin. This is a convenience plugin for when controllers have a similar method of instantiation.</p>
 
-<h3 id="copyhttpsgithubcommvc5mvc5blobmastersrcplugincopyphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Copy.php">Copy</a></h3>
+<h3 id="copy"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Copy.php">Copy</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Copy(new Plug('response'))
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Copy.php">copy</a> plugin can be <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L252">used</a> to <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L500">resolve</a> and <a href="http://php.net/manual/en/internals2.opcodes.clone.php">clone</a> an object.</p>
 
-<h3 id="endhttpsgithubcommvc5mvc5blobmastersrcpluginendphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/End.php">End</a></h3>
+<h3 id="end"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/End.php">End</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new End(new Call('@session_start'), new Plugin(Session\Config::class));
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/End.php">end</a> plugin will <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L566">resolve</a> a list of plugins and return the result of the last plugin.</p>
 
-<h3 id="factoryhttpsgithubcommvc5mvc5blobmastersrcpluginfactoryphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Factory.php">Factory</a></h3>
+<h3 id="factory"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Factory.php">Factory</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'factory'         =&gt; new Service(null),
 'Home\Controller' =&gt; new Factory(Home\Controller::class),
 </code></pre>
@@ -625,14 +634,14 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Factory.php">factory</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L175">used</a> to create a class object without having to specify the name of its parent <em>factory</em> plugin.</p>
 
-<h3 id="fileincludehttpsgithubcommvc5mvc5blobmastersrcpluginfileincludephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/FileInclude.php">FileInclude</a></h3>
+<h3 id="fileinclude"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/FileInclude.php">FileInclude</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new FileInclude('config/templates.php'),
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/FileInclude.php">file include</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L242">used</a> to <a href="http://php.net/manual/en/function.include.php">include</a> and evaluate a specified file. The name of the file can also be resolved via another plugin.</p>
 
-<h3 id="filterhttpsgithubcommvc5mvc5blobmastersrcpluginfilterphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Filter.php">Filter</a></h3>
+<h3 id="filter"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Filter.php">Filter</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'response' =&gt; new Filter(
     new Plugin(Response::class), [function($response) { return $response;  }], [], 'response'
 )
@@ -641,7 +650,7 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Filter.php">filter</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L217">used</a> to pass a value from one function to the next and returns the result of the last function called. If a function returns null, the iteration is stopped and null is returned. If a function returns false, the iteration is stopped and the previous value, or current object, is returned. The third parameter contains any additional arguments and the fourth parameter specifies the name of the argument for the value that is being filtered.</p>
 
-<h3 id="formhttpsgithubcommvc5mvc5blobmastersrcpluginformphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Form.php">Form</a></h3>
+<h3 id="form"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Form.php">Form</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'form'    =&gt; new Service(null),
 'my\form' =&gt; new Form(My\Form::class),
 </code></pre>
@@ -649,14 +658,14 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Form.php">form</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L183">used</a> create a class object without having to specify the name of its parent <em>form</em> plugin.</p>
 
-<h3 id="globalvarhttpsgithubcommvc5mvc5blobmastersrcpluginglobalvarphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/GlobalVar.php">GlobalVar</a></h3>
+<h3 id="globalvar"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/GlobalVar.php">GlobalVar</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new GlobalVar('_COOKIE')
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/GlobalVar.php">global var</a> plugin is a <a href="#valuehttpsgithubcommvc5mvc5blobmastersrcpluginvaluephp">value</a> plugin that returns the value assigned to the PHP <a href="http://php.net/manual/en/reserved.variables.globals.php"><code>$GLOBALS</code></a> array for the specified parameter name.</p>
 
-<h3 id="hydratorhttpsgithubcommvc5mvc5blobmastersrcpluginhydratorphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Hydrator.php">Hydrator</a></h3>
+<h3 id="hydrator"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Hydrator.php">Hydrator</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'route\dispatch' =&gt; new Hydrator(Mvc5\Route\Dispatch::class, ['service' =&gt; new Link])
 </code></pre>
 </div>
@@ -693,14 +702,14 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 </code></pre>
 </div>
 
-<h3 id="invokablehttpsgithubcommvc5mvc5blobmastersrcplugininvokablephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Invokable.php">Invokable</a></h3>
+<h3 id="invokable"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Invokable.php">Invokable</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>$response = $app-&gt;call(new Invokable(new Plugin('response')));
 </code></pre>
 </div>
 
 <p>An <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Invokable.php">invokable</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L234">used</a> to return an anonymous function. When invoked, it will resolve and return its configured value.</p>
 
-<h3 id="invokehttpsgithubcommvc5mvc5blobmastersrcplugininvokephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Invoke.php">Invoke</a></h3>
+<h3 id="invoke"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Invoke.php">Invoke</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Invoke('response.setStatusCode', [500]),
 new Invoke(new Args([new Plugin('response'), 'setStatusCode']), [500]),
 new Invoke(function() { var_dump(func_get_args()); }),
@@ -713,14 +722,14 @@ new Invoke(function() { var_dump(func_get_args()); }),
 </code></pre>
 </div>
 
-<h3 id="linkhttpsgithubcommvc5mvc5blobmastersrcpluginlinkphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Link.php">Link</a></h3>
+<h3 id="link"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Link.php">Link</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'request\service' =&gt; [Mvc5\Request\Service::class, new Link]
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Link.php">link</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L213">used</a> to return the current service object. It can also be used as a <a href="https://github.com/mvc5/mvc5/blob/master/src/Config/Config.php">configuration</a> object to delay the <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L566">creation</a> of a particular value until it is required.</p>
 
-<h3 id="managerhttpsgithubcommvc5mvc5blobmastersrcpluginmanagerphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Manager.php">Manager</a></h3>
+<h3 id="manager"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Manager.php">Manager</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'manager' =&gt; new Hydrator(null, [
     'aliases'       =&gt; new Param('alias'),
     'configuration' =&gt; new Config,
@@ -733,67 +742,67 @@ new Invoke(function() { var_dump(func_get_args()); }),
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Manager.php">manager</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L183">used</a> to create a class object without having to specify the name of its parent <em>manager</em> plugin.</p>
 
-<h3 id="modelhttpsgithubcommvc5mvc5blobmastersrcpluginmodelphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Model.php">Model</a></h3>
+<h3 id="model"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Model.php">Model</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Model('error/404', ['message' =&gt; 'A 404 error occurred'])
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Model.php">model</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L187">used</a> to create a <a href="https://github.com/mvc5/mvc5/blob/master/src/Model/ViewModel.php">view model</a>. Its first parameter is the template name and the second parameter contains its values.</p>
 
-<h3 id="nullvaluehttpsgithubcommvc5mvc5blobmastersrcpluginnullvaluephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/NullValue.php">NullValue</a></h3>
+<h3 id="nullvalue"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/NullValue.php">NullValue</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new NullValue
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/NullValue.php">null value</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L312">used</a> to return a null value. It can be used to <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L612">prevent</a> a callback provider from being <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L613">invoked</a>.</p>
 
-<h3 id="paramhttpsgithubcommvc5mvc5blobmastersrcpluginparamphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Param.php">Param</a></h3>
+<h3 id="param"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Param.php">Param</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Param('templates.home')
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Param.php">param</a> is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L195">used</a> to retrieve a configuration value and <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L226">uses</a> a dot notation for arrays and objects with <a href="http://php.net/manual/en/class.arrayaccess.php">ArrayAccess</a>.</p>
 
-<h3 id="plughttpsgithubcommvc5mvc5blobmastersrcpluginplugphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plug.php">Plug</a></h3>
+<h3 id="plug"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plug.php">Plug</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Plug('controller\exception')
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plug.php">plug</a> is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L221">used</a> to return the value of another plugin configuration.</p>
 
-<h3 id="pluginhttpsgithubcommvc5mvc5blobmastersrcpluginpluginphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plugin.php">Plugin</a></h3>
+<h3 id="plugin"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plugin.php">Plugin</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'router' =&gt; new Plugin(Mvc5\Route\Router:class, [new Param('routes')], ['service' =&gt; new Link])
 </code></pre>
 </div>
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plugin.php">plugin</a> is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L187">used</a> to instantiate a class object.  It requires the name of a <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolvable.php">resolvable</a> plugin and optionally, its constructor arguments and a set of calls to invoke. See the <a href="#hydratorhttpsgithubcommvc5mvc5blobmastersrcpluginhydratorphp">hydrator</a> plugin for details on how to specify the calls to invoke.</p>
 
-<h3 id="pluginshttpsgithubcommvc5mvc5blobmastersrcpluginpluginsphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plugins.php">Plugins</a></h3>
+<h3 id="plugins-1"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plugins.php">Plugins</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Plugins(__DIR__.'/services.php')
 </code></pre>
 </div>
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Plugins.php">plugins</a> config is used to instantiate an <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a> class. The first parameter is an array of service plugins, the second parameter defaults to using the current application as the provider for any missing services. The third parameter sets the <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a> as the <a href="http://php.net/manual/en/closure.bind.php">scope</a> for any anonymous functions within service array plugin configuration.</p>
 
-<h3 id="providehttpsgithubcommvc5mvc5blobmastersrcpluginprovidephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Provide.php">Provide</a></h3>
+<h3 id="provide"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Provide.php">Provide</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Provide($config, array $args = [])
 </code></pre>
 </div>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Provide.php">provide</a> plugin is used to retrieve a value from its parent container.</p>
 
-<h3 id="registerhttpsgithubcommvc5mvc5blobmastersrcpluginregisterphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Register.php">Register</a></h3>
+<h3 id="register"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Register.php">Register</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'user' =&gt; new Register('user', 'session', new Plugin(Mvc5\Config::class))
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Register.php">register</a> plugin will create an object if it is not already registered with a specified (<a href="https://github.com/mvc5/mvc5/blob/master/src/Config/Configuration.php">configuration</a>) object. The first parameter is the registered name, the second parameter is the name of the <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L51">service configuration</a> that should contain the registered object. The third parameter is the <a href="#plugins">plugin</a> configuration for the object to create and register if it does not already exist.</p>
 
-<h3 id="responsehttpsgithubcommvc5mvc5blobmastersrcpluginresponsephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Response.php">Response</a></h3>
+<h3 id="response"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Response.php">Response</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'web' =&gt; new Response('web')
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Response.php">response</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L240">used</a> to <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/Dispatch.php">dispatch</a> a <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/Response.php">response</a>. It configures the <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L33">response dispatch plugin</a> with the name of the <a href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a> to use and an optional <a href="https://github.com/mvc5/mvc5/blob/master/src/Request/Request.php">request</a> and <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/Response.php">response</a> object. Each <a href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a> function can return a <a href="https://github.com/mvc5/mvc5/blob/master/src/Request/Request.php">request</a> or <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/Response.php">response</a> object for the the next function to use.</p>
 
-<h3 id="scopehttpsgithubcommvc5mvc5blobmastersrcpluginscopephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Scope.php">Scope</a></h3>
+<h3 id="scope"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Scope.php">Scope</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Scope(
   Request\Config::class,
   [new _Plugin(App::class, [[Arg::SERVICES =&gt; $plugins], null, true, true]), new Link]
@@ -802,33 +811,33 @@ new Invoke(function() { var_dump(func_get_args()); }),
 </div>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Scope.php">scope</a> plugin is used to set the scope of an <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a> to the class that is being created. A <a href="http://php.net/manual/en/class.closure.php">Closure</a> within the application’s configuration will then have the same scope as the class being created and can access its protected properties.</p>
 
-<h3 id="scopedhttpsgithubcommvc5mvc5blobmastersrcpluginscopedphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Scoped.php">Scoped</a></h3>
+<h3 id="scoped"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Scoped.php">Scoped</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Scoped($this)
 </code></pre>
 </div>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Scoped.php">scoped</a> plugin is used to provide a <a href="http://php.net/manual/en/class.closure.php">Closure</a> with the scope of the application. The first parameter of the plugin is a function that is called when the plugin is being resolved. The function returns a <a href="http://php.net/manual/en/class.closure.php">Closure</a> and its scope is set to the scope of the application.</p>
 
-<h3 id="scopedcallhttpsgithubcommvc5mvc5blobmastersrcpluginscopedcallphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/ScopedCall.php">ScopedCall</a></h3>
+<h3 id="scopedcall"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/ScopedCall.php">ScopedCall</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new ScopedCall($this)
 </code></pre>
 </div>
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/ScopedCall.php">scoped call</a> plugin extends the <a href="#callhttpsgithubcommvc5mvc5blobmastersrcplugincallphp">call</a> plugin and uses the <a href="#scopedhttpsgithubcommvc5mvc5blobmastersrcpluginscopedphp">scoped</a> plugin to set the scope of the closure for it to be <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L260">called</a> with.</p>
 
-<h3 id="servicehttpsgithubcommvc5mvc5blobmastersrcpluginservicephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Service.php">Service</a></h3>
+<h3 id="service"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Service.php">Service</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'router' =&gt; new Service(Mvc5\Route\Router:class, [new Param('routes')])
 </code></pre>
 </div>
 
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Service.php">service</a> plugin is similar to a <a href="#pluginhttpsgithubcommvc5mvc5blobmastersrcpluginpluginphp">plugin</a> and is used to add a call to a <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Service.php#L20L77">service</a> method to set the current service object.</p>
 
-<h3 id="sessionhttpsgithubcommvc5mvc5blobmastersrcpluginsessionphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Session.php">Session</a></h3>
+<h3 id="session"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Session.php">Session</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'user' =&gt; new Session('user', new Plugin(Mvc5\Config::class))
 </code></pre>
 </div>
 
 <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Session.php">session</a> plugin is a <a href="#registerhttpsgithubcommvc5mvc5blobmastersrcpluginregisterphp">register</a> plugin that retrieves a session variable. The first parameter is the name of the session variable, the optional second parameter is the plugin configuration for the object to create if it does not already exist in the session. If a value already exists in the session, it will be returned and a new object will not be created.</p>
 
-<h3 id="sharedhttpsgithubcommvc5mvc5blobmastersrcpluginsharedphp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Shared.php">Shared</a></h3>
+<h3 id="shared"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Shared.php">Shared</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Shared('response')
 </code></pre>
 </div>
@@ -839,7 +848,7 @@ new Invoke(function() { var_dump(func_get_args()); }),
 </code></pre>
 </div>
 
-<h3 id="valuehttpsgithubcommvc5mvc5blobmastersrcpluginvaluephp"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Value.php">Value</a></h3>
+<h3 id="value"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Value.php">Value</a></h3>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Value('A demo web page')
 </code></pre>
 </div>
