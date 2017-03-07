@@ -25,18 +25,16 @@ return [
                 'remove:update' => [
                     'route' => '/remove',
                     'method' => 'POST',
-                    'middleware' => [
-                        'web\authorize',
-                        new Callback(function($req, $res, $next) {
-                            /** @var SessionMessages $messages */
-                            $messages = $this->plugin('messages');
-                            $url = $this->plugin('url');
+                    'middleware' => ['web\authorize'],
+                    'controller' => new Callback(function($req, $res, $next) {
+                        /** @var SessionMessages $messages */
+                        $messages = $this->plugin('messages');
+                        $url = $this->plugin('url');
 
-                            $messages->success('Action completed!');
+                        $messages->success('Action completed!');
 
-                            return $next($req, new Redirect($url('dashboard')));
-                        })
-                    ],
+                        return $next($req, new Redirect($url('dashboard')));
+                    })
                 ],
                 'add' => [
                     'route'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
