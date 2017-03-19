@@ -6,7 +6,6 @@ namespace Status;
 
 use Mvc5\Plugins\Response;
 use Mvc5\Plugins\Service;
-use Mvc5\Response\Json;
 
 class Controller
 {
@@ -17,7 +16,7 @@ class Controller
     use Service;
 
     /**
-     * @return Json
+     * @return mixed
      */
     function __invoke()
     {

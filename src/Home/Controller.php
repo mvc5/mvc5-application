@@ -7,7 +7,7 @@ namespace Home;
 
 use Mvc5\Plugins\Service;
 use Mvc5\Plugins\ViewModel;
-use Request;
+use Psr\Http\Message\RequestInterface as PsrRequest;
 
 class Controller
 {
@@ -23,10 +23,10 @@ class Controller
     const VIEW_MODEL = Model::class;
 
     /**
-     * @param Request $request
+     * @param PsrRequest $request
      * @return string
      */
-    function __invoke(Request $request)
+    function __invoke(PsrRequest $request)
     {
         return $this->model(['request' => $request]);
     }

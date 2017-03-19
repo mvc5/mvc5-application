@@ -36,10 +36,6 @@ return [
 
     'message' => new Value('Demo Application'), //string value
 
-    'request' => new Request\Plugin(include __DIR__ . '/request.php'),
-
-    'response' => [Response\Config::class, 'config' => new Args(['cookies' => new Plugin('cookie\container')])],
-
     'service\provider' => new Manager(Provider::class),
 
     'user' => new Shared('user', new Session('user', User\Config::class)),
@@ -60,4 +56,5 @@ return [
 
 ] + (include __DIR__ . '/../vendor/mvc5/facade/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
+  + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
   + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';

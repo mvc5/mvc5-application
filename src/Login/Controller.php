@@ -13,7 +13,7 @@ use Mvc5\Plugins\Service;
 use Mvc5\Plugins\Url;
 use Mvc5\Plugins\User;
 use Mvc5\Response\Redirect;
-use Request;
+use Mvc5\Request\Request;
 
 class Controller
 {

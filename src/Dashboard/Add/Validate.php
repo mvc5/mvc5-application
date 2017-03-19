@@ -5,7 +5,7 @@
 
 namespace Dashboard\Add;
 
-use Request;
+use Mvc5\Request\Request;
 
 class Validate
 {

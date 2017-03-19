@@ -16,6 +16,19 @@ include __DIR__ . '/vendor/symfony/http-foundation/RedirectResponse.php';
  *
  */
 include __DIR__ . '/vendor/psr/container/src/ContainerInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/MessageInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/RequestInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/ResponseInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/ServerRequestInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/StreamInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
+
+/**
+ *
+ */
+include __DIR__ . '/vendor/zendframework/zend-diactoros/src/ServerRequestFactory.php';
+include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Stream.php';
+include __DIR__ . '/vendor/zendframework/zend-diactoros/src/PhpInputStream.php';
 
 /**
  *
@@ -23,33 +36,7 @@ include __DIR__ . '/vendor/psr/container/src/ContainerInterface.php';
 include __DIR__ . '/vendor/mvc5/mvc5/init.php';
 include __DIR__ . '/vendor/mvc5/view/init.php';
 include __DIR__ . '/vendor/mvc5/facade/init.php';
-
-/**
- *
- */
-include __DIR__ . '/src/Request.php';
-include __DIR__ . '/src/Request/Config/Request.php';
-include __DIR__ . '/src/Request/Config.php';
-include __DIR__ . '/src/Request/Plugin.php';
-include __DIR__ . '/src/Request/Plugin/Args.php';
-include __DIR__ . '/src/Request/Plugin/Body.php';
-include __DIR__ . '/src/Request/Plugin/ClientAddress.php';
-include __DIR__ . '/src/Request/Plugin/ContentType.php';
-include __DIR__ . '/src/Request/Plugin/Cookies.php';
-include __DIR__ . '/src/Request/Plugin/Data.php';
-include __DIR__ . '/src/Request/Plugin/Files.php';
-include __DIR__ . '/src/Request/Plugin/Headers.php';
-include __DIR__ . '/src/Request/Plugin/Method.php';
-include __DIR__ . '/src/Request/Plugin/Server.php';
-include __DIR__ . '/src/Request/Plugin/Session.php';
-include __DIR__ . '/src/Request/Plugin/Stream.php';
-include __DIR__ . '/src/Request/Plugin/Uri.php';
-include __DIR__ . '/src/Request/Plugin/User.php';
-include __DIR__ . '/src/Request/Plugin/UserAgent.php';
-include __DIR__ . '/src/Request/Plugin/Version.php';
-include __DIR__ . '/src/Response.php';
-include __DIR__ . '/src/Response/Config.php';
-include __DIR__ . '/src/Request/Plugin/Accept.php';
+include __DIR__ . '/vendor/mvc5/http-message/init.php';
 
 /**
  *
