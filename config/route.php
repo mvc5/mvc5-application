@@ -4,8 +4,9 @@
  */
 
 use Mvc5\Plugin\Callback;
-use Mvc5\Response\Redirect;
 use Mvc5\Session\SessionMessages;
+use Psr\Http\Message\ResponseInterface;
+use Valar\Http\RedirectResponse;
 
 return [
     'name'       => 'home',
@@ -27,14 +28,14 @@ return [
                     'method' => 'POST',
                     'middleware' => [
                         'web\authorize',
-                        new Callback(function($req, $res, $next) {
+                        new Callback(function($req, ResponseInterface $res, $next) {
                             /** @var SessionMessages $messages */
                             $messages = $this->plugin('messages');
                             $url = $this->plugin('url');
 
                             $messages->success('Action completed!');
 
-                            return $next($req, new Redirect($url('dashboard')));
+                            return $next($req, new RedirectResponse($url('dashboard')));
                         })
                     ]
                 ],

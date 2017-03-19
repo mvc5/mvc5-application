@@ -5,7 +5,7 @@
 
 namespace Dashboard\Add;
 
-use Response;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class Respond
 {

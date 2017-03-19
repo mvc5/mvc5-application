@@ -12,10 +12,10 @@
     ],
     "require": {
         "php": "^7.0",
-        "symfony/http-foundation": "3.1.*",
         "mvc5/mvc5": "6.*",
         "mvc5/view": "1.*",
-        "mvc5/facade": "1.*"
+        "mvc5/facade": "1.*",
+        "mvc5/http-message": "1.*"
     },
     "autoload": {
         "psr-4": {

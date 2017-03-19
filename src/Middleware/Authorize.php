@@ -9,9 +9,8 @@ use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Response as _Response;
 use Mvc5\Plugins\Service;
 use Mvc5\Plugins\Url;
-use Mvc5\Response\Redirect;
-use Request;
-use Response;
+use Mvc5\Request\Request;
+use Psr\Http\Message\ResponseInterface as PsrResponse;
 
 class Authorize
 {
@@ -24,7 +23,7 @@ class Authorize
     use Url;
 
     /**
-     * @return Redirect
+     * @return mixed|PsrResponse
      */
     protected function error()
     {
@@ -34,11 +33,11 @@ class Authorize
 
     /**
      * @param Request $request
-     * @param Response $response
+     * @param PsrResponse $response
      * @param callable $next
-     * @return Response|Redirect
+     * @return PsrResponse
      */
-    function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, PsrResponse $response, callable $next)
     {
         return 'phpdev' === $request->user()->username() ? $next($request, $response) : $this->error();
     }

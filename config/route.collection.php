@@ -4,9 +4,9 @@
  */
 
 use Mvc5\Plugin\Callback;
-use Mvc5\Response\Redirect;
 use Mvc5\Route\Config as Route;
 use Mvc5\Session\SessionMessages;
+use Valar\RedirectResponse;
 
 return [
     'home' => new Route([
@@ -41,7 +41,7 @@ return [
 
                         $messages->success('Action completed!');
 
-                        return $next($req, new Redirect($url('dashboard')));
+                        return $next($req, new RedirectResponse($url('dashboard')));
                     })
                 ]
             ],
