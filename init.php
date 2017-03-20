@@ -26,7 +26,6 @@ include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
 /**
  *
  */
-include __DIR__ . '/vendor/zendframework/zend-diactoros/src/ServerRequestFactory.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Stream.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/PhpInputStream.php';
 
