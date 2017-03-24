@@ -5,6 +5,6 @@
  */
 
 var_dump([
-    'name' => $request->name(),
-    'uri'  => $request->uri()
+    'name' => $request['name'],
+    'uri'  => $request['uri']
 ]);
