@@ -15,7 +15,7 @@
 $request = $this->shared('request');
 
 var_dump([
-    'name'   => $request->name(),
-    'uri'    => $request->uri(),
-    'params' => $request->params()
+    'name'   => $request['name'],
+    'uri'    => $request['uri'],
+    'params' => $request['params']
 ]);
