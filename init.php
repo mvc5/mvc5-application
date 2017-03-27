@@ -2,19 +2,6 @@
 /**
  *
  */
-include __DIR__ . '/vendor/symfony/http-foundation/ParameterBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/FileBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/ServerBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/HeaderBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Request.php';
-include __DIR__ . '/vendor/symfony/http-foundation/ApacheRequest.php';
-include __DIR__ . '/vendor/symfony/http-foundation/ResponseHeaderBag.php';
-include __DIR__ . '/vendor/symfony/http-foundation/Response.php';
-include __DIR__ . '/vendor/symfony/http-foundation/RedirectResponse.php';
-
-/**
- *
- */
 include __DIR__ . '/vendor/psr/container/src/ContainerInterface.php';
 include __DIR__ . '/vendor/psr/http-message/src/MessageInterface.php';
 include __DIR__ . '/vendor/psr/http-message/src/RequestInterface.php';
@@ -26,6 +13,7 @@ include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
 /**
  *
  */
+include __DIR__ . '/vendor/zendframework/zend-diactoros/src/ServerRequestFactory.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Stream.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/PhpInputStream.php';
 
