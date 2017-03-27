@@ -10,21 +10,21 @@ use Valar\Http\RedirectResponse;
 
 return [
     'name'       => 'home',
-    'route'      => '/',
+    'path'      => '/',
     'controller' => 'Home\Controller',
     'children' => [
         'dashboard' => [
-            'route'      => 'dashboard',
+            'path'      => 'dashboard',
             'controller' => 'dashboard->controller.test',
             'children' => [
                 'remove' => [
-                    'route' => '/remove',
+                    'path' => '/remove',
                     'method' => 'GET',
                     'optional' => ['method'],
                     'controller' => 'dashboard:remove'
                 ],
                 'remove:update' => [
-                    'route' => '/remove',
+                    'path' => '/remove',
                     'method' => 'POST',
                     'middleware' => [
                         'web\authorize',
@@ -40,7 +40,7 @@ return [
                     ]
                 ],
                 'add' => [
-                    'route'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
+                    'path'      => '/{author::s}[/{category::s}[/{wildcard::*$}]]',
                     'defaults'   => [
                         'author'   => 'owner',
                         'category' => 'web'
@@ -51,7 +51,7 @@ return [
             ],
         ],
         'explore' => [
-            'route' => 'explore',
+            'path' => 'explore',
             'options' => ['prefix' => 'About\\'],
             'middleware' => ['web\authenticate', 'controller', function($request, $response, $next) { return $next($request, $response); }],
             'defaults' => [
@@ -59,7 +59,7 @@ return [
             ],
             'children' => [
                 'more' => [
-                    'route' => '/more',
+                    'path' => '/more',
                     'middleware' => ['web\log'],
                     'defaults' => [
                         'controller' => 'more'
@@ -69,7 +69,7 @@ return [
         ],
         'app' => [
             'options'  => ['separators' => ['_' => '_', '-' => '\\']],
-            'route'    => '{controller::n}[/{action::s}[/{wildcard::*$}]]',
+            'path'    => '{controller::n}[/{action::s}[/{wildcard::*$}]]',
             'wildcard' => true
         ]
     ]

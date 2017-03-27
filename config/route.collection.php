@@ -10,27 +10,27 @@ use Valar\RedirectResponse;
 
 return [
     'home' => new Route([
-        'route' => '/{$}',
+        'path' => '/{$}',
         'controller' => 'Home\Controller',
         //var_export to create a cache (Definition/Build.php)
         'regex' => '/$',
         'tokens' => [['literal','/'], ['param','','$']]
     ]),
     'dashboard' => [
-        'route'      => '/dashboard',
+        'path'      => '/dashboard',
         'controller' => 'dashboard->controller.test', //specific method
         //'scheme' => 'https',
         //'hostname' => 'localhost', // "//localhost/dashboard" (when no scheme specified, inc parent)
         //'port' => '8080', // "http://localhost:8080/dashboard"
         'children' => [
             'remove' => [
-                'route' => '/remove',
+                'path' => '/remove',
                 'method' => 'GET', //['GET', 'POST']
                 'optional' => ['method'],
                 'controller' => 'dashboard:remove'
             ],
             'remove:update' => [
-                'route' => '/remove',
+                'path' => '/remove',
                 'method' => 'POST',
                 'middleware' => [
                     'web\authorize',
@@ -46,7 +46,7 @@ return [
                 ]
             ],
             'add' => [
-                'route'      => '[/{author::s}][/{category::s}[/{wildcard::*$}]]',
+                'path'      => '[/{author::s}][/{category::s}[/{wildcard::*$}]]',
                 'defaults'   => [
                     //'author'   => 'owner',
                     //'category' => 'web',
@@ -63,7 +63,7 @@ return [
         ],
     ],
     'explore' => [
-        'route' => '/explore',
+        'path' => '/explore',
         'options' => ['prefix' => 'About\\'],
         'middleware' => ['web\authenticate'],
         'defaults' => [
@@ -71,7 +71,7 @@ return [
         ],
         'children' => [
             'more' => [
-                'route' => '/more',
+                'path' => '/more',
                 'middleware' => ['web\log'],
                 'defaults' => [
                     'controller' => 'more'
@@ -83,9 +83,9 @@ return [
         'options'     => ['separators' => ['_' => '_', '-' => '\\']],
         //'regex' => '/(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',
 
-        'route'       => '/{controller::n}[/{action::s}[/{wildcard::*$}]]',
+        'path'       => '/{controller::n}[/{action::s}[/{wildcard::*$}]]',
 
-        //'route'       => '/{controller}[/{action}[/{wildcard:*}]]',
+        //'path'       => '/{controller}[/{action}[/{wildcard:*}]]',
         //'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
 
         'wildcard'    => true
