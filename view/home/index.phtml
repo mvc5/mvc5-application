@@ -17,7 +17,7 @@
 <script type="text/javascript">
 function info() {
     $('#ajax-result').empty();
-    $.getJSON('<?php echo $this->url('app', ['controller' => 'status']); ?>', [], function(data) {
+    $.getJSON('<?php echo $this->url(['app', 'controller' => 'status']); ?>', [], function(data) {
         var $div = $('#ajax-result');
 
         $div.addClass('alert alert-success');
@@ -38,7 +38,7 @@ function info() {
 }
 function about() {
     $('#ajax-result').empty();
-    $.get('<?php echo $this->url('app', ['controller' => 'about']); ?>', [], function(data) {
+    $.get('<?php echo $this->url(['app', ['controller' => 'about']]); ?>', [], function(data) {
         var $div = $('#ajax-result');
 
         $div.addClass('alert alert-success');
@@ -50,7 +50,7 @@ function about() {
 }
 function demo() {
     $('#ajax-result').empty();
-    $.get('<?php echo $this->url('app', ['controller' => 'demo']); ?>', [], function(data) {
+    $.get('<?php echo $this->url(['app', 'controller' => 'demo']); ?>', [], function(data) {
         var $div = $('#ajax-result');
 
         $div.removeClass('alert alert-success');
