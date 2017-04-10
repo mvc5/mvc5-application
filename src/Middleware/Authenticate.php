@@ -29,6 +29,6 @@ class Authenticate
     function __invoke(Request $request, PsrResponse $response, callable $next)
     {
         return $request->user()->authenticated()
-            ? $next($request, $response) : $this->redirect($this->url('app', ['controller' => 'login']));
+            ? $next($request, $response) : $this->redirect($this->url(['app', 'controller' => 'login']));
     }
 }

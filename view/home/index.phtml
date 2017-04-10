@@ -38,7 +38,7 @@ function info() {
 }
 function about() {
     $('#ajax-result').empty();
-    $.get('<?php echo $this->url(['app', ['controller' => 'about']]); ?>', [], function(data) {
+    $.get('<?php echo $this->url(['app', 'controller' => 'about']); ?>', [], function(data) {
         var $div = $('#ajax-result');
 
         $div.addClass('alert alert-success');
