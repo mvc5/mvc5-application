@@ -49,11 +49,6 @@ return [
     //middleware
     //'web' => 'web\middleware',
 
-    //config for route.collection.php
-    //'route\dispatch'  => [Mvc5\Route\Dispatch\Collection::class, new Plugin('route\match'), new Plugin('route\generator'), new Param('routes')],
-    //'url\generator'   => [Mvc5\Url\Collection::class, new Param('routes')],
-    //'web\route' => [Mvc5\Web\Route\Collection::class, new Plugin('route\match'), new Plugin('route\generator'), new Param('routes')],
-
 ] + (include __DIR__ . '/../vendor/mvc5/facade/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
