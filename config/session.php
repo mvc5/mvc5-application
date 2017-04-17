@@ -4,11 +4,11 @@
  */
 
 return [
-    'save_path'        => '',
+    'save_path'        => '', //__DIR__ . '/../tmp',
     'name'             => 'PHPSESSID',
     'cookie_lifetime'  => 0,
     'cookie_path'      => '/',
-    'cookie_domain'    => '',
+    'cookie_domain'    => '', //'.app.dev',
     'cookie_secure'    => '', //HSTS
     'cookie_httponly'  => 1,
     'use_strict_mode'  => 1,

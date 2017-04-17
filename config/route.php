@@ -12,14 +12,25 @@ use Valar\RedirectResponse;
 //key names for url plugin
 return [
     'home' => new Route([ //cached route
+        //'host' => 'nexus.app.dev',
+        //'port' => 8000,
+        //'optional' => 'host',
         'path' => '/{$}',
-        'controller' => 'Home\Controller',
+        'controller' => 'Home\\Controller',
         //var_export to create a cache (Definition/Build.php)
         'regex' => '/$',
-        'tokens' => [['literal','/'], ['param','','$']]
+        'tokens' => [['literal', '/'], ['param', '', '$']]
     ]),
     'dashboard' => [
-        'path'      => '/dashboard',
+        /*'host' => [
+            'name' => '{subdomain}.app.dev',
+            'defaults' => [
+                'subdomain' => 'mvc5'
+            ]
+        ],
+        'port' => 8001,
+        'optional' => 'host',*/
+        'path'      => '/dashboard/{user}',
         'controller' => 'dashboard->controller.test',
         'children' => [
             'remove' => [
@@ -56,6 +67,9 @@ return [
         ],
     ],
     'explore' => [
+        /*'host' => 'nexus.app.dev',
+        'port' => 8000,
+        'optional' => 'host',*/
         'path' => '/explore',
         'options' => ['prefix' => 'About\\'],
         'middleware' => ['web\authenticate', 'controller', function($request, $response, $next) { return $next($request, $response); }],
@@ -73,6 +87,8 @@ return [
         ]
     ],
     'app' => [
+        /*'host' => 'nexus.app.dev',
+        'port' => 8000,*/
         'options'  => ['separators' => ['_' => '_', '-' => '\\']],
         'path'    => '/{controller::n}[/{action::s}[/{wildcard::*$}]]',
         'wildcard' => true
