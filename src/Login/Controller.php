@@ -43,7 +43,7 @@ class Controller
 
         if ($user->authenticated()) {
             $this->warning('Already logged in!');
-            return $this->redirect($this->url('dashboard'));
+            return $this->redirect($this->url(['dashboard', 'user' => $user->username()]));
         }
 
         if (!$request->data()) {
@@ -62,6 +62,6 @@ class Controller
         $this->success('Login successful!');
         $this->log(new \Exception('Login successful!'));
 
-        return $this->redirect($this->url('dashboard'));
+        return $this->redirect($this->url(['dashboard', 'user' => $user->username()]));
     }
 }
