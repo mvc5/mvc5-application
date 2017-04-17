@@ -9,7 +9,7 @@ class Save
 {
     /**
      * @param Model $model
-     * @return mixed|void
+     * @return Model
      */
     function __invoke(Model $model)
     {

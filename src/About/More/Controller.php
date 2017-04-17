@@ -13,7 +13,7 @@ use View;
 class Controller
 {
     /**
-     * @return \Response
+     * @return mixed
      */
     function __invoke()
     {

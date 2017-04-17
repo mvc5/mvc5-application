@@ -30,7 +30,7 @@ class Controller
     }
 
     /**
-     * @return Model
+     * @return Model|mixed
      */
     function test()
     {
