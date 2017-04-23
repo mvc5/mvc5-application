@@ -28,7 +28,7 @@ class Controller
      */
     function __invoke(Request $request, Response $response, callable $next)
     {
-        $layout = $this->plugin('layout');
+        $layout = $this->layout();
 
         $layout->model($this->view('about/explore'));
 
