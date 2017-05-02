@@ -5,14 +5,14 @@
 
 namespace Dashboard;
 
-use Mvc5\View\Model as _ViewModel;
+use Mvc5\View\Model as ViewModel;
 
 class Controller
 {
     /**
      *
      */
-    use _ViewModel;
+    use ViewModel;
 
     /**
      * @var string
@@ -30,7 +30,7 @@ class Controller
     }
 
     /**
-     * @return Model|mixed
+     * @return mixed
      */
     function test()
     {

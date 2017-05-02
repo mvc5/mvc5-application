@@ -5,8 +5,8 @@
 
 namespace Overview;
 
-use Mvc5\Model;
-use Mvc5\Model\ViewLayout;
+use Mvc5\ViewModel as _ViewModel;
+use Mvc5\View\ViewLayout;
 use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Render;
 use Mvc5\Plugins\Service;
@@ -26,7 +26,7 @@ class Controller
     /**
      *
      */
-    const VIEW_MODEL = Model::class;
+    const VIEW_MODEL = _ViewModel::class;
 
     /**
      *
@@ -42,8 +42,6 @@ class Controller
     {
         $this->warning('Documentation is maintained at <a href="https://mvc5.github.io">https://mvc5.github.io</a>', 'overview');
 
-        $layout->model($this->model());
-
-        return $this->render($layout);
+        return $this->render($layout->withModel($this->model()));
     }
 }

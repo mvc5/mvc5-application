@@ -3,12 +3,12 @@
  *
  */
 
-use Mvc5\Model\Layout;
+use Mvc5\Template\TemplateLayout;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Param;
 
 return [
-    'dashboard:add' => new Mvc5\Immutable([
+    'dashboard:add' => new Mvc5\Model([
         Dashboard\Add\Validate::class,
         Dashboard\Add\Save::class,
         Dashboard\Add\Respond::class
@@ -20,13 +20,11 @@ return [
         function($model) {
             return $model . '<h1>Remove</h1>';
         },
-        function(Layout $layout, $model = null) {
+        function(TemplateLayout $layout, $model = null) {
             $model .= '<h1>Respond</h1>';
             $model .= '<form method="POST"><input class="btn btn-lg btn-primary" type="submit" name="submit" value="Submit"></form><br>';
 
-            $layout->model($model);
-
-            return $layout;
+            return $layout->withModel($model);
         }
     ],
 

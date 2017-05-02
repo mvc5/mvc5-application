@@ -16,8 +16,6 @@ class Respond
      */
     function __invoke(Response $response, Model $model = null)
     {
-        $model->vars(['args' =>  array_merge([__CLASS__], $model['args'])]);
-
-        return $model;
+        return $model->with(['args' =>  array_merge([__CLASS__], $model['args'])]);
     }
 }
