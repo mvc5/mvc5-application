@@ -11,7 +11,7 @@ class ViewModel
     /**
      *
      */
-    const TEMPLATE_NAME = 'home/index';
+    const TEMPLATE = 'home/index';
 
     /**
      * @var string

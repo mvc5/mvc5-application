@@ -11,5 +11,5 @@ class ViewModel
     /**
      *
      */
-    const TEMPLATE_NAME = 'dashboard/add';
+    const TEMPLATE = 'dashboard/add';
 }

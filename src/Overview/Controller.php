@@ -31,7 +31,7 @@ class Controller
     /**
      *
      */
-    const TEMPLATE_NAME = 'overview/index';
+    const TEMPLATE = 'overview/index';
 
     /**
      * @param PsrRequest $request

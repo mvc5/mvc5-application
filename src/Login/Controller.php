@@ -32,7 +32,7 @@ class Controller
     /**
      *
      */
-    const TEMPLATE_NAME = 'login/index';
+    const TEMPLATE = 'login/index';
 
     /**
      * @param Request $request
