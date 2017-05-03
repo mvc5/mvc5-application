@@ -5,14 +5,14 @@
 
 namespace Home;
 
-use Mvc5\Plugin;
+use Mvc5\Plugins\Service;
 
 class Factory
 {
     /**
      *
      */
-    use Plugin;
+    use Service;
 
     /**
      * @param array $config

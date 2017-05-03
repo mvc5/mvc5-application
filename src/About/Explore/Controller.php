@@ -10,7 +10,7 @@ use Mvc5\Http\Request;
 use Mvc5\Http\Response;
 use Mvc5\Plugins\Render;
 use Mvc5\Plugins\Service;
-use Mvc5\Plugins\ViewModel;
+use Mvc5\Plugins\View;
 
 class Controller
 {
@@ -19,7 +19,7 @@ class Controller
      */
     use Render;
     use Service;
-    use ViewModel;
+    use View;
 
     /**
      * @param Request $request

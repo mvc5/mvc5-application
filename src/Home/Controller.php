@@ -6,7 +6,7 @@
 namespace Home;
 
 use Mvc5\Plugins\Service;
-use Mvc5\Plugins\ViewModel;
+use Mvc5\Plugins\View;
 use Psr\Http\Message\RequestInterface as PsrRequest;
 
 class Controller
@@ -15,12 +15,12 @@ class Controller
      *
      */
     use Service;
-    use ViewModel;
+    use View;
 
     /**
      *
      */
-    const VIEW_MODEL = Model::class;
+    const VIEW_MODEL = ViewModel::class;
 
     /**
      * @param PsrRequest $request

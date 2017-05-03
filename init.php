@@ -13,6 +13,7 @@ include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
 /**
  *
  */
+include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Uri.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/ServerRequestFactory.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Stream.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/PhpInputStream.php';
@@ -28,19 +29,21 @@ include __DIR__ . '/vendor/mvc5/http-message/init.php';
 /**
  *
  */
-/*include __DIR__ . '/src/Blog/Model.php';
-include __DIR__ . '/src/Blog/Controller.php';
-include __DIR__ . '/src/Blog/Add/Validate.php';
-include __DIR__ . '/src/Blog/Add/Save.php';
-include __DIR__ . '/src/Blog/Add/Respond.php';
+/*include __DIR__ . '/src/Dashboard/ViewModel.php';
+include __DIR__ . '/src/Dashboard/Controller.php';
+include __DIR__ . '/src/Dashboard/Add/Validate.php';
+include __DIR__ . '/src/Dashboard/Add/Save.php';
+include __DIR__ . '/src/Dashboard/Add/Respond.php';
 include __DIR__ . '/src/Home/Factory.php';
 include __DIR__ . '/src/Home/Controller.php';
-include __DIR__ . '/src/Home/Model.php';
+include __DIR__ . '/src/Home/ViewModel.php';
 include __DIR__ . '/src/Console/Example.php';
 include __DIR__ . '/src/Plugin/Gem/Controller.php';
 include __DIR__ . '/src/Plugin/Controller.php';
-include __DIR__ . '/src/Plugin/Request.php';
-include __DIR__ . '/src/Service/Provider.php';*/
+include __DIR__ . '/src/Service/Provider.php';
+include __DIR__ . '/src/User/Config/User.php';
+include __DIR__ . '/src/User/User.php';
+include __DIR__ . '/src/User/Config.php';*/
 
 /**
  *

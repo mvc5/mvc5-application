@@ -8,10 +8,10 @@ namespace Dashboard\Add;
 class Save
 {
     /**
-     * @param Model $model
-     * @return Model
+     * @param ViewModel $model
+     * @return ViewModel
      */
-    function __invoke(Model $model)
+    function __invoke(ViewModel $model)
     {
         return $model->with(['args' =>  array_merge([__CLASS__], $model['args'])]);
     }

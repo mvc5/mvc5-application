@@ -11,10 +11,10 @@ class Validate
 {
     /**
      * @param Request $request
-     * @param Model $model
-     * @return Model
+     * @param ViewModel $model
+     * @return ViewModel
      */
-    function __invoke(Request $request, Model $model)
+    function __invoke(Request $request, ViewModel $model)
     {
         return $model->with(['params' => $request->params(), 'args' => [__CLASS__]]);
     }

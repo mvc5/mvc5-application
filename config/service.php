@@ -5,12 +5,12 @@
 
 use Mvc5\Plugin\App;
 use Mvc5\Plugin\Args;
+use Mvc5\Plugin\Config;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Invokable;
 use Mvc5\Plugin\Link;
-use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Param;
 use Mvc5\Plugin\Plug;
 use Mvc5\Plugin\Plugin;
@@ -32,11 +32,11 @@ return [
     //'Home\Controller' => Home\Controller::class,
     //'Home\Controller' => 'dashboard->home',
 
-    'Home\Model' => [Home\Model::class, new Args(['message' => new Plug('message')])],
+    'Home\ViewModel' => [Home\ViewModel::class, new Args(['message' => new Plug('message')])],
 
-    'message' => new Value('Demo Application'), //string value
+    'message' => new Value('Application Home'), //string value
 
-    'service\provider' => new Manager(Provider::class),
+    'service\provider' => [Provider::class, new Config],
 
     'user' => new Shared('user', new Session('user', User\Config::class)),
 

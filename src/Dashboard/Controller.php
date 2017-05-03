@@ -5,14 +5,14 @@
 
 namespace Dashboard;
 
-use Mvc5\View\Model as ViewModel;
+use Mvc5\View\Model;
 
 class Controller
 {
     /**
      *
      */
-    use ViewModel;
+    use Model;
 
     /**
      * @var string
@@ -20,10 +20,10 @@ class Controller
     protected $template;
 
     /**
-     * @param Model $model
+     * @param ViewModel $model
      * @param $template
      */
-    function __construct(Model $model, $template)
+    function __construct(ViewModel $model, $template)
     {
         $this->model    = $model;
         $this->template = $template;

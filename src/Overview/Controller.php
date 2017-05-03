@@ -5,12 +5,12 @@
 
 namespace Overview;
 
-use Mvc5\ViewModel as _ViewModel;
+use Mvc5\ViewModel;
 use Mvc5\View\ViewLayout;
 use Mvc5\Plugins\Messages;
 use Mvc5\Plugins\Render;
 use Mvc5\Plugins\Service;
-use Mvc5\Plugins\ViewModel;
+use Mvc5\Plugins\View;
 use Psr\Http\Message\RequestInterface as PsrRequest;
 
 class Controller
@@ -21,12 +21,12 @@ class Controller
     use Messages;
     use Render;
     use Service;
-    use ViewModel;
+    use View;
 
     /**
      *
      */
-    const VIEW_MODEL = _ViewModel::class;
+    const VIEW_MODEL = ViewModel::class;
 
     /**
      *
