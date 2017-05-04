@@ -34,6 +34,10 @@ class Controller
      */
     function test()
     {
-        return $this->view($this->template);
+        $model = $this->view($this->template);
+
+        $model->dashboard['message'] = 'Demo Application';
+
+        return $model;
     }
 }

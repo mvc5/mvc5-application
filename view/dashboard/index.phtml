@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <h1><a href="<?= $this->url('/dashboard/phpdev', 'foo=bar') ?>">Dashboard</a></h1>
-    <p class="lead">Demo Application</p>
+    <p class="lead"><?= $dashboard['message']; ?></p>
     <pre><?= __FILE__; ?></pre>
     <p>
         <a class="btn btn-lg btn-primary" href="<?= $this->url(['dashboard/add', 'author' => 'owner', 'category' => 'oop']) ?>" role="button">Add</a>
