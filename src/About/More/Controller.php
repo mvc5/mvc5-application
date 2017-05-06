@@ -19,6 +19,6 @@ class Controller
     {
         Message::info(Service::plugin('message'));
 
-        return Response::response(View::render('about/more'));
+        return Response::response(View::render('/about/more'));
     }
 }
