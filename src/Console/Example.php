@@ -5,19 +5,19 @@
 
 namespace Console;
 
-use Home\Model;
+use Home\ViewModel;
 
 class Example
 {
     /**
-     * @var Model
+     * @var ViewModel
      */
     protected $model;
 
     /**
-     * @param Model $model
+     * @param ViewModel $model
      */
-    function __construct(Model $model)
+    function __construct(ViewModel $model)
     {
         $this->model = $model;
     }

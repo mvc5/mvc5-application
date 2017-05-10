@@ -6,12 +6,14 @@
 namespace Service;
 
 use Plugin\Gem\Controller;
+use Mvc5\Config;
 use Mvc5\Plugin\Gem\Plugin;
 use Mvc5\Resolver\Resolver;
 use Mvc5\Service\Manager;
 use Mvc5\Resolvable;
 
 class Provider
+    extends Config
     implements Manager
 {
     /**
