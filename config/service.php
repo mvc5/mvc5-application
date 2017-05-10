@@ -49,6 +49,8 @@ return [
     //middleware
     //'web' => 'web\middleware',
 
+    //'layout' => new Shared('layout', [Layout\SharedLayout::class, 'template' => 'layout']),
+
 ] + (include __DIR__ . '/../vendor/mvc5/facade/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
