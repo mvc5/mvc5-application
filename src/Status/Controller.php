@@ -4,16 +4,15 @@
  */
 namespace Status;
 
-use Mvc5\Plugins\Response;
-use Mvc5\Plugins\Service;
+use Mvc5\Plugins;
 
 class Controller
 {
     /**
      *
      */
-    use Response;
-    use Service;
+    use Plugins\Response;
+    use Plugins\Service;
 
     /**
      * @return mixed

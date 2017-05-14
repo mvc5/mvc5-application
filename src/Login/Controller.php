@@ -5,29 +5,22 @@
 
 namespace Login;
 
-use Mvc5\Plugins\Log;
-use Mvc5\Plugins\Messages;
-use Mvc5\Plugins\Response;
-use Mvc5\Plugins\Service;
-use Mvc5\Plugins\Url;
-use Mvc5\Plugins\User;
-use Mvc5\Response\Redirect;
+use Mvc5\Plugins;
 use Mvc5\Request\Request;
-use Mvc5\View\Model;
-use Mvc5\View\ViewModel;
+use Mvc5\View;
 
 class Controller
 {
     /**
      *
      */
-    use Log;
-    use Messages;
-    use Model;
-    use Response;
-    use Service;
-    use Url;
-    use User;
+    use Plugins\Log;
+    use Plugins\Messages;
+    use Plugins\Response;
+    use Plugins\Service;
+    use Plugins\Url;
+    use Plugins\User;
+    use View\Model;
 
     /**
      *
@@ -36,7 +29,7 @@ class Controller
 
     /**
      * @param Request $request
-     * @return Redirect|ViewModel
+     * @return mixed
      */
     function __invoke(Request $request)
     {

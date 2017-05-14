@@ -7,21 +7,18 @@ namespace Overview;
 
 use Mvc5\ViewModel;
 use Mvc5\View\ViewLayout;
-use Mvc5\Plugins\Messages;
-use Mvc5\Plugins\Render;
-use Mvc5\Plugins\Service;
-use Mvc5\Plugins\View;
-use Psr\Http\Message\RequestInterface as PsrRequest;
+use Mvc5\Plugins;
+use Psr\Http\Message\RequestInterface as Request;
 
 class Controller
 {
     /**
      *
      */
-    use Messages;
-    use Render;
-    use Service;
-    use View;
+    use Plugins\Messages;
+    use Plugins\Render;
+    use Plugins\Service;
+    use Plugins\View;
 
     /**
      *
@@ -34,11 +31,11 @@ class Controller
     const TEMPLATE = 'overview/index';
 
     /**
-     * @param PsrRequest $request
+     * @param Request $request
      * @param ViewLayout $layout
      * @return string
      */
-    function __invoke(PsrRequest $request, ViewLayout $layout)
+    function __invoke(Request $request, ViewLayout $layout)
     {
         $this->warning('Documentation is maintained at <a href="https://mvc5.github.io">https://mvc5.github.io</a>', 'overview');
 

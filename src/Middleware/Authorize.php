@@ -5,25 +5,22 @@
 
 namespace Middleware;
 
-use Mvc5\Plugins\Messages;
-use Mvc5\Plugins\Response as _Response;
-use Mvc5\Plugins\Service;
-use Mvc5\Plugins\Url;
+use Mvc5\Plugins;
 use Mvc5\Request\Request;
-use Psr\Http\Message\ResponseInterface as PsrResponse;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class Authorize
 {
     /**
      *
      */
-    use Messages;
-    use _Response;
-    use Service;
-    use Url;
+    use Plugins\Messages;
+    use Plugins\Response;
+    use Plugins\Service;
+    use Plugins\Url;
 
     /**
-     * @return mixed|PsrResponse
+     * @return mixed|Response
      */
     protected function error()
     {
@@ -33,11 +30,11 @@ class Authorize
 
     /**
      * @param Request $request
-     * @param PsrResponse $response
+     * @param Response $response
      * @param callable $next
-     * @return PsrResponse
+     * @return Response
      */
-    function __invoke(Request $request, PsrResponse $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         return 'phpdev' === $request->user()->username() ? $next($request, $response) : $this->error();
     }

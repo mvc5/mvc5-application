@@ -5,26 +5,21 @@
 
 namespace Logout;
 
-use Mvc5\Plugins\Messages;
-use Mvc5\Plugins\Response;
-use Mvc5\Plugins\Session;
-use Mvc5\Plugins\Service;
-use Mvc5\Plugins\Url;
-use Mvc5\Response\Redirect;
+use Mvc5\Plugins;
 
 class Controller
 {
     /**
      *
      */
-    use Messages;
-    use Response;
-    use Service;
-    use Session;
-    use Url;
+    use Plugins\Messages;
+    use Plugins\Response;
+    use Plugins\Service;
+    use Plugins\Session;
+    use Plugins\Url;
 
     /**
-     * @return Redirect
+     * @return mixed
      */
     function __invoke()
     {

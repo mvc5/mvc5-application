@@ -8,18 +8,16 @@ namespace About\Explore;
 use Mvc5\Arg;
 use Mvc5\Http\Request;
 use Mvc5\Http\Response;
-use Mvc5\Plugins\Render;
-use Mvc5\Plugins\Service;
-use Mvc5\Plugins\View;
+use Mvc5\Plugins;
 
 class Controller
 {
     /**
      *
      */
-    use Render;
-    use Service;
-    use View;
+    use Plugins\Render;
+    use Plugins\Service;
+    use Plugins\View;
 
     /**
      * @param Request $request

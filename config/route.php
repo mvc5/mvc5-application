@@ -6,7 +6,7 @@
 use Mvc5\Plugin\Callback;
 use Mvc5\Route\Config as Route;
 use Mvc5\Session\SessionMessages;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface as Response;
 use Valar\RedirectResponse;
 
 //key names for url plugin
@@ -44,7 +44,7 @@ return [
                 'method' => 'POST',
                 'middleware' => [
                     'web\authorize',
-                    new Callback(function($req, ResponseInterface $res, $next) {
+                    new Callback(function($req, Response $res, $next) {
                         /** @var SessionMessages $messages */
                         $messages = $this->plugin('messages');
                         $url = $this->plugin('url');

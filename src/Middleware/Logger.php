@@ -5,26 +5,25 @@
 
 namespace Middleware;
 
-use Mvc5\Plugins\Log;
-use Mvc5\Plugins\Service;
+use Mvc5\Plugins;
 use Mvc5\Request\Request;
-use Psr\Http\Message\ResponseInterface as PsrResponse;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class Logger
 {
     /**
      *
      */
-    use Log;
-    use Service;
+    use Plugins\Log;
+    use Plugins\Service;
 
     /**
      * @param Request $request
-     * @param PsrResponse $response
+     * @param Response $response
      * @param callable $next
      * @return mixed
      */
-    function __invoke(Request $request, PsrResponse $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $this->log($request->name());
 
