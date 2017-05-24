@@ -35,7 +35,7 @@
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>(new Web(include __DIR__ . '/../config/config.php', null, true))();
 </code></pre>
         </div>
-        <p>A default <a href="https://github.com/mvc5/mvc5-application/blob/master/config/config.php">configuration</a> is provided with the minimum <a href="https://github.com/mvc5/mvc5/tree/master/config">configuration</a> required to run a <a href="https://github.com/mvc5/mvc5-application/blob/master/config/web.php">web</a> <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a>. It contains configurations for PSR 7 compatible <a href="https://github.com/mvc5/http-message/blob/master/config/service.php#L11">request</a> and <a href="https://github.com/mvc5/http-message/blob/master/config/service.php#L13">response</a> objects, <a href="https://github.com/mvc5/mvc5-application/blob/master/config/template.php">templates</a> and <a href="#routes">routes</a>. The third parameter passed to the <a href="https://github.com/mvc5/mvc5/blob/master/src/Web.php">web</a> class binds the scope of the <a href="http://php.net/manual/en/functions.anonymous.php#functions.anonymous">anonymous functions</a>, within the <a href="https://github.com/mvc5/mvc5-application/blob/master/config/service.php">service configuration</a>, to the <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a> class.</p>
+        <p>A default <a href="https://github.com/mvc5/mvc5-application/blob/master/config/config.php">configuration</a> is provided with the minimum <a href="https://github.com/mvc5/mvc5/tree/master/config">configuration</a> required to run a <a href="https://github.com/mvc5/mvc5-application/blob/master/config/web.php">web</a> <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a>. It contains configurations for PSR-7 compatible <a href="https://github.com/mvc5/http-message/blob/master/config/service.php#L11">request</a> and <a href="https://github.com/mvc5/http-message/blob/master/config/service.php#L13">response</a> classes, <a href="https://github.com/mvc5/mvc5-application/blob/master/config/template.php">templates</a> and <a href="#routes">routes</a>. The third parameter passed to the <a href="https://github.com/mvc5/mvc5/blob/master/src/Web.php">web</a> class binds the scope of the <a href="http://php.net/manual/en/functions.anonymous.php#functions.anonymous">anonymous functions</a>, within the <a href="https://github.com/mvc5/mvc5-application/blob/master/config/service.php">service configuration</a>, to the <a href="https://github.com/mvc5/mvc5/blob/master/src/App.php">application</a> class.</p>
 
         <h2 id="console-application">Console Application</h2>
         <p>A simple <a href="https://github.com/mvc5/mvc5-application/blob/master/app.php">console application</a> can be created by passing <a href="http://php.net/manual/en/reserved.variables.argv.php">command line arguments</a> to the <a href="https://github.com/mvc5/mvc5/blob/master/src/Service/Service.php">service</a> <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Service.php#L21">call</a> method.</p>
@@ -50,7 +50,7 @@
 </code></pre>
         </div>
 
-        <p>The first argument is the name of the function or object to <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Service.php#L21">call</a> and the remaining arguments are its parameters, e.g <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Console/Example.php"><code>Console\Example</code></a>.</p>
+        <p>The first argument is the name of the function to <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Service.php#L21">call</a> and the remaining arguments are its parameters, e.g <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Console/Example.php"><code>Console\Example</code></a>.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>namespace Console;
 
@@ -104,7 +104,7 @@ class Example
 </code></pre>
         </div>
 
-        <p>For example, the development config file <code>config/dev/config.php</code> can include the main production config file <code>config/config.php</code> and override the name of the database to use in the development environment.</p>
+        <p>For example, the development config file <code>config/dev/config.php</code> can include the production config file <code>config/config.php</code> and override the name of the database to use in the development environment.</p>
 
         <h2 id="models-and-arrayaccess">Models and ArrayAccess</h2>
         <p>Value objects use a <a href="https://github.com/mvc5/mvc5/blob/master/src/Config/Model.php">model</a> interface to provide a common set of access methods.</p>
@@ -145,22 +145,22 @@ trait ReadOnly
 
     function offsetSet($name, $value)
     {
-        throw new \Exception('Invalid operation: object cannot be modified');
+        throw new \Exception;
     }
 
     function offsetUnset($name)
     {
-        throw new \Exception('Invalid operation: object cannot be modified');
+        throw new \Exception;
     }
 
     function __set($name, $value)
     {
-        throw new \Exception('Invalid operation: object cannot be modified');
+        throw new \Exception;
     }
 
     function __unset($name)
     {
-        throw new \Exception('Invalid operation: object cannot be modified');
+        throw new \Exception;
     }
 }
 </code></pre>
@@ -199,7 +199,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 </code></pre>
         </div>
 
-        <p>Models can also be made mutable by applying their traits to an instance of a configuration object.</p>
+        <p><a href="https://github.com/mvc5/mvc5/blob/master/src/Config/Model.php">Models</a> can also be made mutable by applying their traits to an instance of a <a href="https://github.com/mvc5/mvc5/blob/master/src/Config.php">configuration</a> object.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>class ViewModel
     extends \Mvc5\Config
@@ -233,7 +233,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 
         <p>The regular expression can use group names that are <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Path.php#L54">assigned</a> as request parameters when the route is <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Path.php#L47">matched</a>. Consequently, the parameter names must be alphanumeric. The path configuration provides a simpler format for specifying regular expressions and group names. For example, if the matched url is <code>/about</code>, the <code>app</code> route configuration <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Path.php#L54">assigns</a> the value <code>about</code> as the <code>controller</code> request parameter.</p>
 
-        <p>Short names can also be assigned to regular expressions and be used in a path configuration by prefixing them with a single colon or two colons when assigned to parameter name. Below are the default short-named regular expressions <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Definition/Tokens.php#L23">available</a> to use.</p>
+        <p>Short names can also be assigned to regular expressions and be used in a path configuration by prefixing them with a single colon or two colons when assigned to a parameter name. Below are the default short-named regular expressions <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Definition/Tokens.php#L23">available</a> to use.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>[
     'a' =&gt; '[a-zA-Z0-9]++',
@@ -264,24 +264,23 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
         <p>Custom <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php">routes</a> can also be configured by adding a <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php#L45">class name</a> to the array, or the configuration can be a <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php">route</a> object.</p>
 
         <h3 id="automatic-routes">Automatic Routes</h3>
-        <p>A controller can be automatically matched to a url by using the <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Controller.php#L196">controller match</a> function and a route configuration like the one below.</p>
+        <p>A controller can be automatically matched to a url with the <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Controller.php#L196">controller match</a> function and using a single route configuration.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>return [
-    'name' =&gt; 'app',
-    'route' =&gt; '/[{controller::*$}]',
-    'defaults' =&gt; [
-        'controller' =&gt; 'home'
-    ],
-    'options' =&gt; [
-        'prefix' =&gt; 'App\\',
-        'suffix' =&gt; '\Controller',
-        'strict' =&gt; false,
+    'app' =&gt; [
+        'defaults' =&gt; ['controller' =&gt; 'home'],
+        'options' =&gt; [
+            'prefix' =&gt; 'App',
+            'suffix' =&gt; '\Controller'
+            'strict' =&gt; false,
+        ],
+        'path' =&gt; '/[{controller::*$}]'
     ]
 ];
 </code></pre>
         </div>
 
-        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Controller.php#L196">controller match</a> function will change the first letter of each word separated by a forward slash in the url into an uppercase letter. It then replace the forward slash with a back slash to create a fully qualified class name and will try to load a matching controller. In order to ensure that it is a valid controller, the configuration should prepend a namespace and append a suffix.</p>
+        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Controller.php#L196">controller match</a> function will change the first letter of each word separated by a forward slash in the url into an uppercase letter. It then replaces the forward slash with a back slash to create a fully qualified class name and will try to load a matching controller. In order to ensure that it is a valid controller, the configuration should prepend a namespace and append a suffix.</p>
 
         <p>Strict mode does not change the case sensitivity of the controller name. However, most urls are lower case and file names and directories typically begin with an uppercase. This prevents controllers from being auto-loaded. This can be resolved by using a service loader and having a service configuration with a matching lower case name. The service configuration will then specify the name of the class to use, e.g <code>'home\controller' =&gt; Home\Controller::class</code>.</p>
 
@@ -290,7 +289,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
         <p>Controller names prefixed with the <a href="https://github.com/mvc5/mvc5/blob/master/src/Arg.php#L13"><code>@</code></a> symbol will be directly <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L394">invoked</a> because they are either a <a href="https://github.com/mvc5/mvc5/blob/master/src/Signal.php#L36">function</a> or a <a href="https://github.com/mvc5/mvc5/blob/master/src/Signal.php#L32">static class method</a>.</p>
 
         <h3 id="url-generator">Url Generator</h3>
-        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> can <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php">generate</a> urls with or without a route configuration and are <a href="">RFC 3986</a> encoded.</p>
+        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> can <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php">generate</a> urls with or without a route configuration and are <a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a> <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Assemble.php">encoded</a>.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>'dashboard' =&gt; [
     'path'      =&gt; '/dashboard/{user}',
@@ -310,28 +309,28 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 </code></pre>
         </div>
 
-        <p>Route configurations must be named and child routes of the current parent route can automatically use their parent route parameters, e.g <code>/dashboard/phpdev/add</code>.</p>
+        <p>Route configurations must be <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php#L74">named</a> and <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Path.php#L41">child routes</a> of the current parent route can <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L127">automatically</a> use their parent route parameters, e.g <code>/dashboard/phpdev/add</code>.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>echo $this-&gt;url('dashboard/add');
 </code></pre>
         </div>
 
-        <p>Wild card parameters can added by using the <code>{wildcard::*$}</code> route expression and enabling it with <code>'wildcard' =&gt; true</code>. The parameters are appended to the url and will be added to the parameters for that request, e.g <code>/dashboard/phpdev/add/type/tasks</code>.</p>
+        <p><a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Wildcard.php">Wild card</a> parameters can be added by using the <code>{wildcard::*$}</code> route expression and enabling it with <code>'wildcard' =&gt; true</code>. The parameters are <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Route/Generator.php#L225">appended</a> to the url and will be <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Wildcard.php#L87">added</a> to the parameters for that request, e.g <code>/dashboard/phpdev/add/type/tasks</code>.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>echo $this-&gt;url(['dashboard/add', 'type' =&gt; 'tasks']);
 </code></pre>
         </div>
 
-        <p>Urls can also be generated without having or using a route configuration by prefixin the path with a forward slash.</p>
+        <p>Urls can also be <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L117">generated</a> without having or using a route configuration by prefixing the path with a forward slash.</p>
 
-        <div class="language-php highlighter-rouge"><pre class="highlight"><code>echo $this-&gt;url('/dashboard/phpdev/list', ['order' =&gt; 'desc'], ['absolute' =&gt; true]);
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>echo $this-&gt;url('/dashboard/phpdev/list', ['order' =&gt; 'desc'], '', ['absolute' =&gt; true]);
 </code></pre>
         </div>
 
-        <p>The second parameter of the <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> function is for query string arguments, e.g <code>/dashboard/phpdev/list?order=desc</code> and the third parameter can be used to generate an absolute url; the current scheme, host and port will be used if not provided. The <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> can also be configured to always generate an absolute url.</p>
+        <p>The second parameter of the <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> function is for <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L148">query</a> string arguments, e.g <code>/dashboard/phpdev/list?order=desc</code>. The third parameter is for the <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L148">fragment</a> and the fourth parameter can be used to generate an <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L68">absolute</a> url; the current scheme, host and port will be used if not provided. The <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> class can also be <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L52">configured</a> to always generate an absolute url.</p>
 
         <h2 id="rest-api-methods">REST API Methods</h2>
-        <p>Routes can be configured with actions for specific HTTP methods. The default action is specified with the controller configuration.</p>
+        <p>Routes can be configured with <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Action.php">actions</a> for specific HTTP methods. The default action is specified with the controller configuration.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>'resource' =&gt; [
     'route' =&gt; '/resource',
@@ -356,7 +355,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 </code></pre>
         </div>
 
-        <p>A controller is a function. It can also be an <a href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a> or a plugin that <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L84">resolves</a> to a <a href="http://php.net/manual/en/language.types.callable.php">callable</a> function. If the value returned from the controller is not a <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Response.php">Http\Response</a> and it is not null, it will be <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/Dispatch.php#L79">set</a> as the value of the response body for the remaining components to transform into a value that can be sent to the client.</p>
+        <p>A controller is a function, it can also be an <a href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a> or a plugin that <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L84">resolves</a> to a <a href="http://php.net/manual/en/language.types.callable.php">callable</a> function. If the value returned from the controller is not a <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Response.php">Http\Response</a> and it is not null, it will be <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/Dispatch.php#L79">set</a> as the value of the response body for the remaining components to transform into a value that can be sent to the client.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>'web' =&gt; [
     'route\dispatch',
@@ -398,7 +397,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 </code></pre>
         </div>
 
-        <p>The Middleware demo can be enabled by uncommenting the <a href="https://github.com/mvc5/mvc5-application/blob/master/config/service.php#L67">web configuration</a> in the <a href="#web-application">web application</a> service configuration file.</p>
+        <p>The PSR-7 Middleware demo can be enabled by uncommenting the <a href="https://github.com/mvc5/mvc5-application/blob/master/config/service.php#L67">web configuration</a> in the <a href="#web-application">web application</a> service config file.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>//middleware demo
 //'web' =&gt; 'web\middleware',
@@ -601,7 +600,7 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 </code></pre>
         </div>
 
-        <p>A container can contain any type of value, except for <a href="http://php.net/manual/en/language.types.null.php">null</a>. A parent container can also pass itself to a child container as the service <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L71">provider</a> to use when the child container can not retrieve or resolve a particular value. The parent container can also specify what object to use as the scope of an anonymous function within the child container.</p>
+        <p>A container can contain any type of value, except for <a href="http://php.net/manual/en/language.types.null.php">null</a>. A parent container can also pass itself to a child container as the service <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L71">provider</a> to use when the child container can not retrieve or resolve a particular value. The parent container can also specify what object to use as the scope of an anonymous service function within the child container.</p>
 
         <h3 id="autowiring">Autowiring</h3>
         <p>The required arguments of a class constructor are automatically resolved by a <a href="https://github.com/mvc5/mvc5/blob/master/src/Service/Manager.php">service manager</a> when it <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Build.php#L124">instantiates</a> a class that</p>
@@ -919,21 +918,18 @@ new Invoke(function() { var_dump(func_get_args()); }),
         <h3 id="service-providers">Service Providers</h3>
         <p>Custom plugins can implement the <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolvable.php">resolvable</a> interface and extend an existing <a href="#plugins">plugin</a> or have their own <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L480">service provider</a>. A <a href="https://github.com/mvc5/mvc5-application/blob/master/config/service.php#L39">service provider</a> is a <a href="http://php.net/manual/en/language.types.callable.php">callable</a> function that is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L480">invoked</a> when a <a href="#plugins">plugin</a> can not be <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L511">resolved</a> by default.</p>
 
-        <div class="language-php highlighter-rouge"><pre class="highlight"><code>use Plugin\Controller;
-use Service\ServiceProvider;
-use Service\ServiceManager;
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>use Mvc5\Plugin\Config;
+use Plugin\Controller;
+use Service\Provider;
 
 return [
     'Home\Controller'  =&gt; new Controller(Home\Controller::class),
-    'service\provider' =&gt; new Service(
-        ServiceProvider::class, [], [Arg::SERVICE =&gt; new Plugin('service\manager')]
-    ),
-    'service\manager'  =&gt; new Manager(ServiceManager::class),
+    'service\provider' =&gt; [Service\Provider::class, new Config],
 ];
 </code></pre>
         </div>
 
-        <p>For example, the <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Home/Controller.php">home controller</a> uses a custom <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Plugin/Controller.php">controller plugin</a> and a <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Service/Provider.php">service provider</a> has been added to the <a href="https://github.com/mvc5/mvc5-application/blob/master/config/event.php#L45">service resolver event</a>.</p>
+        <p>For example, the <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Home/Controller.php">home controller</a> uses a custom <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Plugin/Controller.php">controller plugin</a> with a <a href="https://github.com/mvc5/mvc5-application/blob/master/src/Service/Provider.php">service provider</a> for the <a href="https://github.com/mvc5/mvc5-application/blob/master/config/event.php#L45">service resolver event</a>.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>function resolve($config, array $args = [])
 {
@@ -948,7 +944,7 @@ return [
 </code></pre>
         </div>
 
-        <p>A <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L67">service resolver</a> is used to call the <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L63">service provider</a> and <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L41">an exception</a> is thrown if the <a href="#plugins">plugin</a> can not be resolved.</p>
+        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L67">service resolver</a> event is used to call the <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L63">service provider</a> and <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L41">an exception</a> is thrown if the <a href="#plugins">plugin</a> can not be resolved.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>'service\resolver' =&gt; [
     'service\provider',
@@ -993,12 +989,10 @@ return [
     function($model) {
         return $model . '<span class="nt">&lt;h1&gt;</span>Remove<span class="nt">&lt;/h1&gt;</span>';
     },
-    function($layout, $model = null) {
+    function(TemplateLayout $layout, $model = null) {
         $model .= '<span class="nt">&lt;h1&gt;</span>Respond<span class="nt">&lt;/h1&gt;</span>';
 
-        $layout-&gt;model($model);
-
-        return $layout;
+        return $layout-&gt;withModel($model);
     }
 ]
 </code></pre>
