@@ -218,7 +218,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>return [
     'home' =&gt; [
-        'route' =&gt; '/{$}'
+        'path' =&gt; '/{$}'
         'regex' =&gt; '/$'
         'controller' =&gt; 'Home\Controller'
     ],
@@ -250,7 +250,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>return [
     'app' =&gt; [
-        'route' =&gt; '/{controller}',
+        'path' =&gt; '/{controller}',
         'constraints' =&gt; [
             'controller' =&gt; '[a-zA-Z0-9/]+[a-zA-Z0-9]$'
         ]
@@ -333,7 +333,7 @@ $request-&gt;with(Arg::NAME, 'home'); //Immutable
         <p>Routes can be configured with <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Action.php">actions</a> for specific HTTP methods. The default action is specified with the controller configuration.</p>
 
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>'resource' =&gt; [
-    'route' =&gt; '/resource',
+    'path' =&gt; '/resource',
     'method' =&gt; ['GET', 'POST'],
     'controller' =&gt; 'Resource\Controller'
     'action' =&gt; [
