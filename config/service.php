@@ -47,7 +47,7 @@ return [
     'web\log' => Middleware\Logger::class,
 
     //middleware
-    //'web' => 'web\middleware',
+    //'web' => 'http\middleware',
 
     //'layout' => new Shared('layout', [Layout\SharedLayout::class, 'template' => 'layout']),
 
