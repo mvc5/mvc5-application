@@ -6,6 +6,7 @@
 use Mvc5\Plugin\Callback;
 use Mvc5\Route\Config as Route;
 use Mvc5\Session\SessionMessages;
+use Mvc5\Service\Context;
 use Psr\Http\Message\ResponseInterface as Response;
 use Valar\RedirectResponse;
 
@@ -47,7 +48,7 @@ return [
                     new Callback(function($req, Response $res, $next) {
                         /** @var SessionMessages $messages */
                         $messages = $this->plugin('messages');
-                        $url = $this->plugin('url');
+                        $url = Context::plugin('url');
 
                         $messages->success('Action completed!');
 
