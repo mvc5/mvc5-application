@@ -13,9 +13,9 @@
     "require": {
         "php": "^7.0",
         "mvc5/mvc5": "8.*",
-        "mvc5/view": "2.*",
-        "mvc5/facade": "2.*",
-        "mvc5/http-message": "2.*"
+        "mvc5/view": "3.*",
+        "mvc5/facade": "3.*",
+        "mvc5/http-message": "3.*"
     },
     "autoload": {
         "psr-4": {
