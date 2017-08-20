@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": "^7.0",
-        "mvc5/mvc5": "7.*",
+        "mvc5/mvc5": "8.*",
         "mvc5/view": "2.*",
         "mvc5/facade": "2.*",
         "mvc5/http-message": "2.*"
@@ -24,6 +24,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0",
-        "mvc5/mvc5-tests": "7.*"
+        "mvc5/mvc5-tests": "8.*"
     }
 }
