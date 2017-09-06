@@ -21,9 +21,9 @@ class Logger
      * @param Request $request
      * @param Response $response
      * @param callable $next
-     * @return mixed
+     * @return Response
      */
-    function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next) : Response
     {
         $this->log($request->name());
 

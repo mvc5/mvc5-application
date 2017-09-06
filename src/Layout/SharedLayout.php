@@ -21,9 +21,9 @@ class SharedLayout
     /**
      * @param array|string $name
      * @param null $value
-     * @return $this
+     * @return ViewLayout
      */
-    function with($name, $value = null)
+    function with($name, $value = null) : ViewLayout
     {
         $this->set($name, $value);
         return $this;
@@ -31,9 +31,9 @@ class SharedLayout
 
     /**
      * @param array|string $name
-     * @return self|mixed
+     * @return ViewLayout
      */
-    function without($name)
+    function without($name) : ViewLayout
     {
         $this->remove($name);
         return $this;
@@ -41,9 +41,9 @@ class SharedLayout
 
     /**
      * @param Service $service
-     * @return $this
+     * @return ViewLayout
      */
-    function withService(Service $service)
+    function withService(Service $service) : ViewLayout
     {
         $this->service = $service;
         return $this;

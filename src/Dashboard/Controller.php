@@ -30,9 +30,9 @@ class Controller
     }
 
     /**
-     * @return mixed
+     * @return ViewModel
      */
-    function test()
+    function test() : ViewModel
     {
         $model = $this->view($this->template);
 

@@ -24,7 +24,7 @@ class Authenticate
      * @param callable $next
      * @return mixed
      */
-    function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next) : Response
     {
         return $request->user()->authenticated()
             ? $next($request, $response) : $this->redirect($this->url(['app', 'controller' => 'login']));

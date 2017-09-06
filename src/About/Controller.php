@@ -22,7 +22,7 @@ class Controller
     /**
      * @return \Closure
      */
-    function __invoke()
+    function __invoke() : \Closure
     {
         return function() {
             echo $this->message;

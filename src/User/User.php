@@ -13,10 +13,10 @@ interface User
     /**
      * @return bool
      */
-    function authenticated();
+    function authenticated() : bool;
 
     /**
      * @return string
      */
-    function username();
+    function username() : string;
 }

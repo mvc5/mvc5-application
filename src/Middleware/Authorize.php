@@ -20,9 +20,9 @@ class Authorize
     use Plugins\Url;
 
     /**
-     * @return mixed|Response
+     * @return Response
      */
-    protected function error()
+    protected function error() : Response
     {
         $this->danger('Access denied!');
         return $this->redirect($this->url('dashboard'));
@@ -34,7 +34,7 @@ class Authorize
      * @param callable $next
      * @return Response
      */
-    function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next) : Response
     {
         return 'phpdev' === $request->user()->username() ? $next($request, $response) : $this->error();
     }

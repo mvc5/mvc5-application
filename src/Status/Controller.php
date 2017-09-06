@@ -4,6 +4,7 @@
  */
 namespace Status;
 
+use Mvc5\Http;
 use Mvc5\Plugins;
 
 class Controller
@@ -15,9 +16,9 @@ class Controller
     use Plugins\Service;
 
     /**
-     * @return mixed
+     * @return Http\Response
      */
-    function __invoke()
+    function __invoke() : Http\Response
     {
         return $this->json(['PHP' => phpversion(), 'System' => php_uname()]);
     }

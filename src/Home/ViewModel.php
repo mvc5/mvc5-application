@@ -21,7 +21,7 @@ class ViewModel
     /**
      * @return string
      */
-    private function title()
+    private function title() : string
     {
         return $this->title;
     }

@@ -17,15 +17,15 @@ trait User
     /**
      * @return bool
      */
-    function authenticated()
+    function authenticated() : bool
     {
-        return $this['authenticated'];
+        return (bool) $this['authenticated'];
     }
 
     /**
      * @return string
      */
-    function username()
+    function username() : string
     {
         return $this['username'];
     }

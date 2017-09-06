@@ -11,7 +11,7 @@ class Controller
     /**
      * @return ReadFile
      */
-    function __invoke()
+    function __invoke() : ReadFile
     {
         return new ReadFile(__DIR__ . '/DEMO');
     }

@@ -8,14 +8,15 @@ namespace About\More;
 use Arc5\Response;
 use Arc5\Service;
 use Message;
+use Mvc5\Http;
 use View;
 
 class Controller
 {
     /**
-     * @return mixed
+     * @return Http\Response
      */
-    function __invoke()
+    function __invoke() : Http\Response
     {
         Message::info(Service::plugin('message'));
 

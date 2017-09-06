@@ -25,7 +25,7 @@ class Controller
      * @param callable $next
      * @return Response
      */
-    function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next) : Response
     {
         $layout = $this->layout([Arg::CHILD_MODEL => $this->view('about/explore')]);
 

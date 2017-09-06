@@ -18,7 +18,7 @@ class Factory
      * @param array $config
      * @return Controller
      */
-    function __invoke(array $config)
+    function __invoke(array $config) : Controller
     {
         return new Controller($this->service);
     }

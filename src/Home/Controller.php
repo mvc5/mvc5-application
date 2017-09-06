@@ -23,9 +23,9 @@ class Controller
 
     /**
      * @param Request $request
-     * @return string
+     * @return ViewModel
      */
-    function __invoke(Request $request)
+    function __invoke(Request $request) : ViewModel
     {
         return $this->model(['request' => $request]);
     }

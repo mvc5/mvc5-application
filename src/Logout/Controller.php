@@ -5,6 +5,7 @@
 
 namespace Logout;
 
+use Mvc5\Http;
 use Mvc5\Plugins;
 
 class Controller
@@ -19,9 +20,9 @@ class Controller
     use Plugins\Url;
 
     /**
-     * @return mixed
+     * @return Http\Response
      */
-    function __invoke()
+    function __invoke() : Http\Response
     {
         $this->session()->remove('user');
         $this->success('Logout successful!');
