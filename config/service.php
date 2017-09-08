@@ -49,7 +49,7 @@ return [
     //middleware
     //'web' => 'http\middleware',
 
-    //'layout' => new Shared('layout', [Layout\SharedLayout::class, 'template' => 'layout']),
+    //'layout' => new Shared('layout', [Mvc5\View\SharedLayout::class, 'template' => 'layout']),
 
 ] + (include __DIR__ . '/../vendor/mvc5/facade/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
