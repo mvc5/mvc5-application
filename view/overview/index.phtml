@@ -802,6 +802,38 @@ new Invoke(function() { var_dump(func_get_args()); }),
 
         <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Link.php">link</a> plugin is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L217">used</a> to return the current service object. It can also be used as a <a href="https://github.com/mvc5/mvc5/blob/master/src/Config/Config.php">configuration</a> object to delay the <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Container.php#L70">creation</a> of a particular value until it is required.</p>
 
+        <h3 id="maybe"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Maybe.php">Maybe</a></h3>
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Maybe($value = null, $default = null)
+</code></pre>
+        </div>
+
+        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Maybe.php">maybe</a> plugin returns a resolved value. When the resolved value is null, the default value is returned if it is not null, otherwise <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Nothing.php">Nothing</a> is returned. The value can be <a href="#shared">shared</a> and then retrieved with the <a href="#nullable">nullable</a> plugin; which returns null when the value is <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Nothing.php">Nothing</a>.</p>
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>(new Maybe)(); //Nothing
+(new Maybe)('foo'); //foo
+(new Maybe)(new Nothing); //Nothing
+(new Maybe(null, new Value('bar')))(); //new Value('bar')
+(new App)(new Maybe); //Nothing
+(new App)(new Maybe(new Value('foo'))); //foo
+(new App)(new Maybe(null, new Value('bar'))); //bar
+</code></pre>
+        </div>
+
+        <h3 id="nullable"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Nullable.php">Nullable</a></h3>
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Nullable($value = null, $default = null)
+</code></pre>
+        </div>
+
+        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Nullable.php">nullable</a> plugin returns a resolved value. When the value is <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Nothing.php">Nothing</a>, the default value is returned.</p>
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>(new Nullable)(); //null
+(new Nullable)('foo'); //foo
+(new Nullable)(new Nothing); //null
+(new Nullable(new Nothing, new Value('bar')))(new Nothing); //new Value('bar')
+(new App)(new Nullable); //null
+(new App)(new Nullable(new Value('foo')); //foo
+(new App)(new Nullable(new Nothing, new Value('bar'))); //bar
+</code></pre>
+        </div>
+
         <h3 id="nullvalue"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/NullValue.php">NullValue</a></h3>
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>new NullValue
 </code></pre>
