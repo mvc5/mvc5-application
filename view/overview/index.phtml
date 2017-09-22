@@ -699,6 +699,13 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 
         <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/End.php">end</a> plugin will <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L468">resolve</a> a list of plugins and return the result of the last plugin.</p>
 
+        <h3 id="expect"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Expect.php">Expect</a></h3>
+        <div class="language-php highlighter-rouge"><pre class="highlight"><code>new Expect(new Call('web'), new Call('exception\response'), true, false);
+</code></pre>
+        </div>
+
+        <p>The <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Expect.php">expect</a> plugin is used to catch an exception when resolving a <a href="#plugin">plugin</a>. The second argument is the <a href="#plugin">plugin</a> to use when an exception is thrown. The third argument indicates whether the exception should be passed to the second <a href="#plugin">plugin</a> as a <a href="#named-arguments">named argument</a> and the fourth argument indicates whether to merge the exception with the arguments passed to the first <a href="#plugin">plugin</a>.</p>
+
         <h3 id="factory"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/Factory.php">Factory</a></h3>
         <div class="language-php highlighter-rouge"><pre class="highlight"><code>'factory'         =&gt; new Service(null),
 'Home\Controller' =&gt; new Factory(Home\Controller::class),

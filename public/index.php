@@ -4,7 +4,9 @@
  */
 //declare(strict_types = 1);
 
-use Mvc5\Web;
+use Mvc5\App;
+use Mvc5\Plugin\Call;
+use Mvc5\Plugin\Expect;
 
 /**
  *
@@ -19,7 +21,9 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new Web(include __DIR__ . '/../config/config.php', null, true))();
+(new App(include __DIR__ . '/../config/config.php', null, true))(
+    new Expect(new Call('web'), new Call('exception\response'), true)
+);
 
 /**
  *
@@ -43,6 +47,6 @@ $msg = "Total Memory: $totalMemory MB\n"
 
 $parseTime = number_format(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 3);
 
-$msg .= 'Parse Time: ' . $parseTime . 's = ' . ($parseTime  * 1000) . 'ms';
+$msg .= 'Parse Time: ' . $parseTime . 's = ' . ($parseTime * 1000) . 'ms';
 
 echo "\n", '<!-- ', $msg, '-->', "\n";
