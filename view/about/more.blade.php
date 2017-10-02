@@ -1,6 +1,8 @@
 @extends(['layout', 'template' => 'layout'])
 @section('content')
+@import(arc5)
 
+@{{ test }}
 <div class="jumbotron">
     <h1><a href="{{ url('explore/more') }}">More</a></h1>
     <p class="lead">{!! 'Demo Application.' !!}</p>
