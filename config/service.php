@@ -51,7 +51,6 @@ return [
 
     //'layout' => new Shared('layout', [Mvc5\View\SharedLayout::class, 'template' => 'layout']),
 
-] + (include __DIR__ . '/../vendor/mvc5/facade/config/service.php')
-  + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
+] + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
   + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';
