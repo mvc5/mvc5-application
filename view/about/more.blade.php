@@ -47,6 +47,9 @@
         @assign($i, ++$i)
     @endwhile
 
+    @assign($records, 'foobar')
+    @unset($records)
+
     @empty($records)
         <pre>// $records is "empty"...</pre>
     @endempty
@@ -96,15 +99,15 @@
 @endforeach
 
 @push('end')
-    <pre>
-    @foreach(['foo', 'foobar', 'baz'] as $n)
+    <pre>@foreach(['foo', 'foobar', 'baz'] as $n)
         @continue($loop->first)
 
         {{ $n }}
 
         @break($loop->index == 1)
-    @endforeach
-    </pre>
+    @endforeach</pre>
+
+    @plugin($foo,  Mvc5\Config::class, ['foo' => 'bar', 'baz' => 'bat'])
 
     @php
 
@@ -113,6 +116,8 @@
             'uri'    => $request['uri'],
             'params' => $request['params'],
         ]);
+
+        var_dump($foo)
 
     @endphp
 
