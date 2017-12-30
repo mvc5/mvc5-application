@@ -51,6 +51,11 @@ return [
 
     //'layout' => new Shared('layout', [Mvc5\View\SharedLayout::class, 'template' => 'layout']),
 
+    'view5\config' => ['view5\template', 'directive' => [
+        'auth' => '<?php ${var} = $this->plugin({expr}); if (${var}->authenticated()) : ?>',
+        'endAuth' => '<?php endif; ?>'
+    ]]
+
 ] + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
   + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';
