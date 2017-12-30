@@ -14,9 +14,18 @@ class Controller
     /**
      * @param string $message
      */
-    function __construct($message)
+    function __construct(string $message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * @param string $suffix
+     * @return string
+     */
+    function message(string $suffix = '') : string
+    {
+        return $this->message . $suffix;
     }
 
     /**
@@ -25,7 +34,7 @@ class Controller
     function __invoke() : \Closure
     {
         return function() {
-            echo $this->message;
+            echo $this->message();
         };
     }
 }

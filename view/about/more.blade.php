@@ -8,7 +8,7 @@
         <h1><a href="{{ url('explore/more') }}">More</a></h1>
         <p class="lead">
 
-            {!! '<h4>Demo Application.</h6>' !!}
+            {!! '<h4>' !!}@call('About\Controller.message', ['.']) {!! '</h4>' !!}
 
         </p>
         <pre>{{ __FILE__ }}</pre>
