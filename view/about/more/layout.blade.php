@@ -65,14 +65,13 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="{{ url(['app', 'controller' => 'overview']) }}">Overview</a></li>
-                @plugin('user')
-                @if($user->authenticated())
+                @auth('user')
                     <li><a href="{{ url(['dashboard', 'user' => $user->username()]) }}">Dashboard</a></li>
                     <li><a href="{{ url('explore') }}">Explore</a></li>
                     <li><a href="{{ url(['app', 'controller' => 'logout']) }}">Logout</a></li>
                 @else
                     <li><a href="{{ url(['app', 'controller' => 'login']) }}">Login</a></li>
-                @endif
+                @endAuth
             </ul>
         </div><!--/.nav-collapse -->
     </div>
