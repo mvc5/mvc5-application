@@ -1,5 +1,5 @@
-@import(arc5)
 @extends(['layout', 'template' => '/about/more/layout'])
+@import(arc5)
 @assign('title', 'About More')
 @shared('request')
 
@@ -107,7 +107,7 @@
         @break($loop->index == 1)
     @endforeach</pre>
 
-    @plugin($foo,  Mvc5\Config::class, ['foo' => 'bar', 'baz' => 'bat'])
+    @plugin($foo, Mvc5\Config::class, ['foo' => 'bar', 'baz' => 'bat'])
 
     @php
 
@@ -123,6 +123,6 @@
 
     <pre>
         @include('about/test')
-        @include('about/test', ['test' => 'foobar'])
+        @render('about/test', ['test' => 'foobar'])
     </pre>
 @endpush

@@ -78,9 +78,10 @@
     </div>
 </div>
 <div class="container">
-    @includeWhen($msg = $this->{'session\messages'}(), '/about/more/messages', ['msg' => $msg])
+    @renderWhen($msg = $this->{'session\messages'}(), '/about/more/messages', ['msg' => $msg])
     @each('about/more/messages', [['type' => 'danger', 'message' => 'Hello World']], 'msg')
     @each('about/more/messages', [], 'msg', 'raw|<pre>empty</pre>')
+    @render('/about/more/messages', ['msg' => ['type' => 'danger', 'message' => 'Hello World....']])
     <div class="row">
         <div class="col-md-12">
 
