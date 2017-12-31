@@ -71,7 +71,7 @@
     @parent
     <pre>@json(['a' => 'b', 'c' => 'd'])</pre>
 
-    @component('about/more/alert', ['foo' => 'bar'])
+    @component('/about/more/alert', ['foo' => 'bar'])
         @slot('title')
             Forbidden
         @endslot
@@ -122,7 +122,7 @@
     @endphp
 
     <pre>
-        @include('about/test')
-        @render('about/test', ['test' => 'foobar'])
+        @include('/about/test')
+        @render('/about/test', ['test' => 'foobar'])
     </pre>
 @endpush

@@ -4,4 +4,9 @@
     @isset($title)
         <pre>Scoped</pre>
     @endIsset
+
+    @if($this instanceof About\More\Messages\ViewModel)
+        {{ $this->more() }}
+    @endif
+
 </div>
