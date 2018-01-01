@@ -51,11 +51,6 @@ return [
 
     //'layout' => new Shared('layout', [Mvc5\View\SharedLayout::class, 'template' => 'layout']),
 
-    'view5\config' => ['view5\template', 'directive' => [
-        'auth' => '<?php ${var} = $this->plugin({expr}); if (${var}->authenticated()) : ?>',
-        'endAuth' => '<?php endif; ?>'
-    ]],
-
     'about/more/messages' => new About\More\Messages\ViewModel(['more' => ' ...'])
 
 ] + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
