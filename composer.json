@@ -13,7 +13,7 @@
     "require": {
         "php": "^7.0",
         "mvc5/mvc5": "9.*",
-        "mvc5/view": "4.*",
+        "mvc5/view": "5.*",
         "mvc5/facade": "4.*",
         "mvc5/http-message": "4.*"
     },
