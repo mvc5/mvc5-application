@@ -28,7 +28,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
+if (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? null) === 'XMLHttpRequest') {
     return;
 }
 
