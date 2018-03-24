@@ -13,7 +13,7 @@
         </p>
         <pre>{{ __FILE__ }}</pre>
         <p>
-            <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="{{ url('explore') }}" role="button">Explore</a>
+            <a class="btn btn-primary btn-lg" href="{{ url('explore') }}" role="button">Explore</a>
         </p>
     </div>
 

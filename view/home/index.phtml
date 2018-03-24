@@ -2,18 +2,19 @@
 
 /** @var Home\ViewModel $this */
 
+//requires shared service layout configuration
 //$this->shared('layout')['page']['title'] = 'Mvc5 Application: Home';
 
 ?>
 <div class="jumbotron">
     <h1><a href="<?= $this->url('home') ?>"><?= $this->title() ?></a></h1>
-    <p class="lead"><?= $this['message'] ?: 'Demo Application.'; ?></p>
+    <p class="lead"><?= $this['message'] ?></p>
     <pre><?= __FILE__; ?></pre>
     <div id="ajax-result"></div>
     <p>
-        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return info();">Info</a>
-        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return about();">About</a>
-        <a style="margin-left:10px;" class="btn btn-primary btn-lg" href="#" role="button" onclick="return demo();">Demo</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button" onclick="return info();">Info</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button" onclick="return about();">About</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button" onclick="return demo();">Demo</a>
     </p>
 </div>
 <script type="text/javascript">
@@ -23,6 +24,7 @@ function info() {
         var $div = $('#ajax-result');
 
         $div.addClass('alert alert-success');
+        $div.css('overflow-x', 'auto');
 
         $div.append('<h4>Version Information</h4>');
 
@@ -45,7 +47,7 @@ function about() {
 
         $div.addClass('alert alert-success');
 
-        $div.append('<p>'+data+'</p>');
+        $div.append('<h4>'+data+'</h4>');
     });
 
     return false;
