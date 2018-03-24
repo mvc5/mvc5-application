@@ -23,11 +23,11 @@ trait User
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    function username() : string
+    function username()
     {
-        return $this['username'];
+        return $this['username'] ?? null;
     }
 }
 

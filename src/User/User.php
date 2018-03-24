@@ -16,7 +16,7 @@ interface User
     function authenticated() : bool;
 
     /**
-     * @return string
+     * @return string|null
      */
-    function username() : string;
+    function username();
 }
