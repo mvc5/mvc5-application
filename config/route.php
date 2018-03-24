@@ -4,7 +4,6 @@
  */
 
 use Mvc5\Plugin\Callback;
-use Mvc5\Route\Config as Route;
 use Mvc5\Session\SessionMessages;
 use Mvc5\Service\Context;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -12,7 +11,7 @@ use Valar\RedirectResponse;
 
 //key names for url plugin
 return [
-    'home' => new Route([ //cached route
+    'home' => new Home\Route([ //cached route
         //'host' => 'nexus.app.dev',
         //'port' => 8000,
         //'optional' => 'host',
