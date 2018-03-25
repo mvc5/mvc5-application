@@ -108,7 +108,7 @@
                         <a role="button" class="nav-link d-inline-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fa fa-book"></span>
                         </a>
-                        <a href="<?= $this->url('overview'); ?>" role="button"
+                        <a href="<?= $this->url(['app', 'controller' => 'overview']); ?>" role="button"
                            class="<?= '/overview' == $path ? ' active' : ''; ?> pl-0 nav-link d-inline-block">Overview</a>
                         <div id="navbar-dropdown" class="dropdown-menu">
                             <a class="dropdown-item text-nowrap" href="/overview#summary">Summary</a>
@@ -181,14 +181,5 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script>
-    $(function () {
-        'use strict'
-
-        $('[data-toggle="offcanvas"]').on('click', function () {
-            $('.offcanvas-collapse').toggleClass('open')
-        })
-    })
-</script>
 </body>
 </html>
