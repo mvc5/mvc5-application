@@ -12,10 +12,10 @@
     ],
     "require": {
         "php": "^7.1",
-        "mvc5/mvc5": "9.*",
-        "mvc5/view": "5.*",
-        "mvc5/facade": "4.*",
-        "mvc5/http-message": "4.*"
+        "mvc5/mvc5": "10.*",
+        "mvc5/view": "6.*",
+        "mvc5/facade": "5.*",
+        "mvc5/http-message": "5.*"
     },
     "autoload": {
         "psr-4": {
@@ -24,6 +24,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
-        "mvc5/mvc5-tests": "9.*"
+        "mvc5/mvc5-tests": "10.*"
     }
 }
