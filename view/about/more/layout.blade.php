@@ -172,7 +172,7 @@
                         </a>
                         <a href="{{ url(['app', 'controller' => 'overview']) }}" role="button"
                            class="{{ '/overview' == $path ? ' active' : '' }} pl-0 nav-link d-inline-block">Overview</a>
-                        <div id="navbar-dropdown" class="dropdown-menu">
+                        <div id="navbar-overview" class="dropdown-menu">
                             <a class="dropdown-item text-nowrap" href="/overview#summary">Summary</a>
                             <a class="dropdown-item text-nowrap" href="/overview#web-application">Web Application</a>
                             <a class="dropdown-item text-nowrap" href="/overview#console-application">Console Application</a>
