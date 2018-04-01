@@ -23,7 +23,7 @@ class Provider
      * @param string|mixed $plugin
      * @param array $args
      * @return mixed
-     * @throws \RuntimeException
+     * @throws \Throwable
      */
     protected function resolve($plugin, array $args = [])
     {
