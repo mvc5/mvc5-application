@@ -166,13 +166,13 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <div class="btn-group d-block">
-                        <a role="button" class="nav-link d-inline-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="btn-group d-block dropdown">
+                        <button class="btn btn-link nav-link d-inline-block" id="overview-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fa fa-book"></span>
-                        </a>
+                        </button>
                         <a href="{{ url(['app', 'controller' => 'overview']) }}" role="button"
                            class="{{ '/overview' == $path ? ' active' : '' }} pl-0 nav-link d-inline-block">Overview</a>
-                        <div id="navbar-overview" class="dropdown-menu">
+                        <div id="navbar-overview" class="dropdown-menu" aria-labelledby="overview-icon">
                             <a class="dropdown-item text-nowrap" href="/overview#summary">Summary</a>
                             <a class="dropdown-item text-nowrap" href="/overview#web-application">Web Application</a>
                             <a class="dropdown-item text-nowrap" href="/overview#console-application">Console Application</a>
@@ -231,7 +231,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
