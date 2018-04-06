@@ -178,6 +178,11 @@
                             <a class="dropdown-item text-nowrap" href="/overview#console-application">Console Application</a>
                             <a class="dropdown-item text-nowrap" href="/overview#environment-aware">Environment Aware</a>
                             <a class="dropdown-item text-nowrap" href="/overview#models-and-arrayaccess">Models and ArrayAccess</a>
+                                <a class="dropdown-item text-nowrap pl-5" href="/overview#set-and-remove">Set and Remove</a>
+                                <a class="dropdown-item text-nowrap pl-5" href="/overview#immutable">Immutable</a>
+                                <a class="dropdown-item text-nowrap pl-5" href="/overview#with-and-without">With and Without</a>
+                                <a class="dropdown-item text-nowrap pl-5" href="/overview#arrayaccess">ArrayAccess</a>
+                                <a class="dropdown-item text-nowrap pl-5" href="/overview#polymorphism">Polymorphism</a>
                             <a class="dropdown-item text-nowrap" href="/overview#routes">Routes</a>
                                 <a class="dropdown-item text-nowrap pl-5" href="/overview#automatic-routes">Automatic Routes</a>
                                 <a class="dropdown-item text-nowrap pl-5" href="/overview#url-generator">Url Generator</a>
