@@ -56,16 +56,15 @@
             display: block;
             word-break: break-all;
             word-wrap: break-word;
-            border: 1px solid #e1e1e1;
+            border: 1px solid #f9eded;
             overflow: auto;
             padding:0.6rem;
-            background-color: #fafafa;
+            background-color: #fefcfc;
             border-radius: 4px;
         }
 
         pre code {
-            font-size: 90%;
-            line-height: 1.42857143;
+            font-size: 87.5%;
             color: #646464;
         }
 
@@ -98,6 +97,8 @@
                 max-height:480px;
                 overflow-y:auto;
                 overflow-x:hidden;
+                font-size: 0.8rem;
+                min-width:440px;
             }
 
             #navbar-overview a:focus {
@@ -173,35 +174,43 @@
                         <a href="{{ url(['app', 'controller' => 'overview']) }}" role="button"
                            class="{{ '/overview' == $path ? ' active' : '' }} pl-0 nav-link d-inline-block">Overview</a>
                         <div id="navbar-overview" class="dropdown-menu" aria-labelledby="overview-icon">
-                            <a class="dropdown-item text-nowrap" href="/overview#summary">Summary</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#web-application">Web Application</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#console-application">Console Application</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#environment-aware">Environment Aware</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#models-and-arrayaccess">Models and ArrayAccess</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#set-and-remove">Set and Remove</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#immutable">Immutable</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#with-and-without">With and Without</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#arrayaccess">ArrayAccess</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#polymorphism">Polymorphism</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#routes">Routes</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#automatic-routes">Automatic Routes</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#url-generator">Url Generator</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#middleware">Middleware</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#http-middleware">HTTP Middleware</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#pipelines">Pipelines</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#view-models">View Models</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#rendering-view-models">Rendering View Models</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#view-engine">View Engine</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#template-layouts">Template Layouts</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#view-plugins">View Plugins</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#events">Events</a>
-                            <a class="dropdown-item text-nowrap pl-5" href="/overview#event-configuration">Event Configuration</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#dependency-injection">Dependency Injection</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#service-container">Service Container</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#autowiring">Autowiring</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#plugins">Plugins</a>
-                                <a class="dropdown-item text-nowrap pl-5" href="/overview#service-providers">Service Providers</a>
-                            <a class="dropdown-item text-nowrap" href="/overview#named-arguments">Named Arguments</a>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="dropdown-item text-nowrap" href="/overview#summary">Summary</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#web-application">Web Application</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#console-application">Console Application</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#environment-aware">Environment Aware</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#models-and-arrayaccess">Models and ArrayAccess</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#set-and-remove">Set and Remove</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#immutable">Immutable</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#with-and-without">With and Without</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#arrayaccess">ArrayAccess</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#polymorphism">Polymorphism</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#routes">Routes</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#automatic-routes">Automatic Routes</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#url-generator">Url Generator</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#rest-api-methods">REST API Methods</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#action-controller">Action Controller</a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-item text-nowrap" href="/overview#middleware">Middleware</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#http-middleware">HTTP Middleware</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#pipelines">Pipelines</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#view-models">View Models</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#rendering-view-models">Rendering View Models</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#view-engine">View Engine</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#template-layouts">Template Layouts</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#view-plugins">View Plugins</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#events">Events</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#event-configuration">Event Configuration</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#dependency-injection">Dependency Injection</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#service-container">Service Container</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#autowiring">Autowiring</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#plugins">Plugins</a>
+                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#service-providers">Service Providers</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#named-arguments">Named Arguments</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
