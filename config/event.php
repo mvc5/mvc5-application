@@ -8,7 +8,7 @@ use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Param;
 
 return [
-    'dashboard:add' => new Mvc5\Model([
+    'dashboard:add' => new Mvc5\Iterator([
         Dashboard\Add\Validate::class,
         Dashboard\Add\Save::class,
         Dashboard\Add\Respond::class
