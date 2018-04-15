@@ -210,7 +210,7 @@ trait ReadOnly
 </code></pre>
 </div>
 <p>Implementing the <a href="https://github.com/mvc5/mvc5/blob/master/src/Config/Model.php">model</a> interface allows a
-    component to only have to specify its immutable methods.</p>
+    component to specify only its immutable methods.</p>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>interface Route
     extends Model
 {
@@ -528,7 +528,7 @@ $this-&gt;without(['foo', 'baz']);
             href="https://github.com/mvc5/mvc5/blob/master/src/Service/Middleware.php#L43">delegate</a> function is <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Service/Middleware.php#L56">returned</a> as the result;
     otherwise null is <a href="https://github.com/mvc5/mvc5/blob/master/src/Service/Middleware.php#L56">returned</a>.
-    This allows middleware functions to be easily created and for them to vary the arguments passed to the <a
+    This allows middleware functions to be easily created and to vary the arguments passed to the <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Service/Middleware.php#L62">next</a> function.</p>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>function __invoke(Route $route, Request $request, callable $next)
 {
@@ -588,9 +588,8 @@ $this-&gt;without(['foo', 'baz']);
 <p><a href="#routes">Routes</a> can be configured with <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Middleware.php">middleware</a> pipelines and (optionally)
     a controller. During the <a href="https://github.com/mvc5/mvc5/blob/master/config/middleware.php#L7">route match</a>
-    process the child stack is <a
-            href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Merge.php#L26">appended</a> to the parent
-    stack. When the <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php">route</a> is <a
+    process, the child stack is <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Merge.php#L26">appended</a>
+    to the parent stack. When the <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php">route</a> is <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Path.php#L56">matched</a>, the <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Route/Route.php#L38">controller</a> is <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/Middleware.php#L52">appended</a> to the
@@ -897,8 +896,8 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 </div>
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Container.php">container</a> can contain any type of
     value, except for <a href="http://php.net/manual/en/language.types.null.php">null</a>; in which case the <a
-            href="#maybe">maybe</a> and <a href="#nullable">nullable</a> plugins can be used. A parent container can
-    also pass itself to a child container as the service <a
+            href="#nullvalue">null value</a> plugin can be used. A parent container can also pass itself to a child
+    container as the service <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L73">provider</a> to use when the
     child container cannot retrieve or resolve a particular value. The parent container can also configure the <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L75">scope</a> of an anonymous
@@ -913,9 +912,8 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
         injection</a>.</p>
 
 <h3 id="plugins">Plugins</h3>
-<p>Plugins are <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L412">resolved</a> can
-    perform a variety of tasks and be nested together to form a composite plugin. Various types of plugins are available
-    and custom plugins can also be created.</p>
+<p>Plugins can perform a variety of tasks and be nested together to form a composite plugin. Various types of plugins
+    are available and custom plugins can also be created.</p>
 <h5 id="app"><a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/App.php">App</a></h5>
 <div class="language-php highlighter-rouge"><pre class="highlight"><code>'dashboard' =&gt; new App(new FileInclude(__DIR__ . '/dashboard.php')),
 </code></pre>
