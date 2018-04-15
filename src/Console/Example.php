@@ -28,7 +28,6 @@ class Example
      */
     function __invoke($day, $month)
     {
-        var_dump($this->model);
-        echo $day . ' ' . $month . "\n";
+        echo $this->model->message . ': ' . $day . ' ' . $month . "\n";
     }
 }
