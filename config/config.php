@@ -6,6 +6,7 @@
 return [
     'cache'      => __DIR__ . '/../tmp',
     'cookie'     => include __DIR__ . '/cookie.php',
+    'debug'      => false,
     'directives' => include __DIR__ . '/directives.php',
     'events'     => include __DIR__ . '/event.php',
     'middleware' => include __DIR__ . '/middleware.php',

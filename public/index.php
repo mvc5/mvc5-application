@@ -28,7 +28,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-if (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? null) === 'XMLHttpRequest') {
+if (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? null) === 'XMLHttpRequest' || (false !== strpos($_SERVER['HTTP_ACCEPT'] ?? '', '/json'))) {
     return;
 }
 
