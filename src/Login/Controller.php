@@ -7,6 +7,7 @@ namespace Login;
 
 use Mvc5\Plugins;
 use Mvc5\Request\Request;
+use Mvc5\Response\HttpResponse;
 use Mvc5\View;
 
 class Controller
@@ -40,14 +41,14 @@ class Controller
             return $this->redirect($this->url(['dashboard', 'user' => $user->username()]));
         }
 
-        if (!$request->data()) {
+        if (!$request->isPost()) {
             $this->warning('Demo Login', 'login');
             return $this->model(['params' => $request->params()]);
         }
 
         if ('home' !== $request->data('password')) {
             $this->danger('Invalid Login');
-            return $this->view();
+            return new HttpResponse($this->view(), 422);
         }
 
         $user['authenticated'] = true;
