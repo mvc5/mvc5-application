@@ -9,7 +9,7 @@ use GuzzleHttp;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\GuzzleException;
-use Mvc5\Test\Test\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ClientTest
     extends TestCase
@@ -23,27 +23,38 @@ class ClientTest
     }
 
     /**
+     *
      * @throws GuzzleException
      */
-    function test_post()
+    function test_post_form()
     {
-        try {
+        $response = $this->client()->request('POST', '/api', [
+            'form_params' => ['foo' => 'bar', 'baz' => 'bat'],
+            'headers' => ['content-type' => 'application/x-www-form-urlencoded', 'accept' => 'application/json']
+        ]);
 
-            $response = $this->client()->request('POST', '/api', [
-                'form_params' => ['username' => 'phpdev', 'password' => 'home'],
-                'headers' => [
-                    'accept' => 'application/json',
-                    'content-type' => 'application/x-www-form-urlencoded'
-                ]
-            ]);
+        $result = json_decode((string) $response->getBody());
 
-            $result = json_decode($response->getBody());
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('bar', $result->foo);
+        $this->assertEquals('bat', $result->baz);
+    }
 
-            $this->assertEquals('home', $result->password);
+    /**
+     * @throws GuzzleException
+     */
+    function test_post_json()
+    {
+        $response = $this->client()->request('POST', '/api', [
+            'json' => ['foo' => 'bar', 'baz' => 'bat'],
+            'headers' => ['content-type' => 'application/json', 'accept' => 'application/json']
+        ]);
 
-        } catch(ClientException $exception) {
-            throw $exception;
-        }
+        $result = json_decode($response->getBody());
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('bar', $result->foo);
+        $this->assertEquals('bat', $result->baz);
     }
 
     /**

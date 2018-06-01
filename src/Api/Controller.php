@@ -23,6 +23,6 @@ class Controller
             throw new \Exception('foo bar');
         }
 
-        return new JsonResponse($data);
+        return new JsonResponse(['foo' => $data['foo'], 'baz' => $data['baz']]);
     }
 }
