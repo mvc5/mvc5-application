@@ -10,6 +10,10 @@
          stopOnFailure="true"
          syntaxCheck="false">
     <testsuites>
+        <testsuite name="App Test Suite">
+            <file>tests/Api/ClientTest.php</file>
+            <file>tests/Api/ControllerTest.php</file>
+        </testsuite>
         <testsuite name="Mvc5 Test Suite">
             <directory>./vendor/mvc5/mvc5-tests/src</directory>
         </testsuite>
