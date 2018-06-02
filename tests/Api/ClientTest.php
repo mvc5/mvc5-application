@@ -7,8 +7,8 @@ namespace Test\Api;
 
 use GuzzleHttp;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ServerException;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest
@@ -33,7 +33,7 @@ class ClientTest
             'headers' => ['content-type' => 'application/x-www-form-urlencoded', 'accept' => 'application/json']
         ]);
 
-        $result = json_decode((string) $response->getBody());
+        $result = json_decode($response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('bar', $result->foo);
