@@ -55,7 +55,8 @@ class Controller
         $user['username'] = $request->data('username');
 
         $this->success('Login successful!');
-        $this->log(new \Exception('Login successful!'));
+        //throws the exception when debug is enabled
+        //$this->log(new \Exception('Login successful!'));
 
         return $this->redirect($this->url(['dashboard', 'user' => $user->username()]));
     }
