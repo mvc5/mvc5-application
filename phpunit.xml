@@ -7,8 +7,7 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="true"
-         syntaxCheck="false">
+         stopOnFailure="true">
     <testsuites>
         <testsuite name="App Test Suite">
             <file>tests/Api/ClientTest.php</file>
@@ -24,6 +23,6 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-html" target="build/logs/report" showUncoveredFiles="true" highlight="true"/>
+        <log type="coverage-html" target="build/logs/report" showUncoveredFiles="true"/>
     </logging>
 </phpunit>
