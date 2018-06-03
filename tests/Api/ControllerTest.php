@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  *
  */
@@ -16,63 +16,6 @@ use Valar\Plugin\ServerRequest;
 class ControllerTest
     extends TestCase
 {
-    /**
-     * @runInSeparateProcess
-     * @throws \Throwable
-     */
-    function test_post_form()
-    {
-        $headers = new HttpHeaders(['content-type' => 'application/json']);
-        $uri = new HttpUri(['path' => '/api']);
-
-        $config = include __DIR__ . '/../../config/config.php';
-        $config['services']['request'] = new ServerRequest(
-            ['headers' => $headers, 'uri' => $uri, 'method' => new Value('POST'),
-                'data' => new Value(['foo' => 'bar', 'baz' => 'bat'])
-            ] + include __DIR__ . '/../../vendor/mvc5/http-message/config/request.php'
-        );
-
-        $this->expectOutputString('{"foo":"bar","baz":"bat"}');
-
-        $response = (new App($config))->call('web');
-
-        $result = json_decode($response->body);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals(200, $response->status);
-        $this->assertEquals('OK', $response->reason);
-        $this->assertEquals('bar', $result->foo);
-        $this->assertEquals('bat', $result->baz);
-    }
-
-    /**
-     * @runInSeparateProcess
-     * @throws \Throwable
-     */
-    function test_post_json()
-    {
-        $headers = new HttpHeaders(['content-type' => 'application/json']);
-        $uri = new HttpUri(['path' => '/api']);
-
-        $config = include __DIR__ . '/../../config/config.php';
-        $config['services']['request'] = new ServerRequest(
-            ['headers' => $headers, 'uri' => $uri, 'method' => new Value('POST'),
-                'body' => new Value('{"foo":"bar","baz":"bat"}')
-            ] + include __DIR__ . '/../../vendor/mvc5/http-message/config/request.php'
-        );
-
-        $this->expectOutputString('{"foo":"bar","baz":"bat"}');
-
-        $response = (new App($config))->call('web');
-
-        $result = json_decode($response->body);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals(200, $response->status);
-        $this->assertEquals('OK', $response->reason);
-        $this->assertEquals('bar', $result->foo);
-        $this->assertEquals('bat', $result->baz);
-    }
 
     /**
      * @runInSeparateProcess
@@ -80,14 +23,11 @@ class ControllerTest
      */
     function test_error()
     {
-        $headers = new HttpHeaders(['accept' => 'application/json']);
-        $uri = new HttpUri(['path' => '/foo']);
-
         $config = include __DIR__ . '/../../config/config.php';
-        $config['services']['request'] = new ServerRequest(
-            ['headers' => $headers, 'uri' => $uri]
-            + include __DIR__ . '/../../vendor/mvc5/http-message/config/request.php'
-        );
+        $config['services']['request'] = ServerRequest::with([
+            'headers' => new HttpHeaders(['accept' => 'application/json']),
+            'uri' => new HttpUri(['path' => '/foo'])
+        ]);
 
         $this->expectOutputString('{"message":"Not Found","description":"The server can not find the requested resource."}');
 
@@ -108,14 +48,12 @@ class ControllerTest
      */
     function test_exception()
     {
-        $headers = new HttpHeaders(['accept' => 'application/json']);
-
         $config = include __DIR__ . '/../../config/config.php';
         $config['debug'] = false;
         $config['services']['log\error'] = ['Mvc5\Log\ErrorLog', 3, '/dev/null'];
-        $config['services']['request'] = new ServerRequest(
-            ['headers' => $headers] + include __DIR__ . '/../../vendor/mvc5/http-message/config/request.php'
-        );
+        $config['services']['request'] = ServerRequest::with([
+            'headers' => new HttpHeaders(['accept' => 'application/json'])
+        ]);
 
         $this->expectOutputString('{"message":""}');
 
@@ -135,14 +73,12 @@ class ControllerTest
      */
     function test_exception_trace()
     {
-        $headers = new HttpHeaders(['accept' => 'application/json']);
-
         $config = include __DIR__ . '/../../config/config.php';
         $config['debug'] = true;
         $config['services']['log\error'] = ['Mvc5\Log\ErrorLog', 3, '/dev/null'];
-        $config['services']['request'] = new ServerRequest(
-            ['headers' => $headers] + include __DIR__ . '/../../vendor/mvc5/http-message/config/request.php'
-        );
+        $config['services']['request'] = ServerRequest::with([
+            'headers' => new HttpHeaders(['accept' => 'application/json'])
+        ]);
 
         $response = (new App($config))->call('exception\response', ['exception' => new \Exception('foobar', 900)]);
 
@@ -153,9 +89,63 @@ class ControllerTest
         $this->assertEquals('Internal Server Error', $response->reason);
         $this->assertEquals(900, $result->code);
         $this->assertEquals('foobar', $result->message);
-        $this->assertEquals(147, $result->line);
+        $this->assertEquals(83, $result->line);
         $this->assertEquals(__FILE__, $result->file);
         $this->assertInternalType('array', $result->trace);
         $this->assertNotEmpty($result->trace);
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @throws \Throwable
+     */
+    function test_post_form()
+    {
+        $config = include __DIR__ . '/../../config/config.php';
+        $config['services']['request'] = ServerRequest::with([
+            'data' => new Value(['foo' => 'bar', 'baz' => 'bat']),
+            'header' => new HttpHeaders(['content-type' => 'application/json']),
+            'method' => new Value('POST'),
+            'uri' => new HttpUri(['path' => '/api'])
+        ]);
+
+        $this->expectOutputString('{"foo":"bar","baz":"bat"}');
+
+        $response = (new App($config))->call('web');
+
+        $result = json_decode($response->body);
+
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertEquals(200, $response->status);
+        $this->assertEquals('OK', $response->reason);
+        $this->assertEquals('bar', $result->foo);
+        $this->assertEquals('bat', $result->baz);
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @throws \Throwable
+     */
+    function test_post_json()
+    {
+        $config = include __DIR__ . '/../../config/config.php';
+        $config['services']['request'] = ServerRequest::with([
+            'body' => new Value('{"foo":"bar","baz":"bat"}'),
+            'headers' => new HttpHeaders(['content-type' => 'application/json']),
+            'method' => new Value('POST'),
+            'uri' => new HttpUri(['path' => '/api'])
+        ]);
+
+        $this->expectOutputString('{"foo":"bar","baz":"bat"}');
+
+        $response = (new App($config))->call('web');
+
+        $result = json_decode($response->body);
+
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertEquals(200, $response->status);
+        $this->assertEquals('OK', $response->reason);
+        $this->assertEquals('bar', $result->foo);
+        $this->assertEquals('bat', $result->baz);
     }
 }

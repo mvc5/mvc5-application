@@ -23,41 +23,6 @@ class ClientTest
     }
 
     /**
-     *
-     * @throws GuzzleException
-     */
-    function test_post_form()
-    {
-        $response = $this->client()->request('POST', '/api', [
-            'form_params' => ['foo' => 'bar', 'baz' => 'bat'],
-            'headers' => ['content-type' => 'application/x-www-form-urlencoded', 'accept' => 'application/json']
-        ]);
-
-        $result = json_decode($response->getBody());
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('bar', $result->foo);
-        $this->assertEquals('bat', $result->baz);
-    }
-
-    /**
-     * @throws GuzzleException
-     */
-    function test_post_json()
-    {
-        $response = $this->client()->request('POST', '/api', [
-            'json' => ['foo' => 'bar', 'baz' => 'bat'],
-            'headers' => ['content-type' => 'application/json', 'accept' => 'application/json']
-        ]);
-
-        $result = json_decode($response->getBody());
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('bar', $result->foo);
-        $this->assertEquals('bat', $result->baz);
-    }
-
-    /**
      * @throws GuzzleException
      */
     function test_error()
@@ -91,5 +56,40 @@ class ClientTest
             $this->assertEquals(500, $exception->getResponse()->getStatusCode());
             $this->assertEquals('', $result->message);
         }
+    }
+
+    /**
+     *
+     * @throws GuzzleException
+     */
+    function test_post_form()
+    {
+        $response = $this->client()->request('POST', '/api', [
+            'form_params' => ['foo' => 'bar', 'baz' => 'bat'],
+            'headers' => ['content-type' => 'application/x-www-form-urlencoded', 'accept' => 'application/json']
+        ]);
+
+        $result = json_decode($response->getBody());
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('bar', $result->foo);
+        $this->assertEquals('bat', $result->baz);
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    function test_post_json()
+    {
+        $response = $this->client()->request('POST', '/api', [
+            'json' => ['foo' => 'bar', 'baz' => 'bat'],
+            'headers' => ['content-type' => 'application/json', 'accept' => 'application/json']
+        ]);
+
+        $result = json_decode($response->getBody());
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('bar', $result->foo);
+        $this->assertEquals('bat', $result->baz);
     }
 }
