@@ -37,6 +37,7 @@ class ControllerTest
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(404, $response->status);
+        $this->assertEquals('application/json', $response->headers['content-type']);
         $this->assertEquals('Not Found', $response->reason);
         $this->assertEquals('Not Found', $result->message);
         $this->assertEquals('The server can not find the requested resource.', $result->description);
@@ -63,6 +64,7 @@ class ControllerTest
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(500, $response->status);
+        $this->assertEquals('application/json', $response->headers['content-type']);
         $this->assertEquals('Internal Server Error', $response->reason);
         $this->assertEquals('', $result->message);
     }
@@ -86,10 +88,11 @@ class ControllerTest
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(500, $response->status);
+        $this->assertEquals('application/json', $response->headers['content-type']);
         $this->assertEquals('Internal Server Error', $response->reason);
         $this->assertEquals(900, $result->code);
         $this->assertEquals('foobar', $result->message);
-        $this->assertEquals(83, $result->line);
+        $this->assertEquals(85, $result->line);
         $this->assertEquals(__FILE__, $result->file);
         $this->assertInternalType('array', $result->trace);
         $this->assertNotEmpty($result->trace);
@@ -117,6 +120,7 @@ class ControllerTest
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status);
+        $this->assertEquals('application/json', $response->headers['content-type']);
         $this->assertEquals('OK', $response->reason);
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
@@ -144,6 +148,7 @@ class ControllerTest
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status);
+        $this->assertEquals('application/json', $response->headers['content-type']);
         $this->assertEquals('OK', $response->reason);
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);

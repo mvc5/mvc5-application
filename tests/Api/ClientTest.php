@@ -33,10 +33,15 @@ class ClientTest
 
         } catch(ClientException $exception) {
 
-            $result = json_decode($exception->getResponse()->getBody());
+            $response = $exception->getResponse();
 
-            $this->assertEquals(404, $exception->getResponse()->getStatusCode());
+            $result = json_decode($response->getBody());
+
+            $this->assertEquals(404, $response->getStatusCode());
+            $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+            $this->assertEquals('Not Found', $response->getReasonPhrase());
             $this->assertEquals('Not Found', $result->message);
+            $this->assertEquals('The server can not find the requested resource.', $result->description);
         }
     }
 
@@ -51,9 +56,13 @@ class ClientTest
 
         } catch(ServerException $exception) {
 
-            $result = json_decode($exception->getResponse()->getBody());
+            $response = $exception->getResponse();
 
-            $this->assertEquals(500, $exception->getResponse()->getStatusCode());
+            $result = json_decode($response->getBody());
+
+            $this->assertEquals(500, $response->getStatusCode());
+            $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+            $this->assertEquals('Internal Server Error', $response->getReasonPhrase());
             $this->assertEquals('', $result->message);
         }
     }
@@ -72,6 +81,8 @@ class ClientTest
         $result = json_decode($response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+        $this->assertEquals('OK', $response->getReasonPhrase());
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
     }
@@ -89,6 +100,8 @@ class ClientTest
         $result = json_decode($response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+        $this->assertEquals('OK', $response->getReasonPhrase());
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
     }
