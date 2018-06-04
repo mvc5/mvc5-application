@@ -37,7 +37,7 @@ class ControllerTest
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(404, $response->status);
-        $this->assertEquals('application/json', $response->headers['content-type']);
+        $this->assertEquals('application/json', $response->header('content-type'));
         $this->assertEquals('Not Found', $response->reason);
         $this->assertEquals('Not Found', $result->message);
         $this->assertEquals('The server can not find the requested resource.', $result->description);
