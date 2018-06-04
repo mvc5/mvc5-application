@@ -16,7 +16,6 @@ use Valar\Plugin\ServerRequest;
 class ControllerTest
     extends TestCase
 {
-
     /**
      * @runInSeparateProcess
      * @throws \Throwable
@@ -33,11 +32,11 @@ class ControllerTest
 
         $response = (new App($config))->call('web');
 
-        $result = json_decode($response->body);
+        $result = json_decode((string) $response->body);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(404, $response->status);
-        $this->assertEquals('application/json', $response->header('content-type'));
+        $this->assertEquals('application/json', $response->headers['content-type']);
         $this->assertEquals('Not Found', $response->reason);
         $this->assertEquals('Not Found', $result->message);
         $this->assertEquals('The server can not find the requested resource.', $result->description);
@@ -60,7 +59,7 @@ class ControllerTest
 
         $response = (new App($config))->call('exception\response', ['exception' => new \Exception('foobar')]);
 
-        $result = json_decode($response->body);
+        $result = json_decode((string) $response->body);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(500, $response->status);
@@ -84,7 +83,7 @@ class ControllerTest
 
         $response = (new App($config))->call('exception\response', ['exception' => new \Exception('foobar', 900)]);
 
-        $result = json_decode($response->body);
+        $result = json_decode((string) $response->body);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(500, $response->status);
@@ -92,7 +91,7 @@ class ControllerTest
         $this->assertEquals('Internal Server Error', $response->reason);
         $this->assertEquals(900, $result->code);
         $this->assertEquals('foobar', $result->message);
-        $this->assertEquals(85, $result->line);
+        $this->assertEquals(84, $result->line);
         $this->assertEquals(__FILE__, $result->file);
         $this->assertInternalType('array', $result->trace);
         $this->assertNotEmpty($result->trace);
@@ -116,7 +115,7 @@ class ControllerTest
 
         $response = (new App($config))->call('web');
 
-        $result = json_decode($response->body);
+        $result = json_decode((string) $response->body);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status);
@@ -144,7 +143,7 @@ class ControllerTest
 
         $response = (new App($config))->call('web');
 
-        $result = json_decode($response->body);
+        $result = json_decode((string) $response->body);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->status);
