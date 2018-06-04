@@ -450,23 +450,26 @@ $this-&gt;without(['foo', 'baz']);
 <h2 id="json-api">JSON API</h2>
 <p>Web services and APIs can be built using JSON requests and responses. A request with the <code
             class="highlighter-rouge">application/json</code> content type header is <a
-            href="https://github.com/mvc5/http-message/blob/master/src/Plugin/Data.php#L64">automatically decoded</a>
-    into an associative array and <a href="https://github.com/mvc5/http-message/blob/master/config/request.php#L33">assigned</a>
-    to the request as the <code class="highlighter-rouge">data</code> attribute. If the <a
+            href="https://github.com/mvc5/http-message/blob/master/src/Plugin/Data.php#L64">decoded</a> automatically
+    (JIT) into an associative array and <a
+            href="https://github.com/mvc5/http-message/blob/master/config/request.php#L33">assigned</a> to the request
+    as the <code class="highlighter-rouge">data</code> attribute. If the <a
             href="https://github.com/mvc5/mvc5/blob/master/config/middleware.php#L7">route match</a> middleware function
-    returns a HTTP <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Error.php">error</a>, e.g <a
+    returns a HTTP <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Error.php">Error</a>, e.g <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Http/Error/NotFound.php">404 Not Found</a>, it is <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Route/Dispatch/Router.php#L108">assigned</a> to the
     request by the router. The <a href="https://github.com/mvc5/mvc5/blob/master/src/Request/Error/Controller.php#L43">error
-        controller</a> will then return the HTTP <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Error.php">error</a>
+        controller</a> will then return the HTTP <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Error.php">Error</a>
     as a <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonErrorResponse.php">JSON response</a> when
-    the client’s request accept header is <code class="highlighter-rouge">application/json</code>. Similarly, when an
-    exception is thrown, the <a href="https://github.com/mvc5/mvc5/blob/master/config/event.php#L7"><code
+    the request accept header is <code class="highlighter-rouge">application/json</code>. Similarly, when an exception
+    is thrown, the <a href="https://github.com/mvc5/mvc5/blob/master/config/event.php#L7"><code
                 class="highlighter-rouge">response\exception</code></a> function will return a <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonExceptionResponse.php">JSON response</a>
     containing an empty exception message. Alternatively, in development, the <a
             href="https://github.com/mvc5/mvc5-application/blob/master/config/config.php#L9">debug</a> configuration
-    parameter can be set to true to include the details of the exception.</p>
+    parameter can be set to true to <a
+            href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonExceptionResponse.php#L20">include</a> the
+    details of the exception.</p>
 
 <h2 id="rest-api-methods">REST API Methods</h2>
 <p>Routes can be configured with <a
@@ -497,7 +500,8 @@ $this-&gt;without(['foo', 'baz']);
 </code></pre>
 </div>
 <p>A controller is a function, it can also be <a href="#middleware">middleware</a>, or an <a
-            href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a>, or a <a href="https://mvc5.github.io/plugins">plugin</a>
+            href="https://github.com/mvc5/mvc5/blob/master/src/Event/Event.php">event</a>, or a <a
+            href="https://mvc5.github.io/plugins">plugin</a>
     that <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L477">resolves</a> to a <a
             href="http://php.net/manual/en/language.types.callable.php">callable</a> function. If the value returned
     from the controller is not null and is not a <a
@@ -843,7 +847,8 @@ class Controller
 </div>
 
 <h2 id="dependency-injection">Dependency Injection</h2>
-<p>A service configuration can either be a string, an array, an anonymous function, a <a href="https://mvc5.github.io/plugins">plugin</a> or a
+<p>A service configuration can either be a string, an array, an anonymous function, a <a
+            href="https://mvc5.github.io/plugins">plugin</a> or a
     real value.
     The service name can either be a short name or a class or interface name. If a service name does not have a service
     configuration and it is a fully qualified class name, the class will be <a
@@ -867,11 +872,14 @@ class Controller
     there are required dependencies. The first value of the array is the name of the class (or another configuration)
     and the remaining values are the arguments that cannot be <a href="#autowiring">autowired</a> and can override a
     parent configuration value by name. An anonymous function can be used when the class instantiation requires custom
-    logic. However, anonymous functions cannot be serialized and a <a href="https://mvc5.github.io/plugins">plugin</a> can be used instead. <a
-            href="https://mvc5.github.io/plugins">Plugins</a> provide inversion of control and are a domain-specific language. Each <a
+    logic. However, anonymous functions cannot be serialized and a <a href="https://mvc5.github.io/plugins">plugin</a>
+    can be used instead. <a
+            href="https://mvc5.github.io/plugins">Plugins</a> provide inversion of control and are a domain-specific
+    language. Each <a
             href="https://mvc5.github.io/plugins">plugin</a> must implement a <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Resolvable.php">resolvable</a> interface so the system
-    can distinguish them from other objects and invoke their associated function. <a href="https://mvc5.github.io/plugins">Plugins</a> are
+    can distinguish them from other objects and invoke their associated function. <a
+            href="https://mvc5.github.io/plugins">Plugins</a> are
     only required when an explicit configuration is necessary.</p>
 
 <h3 id="autowiring">Autowiring</h3>
@@ -883,7 +891,8 @@ class Controller
         injection</a>.</p>
 
 <h3 id="service-container">Service Container</h3>
-<p>Service configurations and <a href="https://mvc5.github.io/plugins">plugins</a> can be combined and accessed using the <a
+<p>Service configurations and <a href="https://mvc5.github.io/plugins">plugins</a> can be combined and accessed using
+    the <a
             href="http://php.net/manual/en/class.arrayaccess.php">ArrayAccess</a> interface or the <a
             href="https://github.com/mvc5/mvc5/blob/master/src/Arg.php#L106">arrow</a> notation, e.g. <code>dashboard-&gt;home</code>.
 </p>
@@ -921,7 +930,8 @@ $app-&gt;call('dashboard-&gt;home', ['form' =&gt; []]);
 </div>
 <p>A <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Container.php">container</a> can contain any type of
     value, except for <a href="http://php.net/manual/en/language.types.null.php">null</a>; in which case the <a
-            href="https://mvc5.github.io/plugins/#nullvalue">null value</a> plugin can be used. A parent container can also pass itself to a
+            href="https://mvc5.github.io/plugins/#nullvalue">null value</a> plugin can be used. A parent container can
+    also pass itself to a
     child container as the service <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L73">provider</a>
     to use when the child container cannot retrieve or resolve a particular value. The parent container can also
     configure the <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L75">scope</a> of an
