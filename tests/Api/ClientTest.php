@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  *
  */
@@ -35,10 +35,10 @@ class ClientTest
 
             $response = $exception->getResponse();
 
-            $result = json_decode($response->getBody());
+            $result = json_decode((string) $response->getBody());
 
             $this->assertEquals(404, $response->getStatusCode());
-            $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+            $this->assertEquals('application/json', $response->getHeaderLine('content-type'));
             $this->assertEquals('Not Found', $response->getReasonPhrase());
             $this->assertEquals('Not Found', $result->message);
             $this->assertEquals('The server can not find the requested resource.', $result->description);
@@ -58,10 +58,10 @@ class ClientTest
 
             $response = $exception->getResponse();
 
-            $result = json_decode($response->getBody());
+            $result = json_decode((string) $response->getBody());
 
             $this->assertEquals(500, $response->getStatusCode());
-            $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+            $this->assertEquals('application/json', $response->getHeaderLine('content-type'));
             $this->assertEquals('Internal Server Error', $response->getReasonPhrase());
             $this->assertEquals('', $result->message);
         }
@@ -78,10 +78,10 @@ class ClientTest
             'headers' => ['content-type' => 'application/x-www-form-urlencoded', 'accept' => 'application/json']
         ]);
 
-        $result = json_decode($response->getBody());
+        $result = json_decode((string) $response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+        $this->assertEquals('application/json', $response->getHeaderLine('content-type'));
         $this->assertEquals('OK', $response->getReasonPhrase());
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
@@ -97,10 +97,10 @@ class ClientTest
             'headers' => ['content-type' => 'application/json', 'accept' => 'application/json']
         ]);
 
-        $result = json_decode($response->getBody());
+        $result = json_decode((string) $response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('application/json', $response->getHeaders()['content-type'][0]);
+        $this->assertEquals('application/json', $response->getHeaderLine('content-type'));
         $this->assertEquals('OK', $response->getReasonPhrase());
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
