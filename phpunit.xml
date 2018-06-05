@@ -16,10 +16,14 @@
         <testsuite name="Mvc5 Test Suite">
             <directory>./vendor/mvc5/mvc5-tests/src</directory>
         </testsuite>
+        <testsuite name="Valar Test Suite">
+            <directory>./vendor/mvc5/http-message/tests</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./vendor/mvc5/mvc5/src</directory>
+            <directory suffix=".php">./vendor/mvc5/http-message/src</directory>
         </whitelist>
     </filter>
     <logging>
