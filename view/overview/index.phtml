@@ -460,11 +460,11 @@ $this-&gt;without(['foo', 'baz']);
             href="https://github.com/mvc5/mvc5/blob/master/src/Route/Dispatch/Router.php#L108">assigned</a> to the
     request by the router. The <a href="https://github.com/mvc5/mvc5/blob/master/src/Request/Error/Controller.php#L43">error
         controller</a> will then return the HTTP <a href="https://github.com/mvc5/mvc5/blob/master/src/Http/Error.php">Error</a>
-    as a <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonErrorResponse.php">JSON response</a> when
+    as a JSON <a href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonErrorResponse.php">Response</a> when
     the request accept header is <code class="highlighter-rouge">application/json</code>. Similarly, when an exception
     is thrown, the <a href="https://github.com/mvc5/mvc5/blob/master/config/event.php#L7"><code
-                class="highlighter-rouge">response\exception</code></a> function will return a <a
-            href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonExceptionResponse.php">JSON response</a>
+                class="highlighter-rouge">response\exception</code></a> function will return a JSON <a
+            href="https://github.com/mvc5/mvc5/blob/master/src/Response/JsonExceptionResponse.php">Response</a>
     containing an empty exception message. Alternatively, in development, the <a
             href="https://github.com/mvc5/mvc5-application/blob/master/config/config.php#L9">debug</a> configuration
     parameter can be set to true to <a
