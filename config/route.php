@@ -6,6 +6,7 @@
 use Mvc5\Plugin\Callback;
 use Mvc5\Session\SessionMessages;
 use Mvc5\Service\Context;
+use Plugin\Page;
 use Plugin\Redirect;
 use Psr\Http\Message\ResponseInterface as Response;
 use Valar\RedirectResponse;
@@ -90,6 +91,10 @@ return [
     'redirect' => [
         'path' => '/redirect',
         'controller' => new Redirect('/home'),
+    ],
+    'page' => [
+        'path' => '/page',
+        'controller' => new Page('home/index', ['title' => 'Demo Page']),
     ],
     'app' => [
         /*'host' => 'nexus.app.dev',
