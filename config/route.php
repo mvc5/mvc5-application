@@ -94,7 +94,9 @@ return [
     ],
     'page' => [
         'path' => '/page',
-        'controller' => new Page('home/index', ['title' => 'Demo Page']),
+        'action' => [
+            'GET' => new Page('home/index', ['title' => 'Demo Page'])
+        ]
     ],
     'app' => [
         /*'host' => 'nexus.app.dev',
