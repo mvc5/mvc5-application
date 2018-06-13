@@ -7,8 +7,8 @@ namespace Plugin;
 
 use Mvc5\Arg;
 use Mvc5\Http\Request;
-use Mvc5\Http\Response;
 use Mvc5\Plugin\Call;
+use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Plugin;
 
 class Redirect
@@ -16,22 +16,24 @@ class Redirect
 {
     /**
      * @param string $url
-     * @param int|null $status
+     * @param int $status
      * @param array $headers
      */
     function __construct(string $url, int $status = 302, array $headers = [])
     {
-        parent::__construct([$this, '__invoke'], [new Plugin(Arg::RESPONSE_REDIRECT, [$url, $status, $headers])]);
+        parent::__construct([$this, '__invoke'], [$url, $status, $headers]);
     }
 
     /**
-     * @param Response $response
-     * @return \Closure
+     * @param string $url
+     * @param int $status
+     * @param array $headers
+     * @return Invoke
      */
-    function __invoke(Response $response) : \Closure
+    function __invoke(string $url, int $status, array $headers) : Invoke
     {
-        return function(Request $request) use($response) {
-            return $response;
-        };
+        return new Invoke(function(Request $request) use($url, $status, $headers) {
+            return new Plugin(Arg::RESPONSE_REDIRECT, [$url, $status, $headers]);
+        });
     }
 }
