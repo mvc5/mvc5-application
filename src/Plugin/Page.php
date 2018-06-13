@@ -8,8 +8,8 @@ namespace Plugin;
 use Mvc5\Arg;
 use Mvc5\Http\Request;
 use Mvc5\Plugin\Call;
-use Mvc5\Plugin\Link;
-use Mvc5\Service\Service;
+use Mvc5\Plugin\Invoke;
+use Mvc5\Plugin\Plugin;
 
 class Page
     extends Call
@@ -20,19 +20,18 @@ class Page
      */
     function __construct(string $template, array $vars = [])
     {
-        parent::__construct([$this, '__invoke'], [new Link, $template, $vars]);
+        parent::__construct([$this, '__invoke'], [$template, $vars]);
     }
 
     /**
-     * @param Service $service
      * @param string $template
      * @param array $vars
-     * @return \Closure
+     * @return Invoke
      */
-    function __invoke(Service $service, string $template, array $vars) : \Closure
+    function __invoke(string $template, array $vars) : Invoke
     {
-        return function(Request $request) use($service, $template, $vars) {
-            return $service->plugin(Arg::VIEW_MODEL, [$template, $vars + [Arg::REQUEST => $request]]);
-        };
+        return new Invoke(function(Request $request) use($template, $vars) {
+            return new Plugin(Arg::VIEW_MODEL, [$template, $vars + [Arg::REQUEST => $request]]);
+        });
     }
 }
