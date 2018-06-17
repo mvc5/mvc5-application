@@ -103,10 +103,11 @@ class ControllerTest
      */
     function test_post_form()
     {
+        $GLOBALS['_POST'] = ['foo' => 'bar', 'baz' => 'bat'];
+
         $config = include __DIR__ . '/../../config/config.php';
         $config['services']['request'] = ServerRequest::with([
-            'data' => new Value(['foo' => 'bar', 'baz' => 'bat']),
-            'header' => new HttpHeaders(['content-type' => 'application/json']),
+            'header' => new HttpHeaders(['content-type' => 'application/x-www-form-urlencoded']),
             'method' => new Value('POST'),
             'uri' => new HttpUri(['path' => '/api'])
         ]);
