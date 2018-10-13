@@ -19,7 +19,7 @@ class ClientTest
      */
     protected function client() : GuzzleHttp\Client
     {
-        return new GuzzleHttp\Client(['base_uri' => 'http://localhost:8000']);
+        return new GuzzleHttp\Client(['base_uri' => 'http://localhost']);
     }
 
     /**
