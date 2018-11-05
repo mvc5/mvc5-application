@@ -98,6 +98,12 @@ return [
             'GET' => new Page('home/index', ['title' => 'Demo Page'])
         ]
     ],
+    'phpinfo' => [
+        'path' => '/phpinfo',
+        'controller' => function() { return function() {
+            phpinfo();
+        }; },
+    ],
     'app' => [
         /*'host' => 'nexus.app.dev',
         'port' => 8000,*/
