@@ -25,4 +25,5 @@ services:
     networks:
       - public
     volumes:
+      - ~/.composer:/home/app/.composer
       - .:/var/www
