@@ -18,6 +18,8 @@ services:
         - TIME_ZONE=${TIME_ZONE}
       context: ~/docker
     container_name: mvc5playground
+    #extra_hosts:
+    #image: mvc5playground
     labels:
       - traefik.docker.network=traefik_webgateway
       - traefik.frontend.rule=Host:mvc5playground
