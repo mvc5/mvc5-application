@@ -9,9 +9,9 @@ services:
   app:
     build:
       args:
-        - XDEBUG={XEDBUG}
-        - NODE_JS={NODE_JS}
-        - RELEASE_VERSION={RELEASE_VERSION}
+        - XDEBUG=${XEDBUG}
+        - NODE_JS=${NODE_JS}
+        - RELEASE_VERSION=${RELEASE_VERSION}
         - USER_ID=${USER_ID}
         - GROUP_ID=${GROUP_ID}
         - LOCALE=${LOCALE}
