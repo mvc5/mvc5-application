@@ -11,21 +11,28 @@ services:
       args:
         - XDEBUG=${XDEBUG}
         - NODE_JS=${NODE_JS}
+        - WP_CLI=${WP_CLI}
         - RELEASE_VERSION=${RELEASE_VERSION}
         - USER_ID=${USER_ID}
         - GROUP_ID=${GROUP_ID}
         - LOCALE=${LOCALE}
         - TIME_ZONE=${TIME_ZONE}
+        - BUILD_DEPS=${BUILD_DEPS}
+        - PHP_EXT_CONFIGURE=${PHP_EXT_CONFIGURE}
+        - PHP_EXT_INSTALL=${PHP_EXT_INSTALL}
       context: ~/docker
     container_name: mvc5playground
     #extra_hosts:
     #image: mvc5playground
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/public
     labels:
       - traefik.docker.network=traefik_webgateway
       - traefik.frontend.rule=Host:mvc5playground
       - traefik.port=80
     networks:
       - public
+    working_dir: /var/www
     volumes:
-      - ~/.composer:/home/app/.composer
+      - ${COMPOSER_DIR}:/home/app/.composer
       - .:/var/www
