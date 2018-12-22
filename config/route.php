@@ -54,7 +54,7 @@ return [
                         $messages->success('Action completed!');
 
                         $redirect = (new RedirectResponse($url('dashboard')))
-                            ->withCookie(['name' => 'action', 'value' => 'success', 'raw' => true]);
+                            ->withCookie(['name' => 'action', 'value' => 'success']);
 
                         return $next($req, $redirect);
                     })
