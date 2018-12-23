@@ -24,7 +24,7 @@ class Controller
      */
     function __invoke() : Http\Response
     {
-        $this->session()->remove('user');
+        $this->session()->destroy();
         $this->success('Logout successful!');
         return $this->redirect($this->url('home'));
     }
