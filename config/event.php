@@ -6,6 +6,7 @@
 use Mvc5\Template\TemplateLayout;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Param;
+use Mvc5\Cookie\PHPCookies;
 
 return [
     'dashboard:add' => new Mvc5\Iterator([
@@ -15,6 +16,7 @@ return [
     ]),
     'dashboard:remove' => [
         function() {
+            PHPCookies::delete('action');
             return $model = '<h1>Validate</h1>';
         },
         function($model) {
