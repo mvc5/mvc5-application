@@ -3,10 +3,11 @@
  *
  */
 
-use Mvc5\Template\TemplateLayout;
+use Mvc5\Cookie\PHPCookies;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Param;
-use Mvc5\Cookie\PHPCookies;
+use Mvc5\Session\Session;
+use Mvc5\Template\TemplateLayout;
 
 return [
     'dashboard:add' => new Mvc5\Iterator([
@@ -22,9 +23,11 @@ return [
         function($model) {
             return $model . '<h1>Remove</h1>';
         },
-        function(TemplateLayout $layout, $model = null) {
+        function(Session $session, TemplateLayout $layout, $model = null) {
             $model .= '<h1>Respond</h1>';
-            $model .= '<form method="POST"><input class="btn btn-lg btn-primary" type="submit" name="submit" value="Submit"></form><br>';
+            $model .= '<form method="POST">' .
+                '<input type="hidden" name="csrf_token" value="'.$session['csrf_token'].'">' .
+                '<input class="btn btn-lg btn-primary" type="submit" name="submit" value="Submit"></form><br>';
 
             return $layout->withModel($model);
         }

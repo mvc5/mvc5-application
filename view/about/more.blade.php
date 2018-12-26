@@ -6,6 +6,8 @@
 @section('main')
     <div class="jumbotron">
         <h1><a href="{{ url('explore/more') }}">More</a></h1>
+        @csrf
+        <!--<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">-->
         <p class="lead">
 
             {!! '<h4>' !!}@call('About\Controller.message', ['.']) {!! '</h4>' !!}
