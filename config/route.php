@@ -112,7 +112,7 @@ return [
     'app' => [
         /*'host' => 'nexus.app.dev',
         'port' => 8000,*/
-        'csrf_token' => true,
+        //'csrf_token' => true,
         'options'  => ['separators' => ['_' => '_', '-' => '\\']],
         'path'    => '/{controller::n}[/{action::s}[/{wildcard::*$}]]',
         'wildcard' => true
