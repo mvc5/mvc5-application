@@ -34,6 +34,7 @@ return [
         'optional' => 'host',*/
         'path'      => '/dashboard/{user}',
         'controller' => 'dashboard->controller.test',
+        'csrf_token' => true,
         'children' => [
             'remove' => [
                 'path' => '/remove',
@@ -44,6 +45,7 @@ return [
             'remove:update' => [
                 'path' => '/remove',
                 'method' => 'POST',
+                //'csrf_token' => true,
                 'middleware' => [
                     'web\authorize',
                     new Callback(function($req, Response $res, $next) {
@@ -110,6 +112,7 @@ return [
     'app' => [
         /*'host' => 'nexus.app.dev',
         'port' => 8000,*/
+        'csrf_token' => true,
         'options'  => ['separators' => ['_' => '_', '-' => '\\']],
         'path'    => '/{controller::n}[/{action::s}[/{wildcard::*$}]]',
         'wildcard' => true
