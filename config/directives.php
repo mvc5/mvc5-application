@@ -10,6 +10,7 @@ use View5\Template;
 use View5\Token\Expression as Expr;
 
 return [
+    'csrf' => '<?php echo \'<input type="hidden" name="csrf_token" value="\' . htmlspecialchars($this->csrf_token()) . \'">\'; ?>',
     'auth' => '<?php ${var} = $this->plugin({expr}); if (${var}->authenticated()) : ?>',
     'endAuth' => '<?php endif; ?>',
     /*'auth' => function(string $expression, Template $template) : string {
