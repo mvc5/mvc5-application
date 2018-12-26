@@ -109,6 +109,11 @@ return [
             phpinfo();
         }; },
     ],
+    'api' => [
+        'path' => '/api',
+        'controller' => Api\Controller::class,
+        'csrf_token' => false,
+    ],
     'app' => [
         /*'host' => 'nexus.app.dev',
         'port' => 8000,*/
