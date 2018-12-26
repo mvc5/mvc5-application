@@ -7,7 +7,7 @@
     <div class="jumbotron">
         <h1><a href="{{ url('explore/more') }}">More</a></h1>
         @csrf
-        <!--<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">-->
+        <pre>&lt;input type="hidden" name="csrf_token" value="{{ csrf_token() }}"&gt;</pre>
         <p class="lead">
 
             {!! '<h4>' !!}@call('About\Controller.message', ['.']) {!! '</h4>' !!}
