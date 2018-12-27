@@ -8,6 +8,7 @@ namespace Login;
 use Mvc5\Plugins;
 use Mvc5\Request\Request;
 use Mvc5\Response\HttpResponse;
+use Mvc5\Session\CSRFToken;
 use Mvc5\View;
 
 class Controller
@@ -50,6 +51,9 @@ class Controller
             $this->danger('Invalid Login');
             return new HttpResponse($this->view(), 422);
         }
+
+//        $request['session']->regenerate() &&
+//            (new CSRFToken\Generate)($request['session'], true);
 
         $user['authenticated'] = true;
         $user['username'] = $request->data('username');
