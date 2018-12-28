@@ -105,4 +105,30 @@ class ClientTest
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
     }
+
+    /**
+     *
+     * @throws GuzzleException
+     */
+    function test_forbidden_csrf_token()
+    {
+        try {
+
+            $this->client()->request('POST', '/login', [
+                'form_params' => ['username' => 'phpdev', 'password' => '....'],
+                'headers' => ['content-type' => 'application/x-www-form-urlencoded', 'accept' => 'application/json']
+            ]);
+
+        } catch(ClientException $exception) {
+            $response = $exception->getResponse();
+
+            $result = json_decode((string) $response->getBody());
+
+            $this->assertEquals(403, $response->getStatusCode());
+            $this->assertEquals('application/json', $response->getHeaderLine('content-type'));
+            $this->assertEquals('Forbidden', $response->getReasonPhrase());
+            $this->assertEquals('Forbidden', $result->message);
+            $this->assertEquals('The server understood the request, but is refusing to fulfill it.', $result->description);
+        }
+    }
 }
