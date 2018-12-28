@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": "^7.1",
+        "ext-json": "*",
         "mvc5/mvc5": "10.*",
         "mvc5/view": "6.*",
         "mvc5/facade": "5.*",
