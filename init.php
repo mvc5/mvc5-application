@@ -8,11 +8,13 @@ include __DIR__ . '/vendor/psr/http-message/src/RequestInterface.php';
 include __DIR__ . '/vendor/psr/http-message/src/ResponseInterface.php';
 include __DIR__ . '/vendor/psr/http-message/src/ServerRequestInterface.php';
 include __DIR__ . '/vendor/psr/http-message/src/StreamInterface.php';
+include __DIR__ . '/vendor/psr/http-message/src/UploadedFileInterface.php';
 include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
 
 /**
  *
  */
+//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/create_uploaded_file.php';
 //include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php';
 //include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/marshal_uri_from_sapi.php';
 //include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/normalize_server.php';
@@ -21,6 +23,7 @@ include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Uri.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Stream.php';
 include __DIR__ . '/vendor/zendframework/zend-diactoros/src/PhpInputStream.php';
+include __DIR__ . '/vendor/zendframework/zend-diactoros/src/UploadedFile.php';
 
 /**
  *
