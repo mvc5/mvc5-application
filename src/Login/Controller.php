@@ -55,13 +55,17 @@ class Controller
 //        $request['session']->regenerate() &&
 //            (new CSRFToken\Generate)($request['session'], true);
 
+
+        $redirect_url = $user['redirect_url'];
+
         $user['authenticated'] = true;
         $user['username'] = $request->data('username');
+        unset($user['redirect_url']);
 
         $this->success('Login successful!');
         //throws the exception when debug is enabled
         //$this->log(new \Exception('Login successful!'));
 
-        return $this->redirect($this->url(['dashboard', 'user' => $user->username()]));
+        return $this->redirect($redirect_url ?? $this->url(['dashboard', 'user' => $user->username()]));
     }
 }

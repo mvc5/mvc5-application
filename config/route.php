@@ -32,9 +32,10 @@ return [
         ],
         'port' => 8001,
         'optional' => 'host',*/
-        'path'      => '/dashboard/{user}',
+        'path'      => '/dashboard',
         'controller' => 'dashboard->controller.test',
         'csrf_token' => true,
+        'authenticate' => true,
         'children' => [
             'remove' => [
                 'path' => '/remove',

@@ -17,7 +17,8 @@ return [
         new Plugin('route\match\action'),
         new Plugin('route\match\controller'),
         new Plugin('route\match\middleware'),
-        new Plugin('route\match\wildcard')
+        new Plugin('route\match\wildcard'),
+        new Plugin('route\match\authenticate')
     ]),
     'web' => [
         'web\context',

@@ -51,7 +51,9 @@ return [
 
     //'layout' => new Shared('layout', [Mvc5\View\SharedLayout::class, 'template' => 'layout']),
 
-    'about/more/messages' => new About\More\Messages\ViewModel(['more' => ' ...'])
+    'about/more/messages' => new About\More\Messages\ViewModel(['more' => ' ...']),
+
+    'route\match\authenticate' => Login\Route\Authenticate::class,
 
 ] + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
