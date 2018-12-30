@@ -93,7 +93,7 @@ class ControllerTest
         $this->assertEquals('foobar', $result->message);
         $this->assertEquals(84, $result->line);
         $this->assertEquals(__FILE__, $result->file);
-        $this->assertInternalType('array', $result->trace);
+        $this->assertIsArray($result->trace);
         $this->assertNotEmpty($result->trace);
     }
 
@@ -152,5 +152,33 @@ class ControllerTest
         $this->assertEquals('OK', $response->reason);
         $this->assertEquals('bar', $result->foo);
         $this->assertEquals('bat', $result->baz);
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @throws \Throwable
+     */
+    function test_forbidden_csrf_token()
+    {
+        $config = include __DIR__ . '/../../config/config.php';
+        $config['services']['request'] = ServerRequest::with([
+            'body' => new Value('{"username":"phpdev","password":"...."}'),
+            'headers' => new HttpHeaders(['content-type' => 'application/json', 'accept' => 'application/json']),
+            'method' => new Value('POST'),
+            'uri' => new HttpUri(['path' => '/login'])
+        ]);
+
+        $this->expectOutputString('{"message":"Forbidden","description":"The server understood the request, but is refusing to fulfill it."}');
+
+        $response = (new App($config))->call('web');
+
+        $result = json_decode((string) $response->body);
+
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertEquals(403, $response->status);
+        $this->assertEquals('application/json', $response->headers['content-type']);
+        $this->assertEquals('Forbidden', $response->reason);
+        $this->assertEquals('Forbidden', $result->message);
+        $this->assertEquals('The server understood the request, but is refusing to fulfill it.', $result->description);
     }
 }
