@@ -66,6 +66,6 @@ class Controller
         //throws the exception when debug is enabled
         //$this->log(new \Exception('Login successful!'));
 
-        return $this->redirect($redirect_url ?? $this->url(['dashboard', 'user' => $user->username()]));
+        return $this->redirect($redirect_url ?? $this->url('dashboard'));
     }
 }

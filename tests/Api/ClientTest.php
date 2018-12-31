@@ -131,4 +131,28 @@ class ClientTest
             $this->assertEquals('The server understood the request, but is refusing to fulfill it.', $result->description);
         }
     }
+
+    /**
+     *
+     * @throws GuzzleException
+     */
+    function test_unauthorized_json()
+    {
+        try {
+
+            $this->client()->request('GET', '/dashboard', [
+                'headers' => ['accept' => 'application/json']
+            ]);
+
+        } catch(ClientException $exception) {
+            $response = $exception->getResponse();
+
+            $result = json_decode((string) $response->getBody());
+
+            $this->assertEquals(401, $response->getStatusCode());
+            $this->assertEquals('Unauthorized', $response->getReasonPhrase());
+            $this->assertEquals('Unauthorized', $result->message);
+            $this->assertEquals('', $result->description);
+        }
+    }
 }

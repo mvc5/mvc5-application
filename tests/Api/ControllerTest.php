@@ -181,4 +181,25 @@ class ControllerTest
         $this->assertEquals('Forbidden', $result->message);
         $this->assertEquals('The server understood the request, but is refusing to fulfill it.', $result->description);
     }
+
+
+    /**
+     * @runInSeparateProcess
+     * @throws \Throwable
+     */
+    function test_login_redirect()
+    {
+        $config = include __DIR__ . '/../../config/config.php';
+        $config['services']['request'] = ServerRequest::with([
+            'method' => new Value('GET'),
+            'uri' => new HttpUri(['path' => '/dashboard/owner/oop'])
+        ]);
+
+        $response = (new App($config))->call('web');
+
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertEquals(302, $response->status);
+        $this->assertEquals('/login', $response->headers['location']);
+        $this->assertEquals('Found', $response->reason);
+    }
 }
