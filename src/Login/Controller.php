@@ -5,10 +5,13 @@
 
 namespace Login;
 
+use Mvc5\Arg;
 use Mvc5\Plugins;
 use Mvc5\Request\Request;
 use Mvc5\Response\HttpResponse;
 use Mvc5\Session\CSRFToken;
+use Mvc5\Session\Session;
+use Mvc5\User\User;
 use Mvc5\View;
 
 class Controller
@@ -20,8 +23,8 @@ class Controller
     use Plugins\Messages;
     use Plugins\Response;
     use Plugins\Service;
+    use Plugins\Session;
     use Plugins\Url;
-    use Plugins\User;
     use View\Model;
 
     /**
@@ -31,12 +34,12 @@ class Controller
 
     /**
      * @param Request $request
-     * @return mixed
+     * @param Session $session
+     * @param User $user
+     * @return mixed|\Mvc5\Http\Response|HttpResponse|\Mvc5\Response\RedirectResponse|View\ViewModel
      */
-    function __invoke(Request $request)
+    protected function login(Request $request, Session $session, User $user)
     {
-        $user = $this->user();
-
         if ($user->authenticated()) {
             $this->warning('Already logged in!');
             return $this->redirect($this->url(['dashboard', 'user' => $user->username()]));
@@ -55,17 +58,27 @@ class Controller
 //        $request['session']->regenerate() &&
 //            (new CSRFToken\Generate)($request['session'], true);
 
+        $redirect_url = $session['redirect_url'];
+        unset($session['redirect_url']);
 
-        $redirect_url = $user['redirect_url'];
-
-        $user['authenticated'] = true;
-        $user['username'] = $request->data('username');
-        unset($user['redirect_url']);
+        $session['user'] = $user->with([
+            'authenticated' => true,
+            'username' => $request->data('username')
+        ]);
 
         $this->success('Login successful!');
         //throws the exception when debug is enabled
         //$this->log(new \Exception('Login successful!'));
 
         return $this->redirect($redirect_url ?? $this->url('dashboard'));
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    function __invoke(Request $request)
+    {
+        return $this->login($request, $request[Arg::SESSION], $request[Arg::USER]);
     }
 }
