@@ -191,10 +191,12 @@
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#regular-expressions">Regular Expressions</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#automatic-routes">Automatic Routes</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#url-generator">Url Generator</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#csrf-token">CSRF Token</a>
+                                    <a class="dropdown-item text-nowrap" href="/overview#json-api">JSON API</a>
                                     <a class="dropdown-item text-nowrap" href="/overview#rest-api-methods">REST API Methods</a>
-                                    <a class="dropdown-item text-nowrap" href="/overview#action-controller">Action Controller</a>
                                 </div>
                                 <div class="col">
+                                    <a class="dropdown-item text-nowrap" href="/overview#action-controller">Action Controller</a>
                                     <a class="dropdown-item text-nowrap" href="/overview#middleware">Middleware</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#http-middleware">HTTP Middleware</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#pipelines">Pipelines</a>
@@ -208,7 +210,6 @@
                                     <a class="dropdown-item text-nowrap" href="/overview#dependency-injection">Dependency Injection</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#service-container">Service Container</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#autowiring">Autowiring</a>
-                                    <a class="dropdown-item text-nowrap pl-5" href="/overview#plugins">Plugins</a>
                                     <a class="dropdown-item text-nowrap pl-5" href="/overview#service-providers">Service Providers</a>
                                     <a class="dropdown-item text-nowrap" href="/overview#named-arguments">Named Arguments</a>
                                 </div>
