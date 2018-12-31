@@ -49,8 +49,6 @@ return [
 
     'about/more/messages' => new About\More\Messages\ViewModel(['more' => ' ...']),
 
-    'route\match\authenticate' => Login\Route\Authenticate::class,
-
 ] + (include __DIR__ . '/../vendor/mvc5/view/config/service.php')
   + (include __DIR__ . '/../vendor/mvc5/http-message/config/service.php')
   + include __DIR__ . '/../vendor/mvc5/mvc5/config/service.php';
