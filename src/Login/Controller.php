@@ -23,7 +23,6 @@ class Controller
     use Plugins\Messages;
     use Plugins\Response;
     use Plugins\Service;
-    use Plugins\Session;
     use Plugins\Url;
     use View\Model;
 
