@@ -38,8 +38,6 @@ return [
 
     'service\provider' => [Provider::class, new Config],
 
-    'user' => new Shared('user', new Session('user', User\Config::class)),
-
     'web\authenticate' => Middleware\Authenticate::class,
     'web\authorize' => Middleware\Authorize::class,
     'web\log' => Middleware\Logger::class,
