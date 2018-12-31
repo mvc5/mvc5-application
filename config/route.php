@@ -51,7 +51,7 @@ return [
                     'web\authorize',
                     new Callback(function($req, Response $res, $next) {
                         /** @var SessionMessages $messages */
-                        $messages = $this->plugin('messages');
+                        $messages = $this->plugin('session\messages');
                         $url = Context::plugin('url');
 
                         $messages->success('Action completed!');
