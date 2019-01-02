@@ -13,12 +13,12 @@ return [
         new Plugin('route\match\host'),
         new Plugin('route\match\path'),
         new Plugin('route\match\method'),
+        new Plugin('route\match\authenticate'),
         new Plugin('route\match\csrf\token'),
         new Plugin('route\match\action'),
         new Plugin('route\match\controller'),
         new Plugin('route\match\middleware'),
         new Plugin('route\match\wildcard'),
-        new Plugin('route\match\authenticate')
     ]),
     'web' => [
         'web\context',
