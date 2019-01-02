@@ -297,8 +297,8 @@ if ($msg = $this->{'session\messages'}('overview')) {
     <span class="p">]</span>
 <span class="p">]</span>
 </code></pre></div></div>
-<p>If the user is not logged in, and it is a <code class="highlighter-rouge">GET</code> request and not a <code class="highlighter-rouge">json</code> request, the current URL is stored in the session and the user is redirected to the login page. Once the user has logged in, they are redirected back to the URL that is stored in the session. The default login URL is <code class="highlighter-rouge">/login</code>, and it can be changed by adding the URL to the <code class="highlighter-rouge">route\match\authenticate</code> service configuration.</p>
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'route\match\authenticate'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">Mvc5\Route\Match\Authenticate</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'/login'</span><span class="p">]</span>
+<p>If the user is not logged in, and it is a <code class="highlighter-rouge">GET</code> request and not a <code class="highlighter-rouge">json</code> request, the current URL is stored in the session and the user is redirected to the login page. Once the user has logged in, they are redirected back to the URL that is stored in the session. The default login URL is <code class="highlighter-rouge">/login</code>, and it can be changed by setting the URL in the <code class="highlighter-rouge">login\redirect\response</code> service configuration.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'login\redirect\response'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">Mvc5\Http\HttpRedirect</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'/login'</span><span class="p">]</span>
 </code></pre></div></div>
 
 <h2 id="csrf-token">CSRF Token</h2>
