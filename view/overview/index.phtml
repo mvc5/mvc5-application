@@ -285,6 +285,22 @@ if ($msg = $this->{'session\messages'}('overview')) {
 </code></pre></div></div>
 <p>The second parameter of the <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> function is for <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L148">query</a> string arguments, e.g <code>/dashboard/phpdev/list?order=desc</code>. The third parameter is for the <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L148">fragment</a> and the fourth parameter can be used to generate an <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L68">absolute</a> url; the current scheme, host and port will be used if not provided. The <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php">url plugin</a> class can also be <a href="https://github.com/mvc5/mvc5/blob/master/src/Url/Plugin.php#L52">configured</a> to always generate an absolute url.</p>
 
+<h2 id="route-authentication">Route Authentication</h2>
+<p>Routes that should only be available to logged in users can be protected by setting the <code class="highlighter-rouge">authenticate</code> route attribute to <code class="highlighter-rouge">true</code>. Child routes are automatically protected and can override the parent value.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'dashboard'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'path'</span> <span class="o">=&gt;</span> <span class="s1">'/dashboard'</span><span class="p">,</span>
+    <span class="s1">'authenticate'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s1">'children'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'add'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'path'</span> <span class="o">=&gt;</span> <span class="s1">'/add'</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+</code></pre></div></div>
+<p>If the user is not logged in, and it is a <code class="highlighter-rouge">GET</code> request and not a <code class="highlighter-rouge">json</code> request, the current URL is stored in the session and the user is redirected to the login page. Once the user has logged in, they are redirected back to the URL that is stored in the session. The default login URL is <code class="highlighter-rouge">/login</code>, and it can be changed by adding the URL to the <code class="highlighter-rouge">route\match\authenticate</code> service configuration.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'route\match\authenticate'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">Mvc5\Route\Match\Authenticate</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'/login'</span><span class="p">]</span>
+</code></pre></div></div>
+
 <h2 id="csrf-token">CSRF Token</h2>
 <p>A CSRF <a href="https://github.com/mvc5/mvc5/blob/master/src/Session/CSRFToken/Generate.php#L25">token</a> is used to <a href="https://github.com/mvc5/mvc5/blob/master/src/Route/Match/CSRFToken.php#L43">protect</a> routes against <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet">CSRF</a> attacks. A new token is <a href="https://github.com/mvc5/mvc5/blob/master/src/Session/CSRFToken/Generate.php">generated</a> every time a new PHP session is <a href="https://github.com/mvc5/mvc5/blob/master/config/service.php#L72">created</a> for the user. The token is then added to a <code class="highlighter-rouge">POST</code> form using a hidden HTML input element. The <code class="highlighter-rouge">csrf_token</code> helper function can be used to retrieve the current token.</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"csrf_token"</span> <span class="na">value=</span><span class="s">"&lt;?php echo htmlspecialchars($this-&gt;csrf_token()); ?&gt;"</span><span class="nt">&gt;</span>
@@ -531,7 +547,7 @@ if ($msg = $this->{'session\messages'}('overview')) {
 
 <h2 id="dependency-injection">Dependency Injection</h2>
 <p>A service configuration can either be a string, an array, an anonymous function, a <a href="/plugins">plugin</a> or a real value.
-The service name can either be a short name or a class or interface name. If a service name does not have a service configuration and it is a fully qualified class name, the class will be <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Build.php#L42">created</a> and <a href="#autowiring">autowired</a> by <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L57">default</a>.</p>
+    The service name can either be a short name or a class or interface name. If a service name does not have a service configuration and it is a fully qualified class name, the class will be <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Build.php#L42">created</a> and <a href="#autowiring">autowired</a> by <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L57">default</a>.</p>
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
     <span class="s1">'home'</span> <span class="o">=&gt;</span> <span class="nx">Home\Controller</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
     <span class="nx">Home\Controller</span><span class="o">::</span><span class="na">class</span> <span class="o">=&gt;</span> <span class="nx">Home\Controller</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
@@ -624,4 +640,3 @@ The service name can either be a short name or a class or interface name. If a s
 <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span><span class="p">(</span><span class="nv">$controller</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$argv</span> <span class="o">=</span> <span class="p">[])</span>
 </code></pre></div></div>
 <p>When argv is <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Service.php#L42">used</a> as a variadic trailing argument, the remaining named arguments are stored in a <a href="https://github.com/mvc5/mvc5/blob/master/src/Plugin/SignalArgs.php">SignalArgs</a> class that the function can use to <a href="https://github.com/mvc5/mvc5/blob/master/src/Resolver/Resolver.php#L564">retrieve</a> the remaining named arguments.</p>
-
