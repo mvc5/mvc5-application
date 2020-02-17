@@ -17,13 +17,13 @@ class Controller
     /**
      * @var string
      */
-    protected $template;
+    protected string $template;
 
     /**
      * @param ViewModel $model
-     * @param $template
+     * @param string $template
      */
-    function __construct(ViewModel $model, $template)
+    function __construct(ViewModel $model, string $template)
     {
         $this->model    = $model;
         $this->template = $template;
