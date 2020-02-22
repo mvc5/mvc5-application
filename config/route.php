@@ -80,7 +80,7 @@ return [
         'optional' => 'host',*/
         'path' => '/explore',
         'options' => ['prefix' => 'About\\'],
-        'middleware' => ['web\authenticate', 'controller', function($request, $response, $next) { return $next($request, $response); }],
+        'middleware' => ['web\authenticate', 'controller', fn($request, $response, $next) => $next($request, $response)],
         'defaults' => [
             'controller' => 'explore'
         ],
@@ -106,9 +106,9 @@ return [
     ],
     'phpinfo' => [
         'path' => '/phpinfo',
-        'controller' => function() { return function() {
+        'controller' => fn() => function() {
             phpinfo();
-        }; },
+        },
     ],
     'api' => [
         'path' => '/api',

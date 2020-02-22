@@ -30,8 +30,7 @@ class Page
      */
     function __invoke(string $template, array $vars) : Invoke
     {
-        return new Invoke(function(Request $request) use($template, $vars) {
-            return new Plugin(Arg::VIEW_MODEL, [$template, $vars + [Arg::REQUEST => $request]]);
-        });
+        return new Invoke(fn(Request $request) =>
+            new Plugin(Arg::VIEW_MODEL, [$template, $vars + [Arg::REQUEST => $request]]));
     }
 }

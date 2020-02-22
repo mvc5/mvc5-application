@@ -23,9 +23,7 @@ use Service\Provider;
 return [
     'About\Controller' => [About\Controller::class, 'A PHP Web Application'],
     'dashboard'  => new App(new FileInclude(__DIR__ . '/dashboard.php')), //, null, true),
-    'Home\Controller' => function() {
-        return new Home\Controller($this);
-    },
+    'Home\Controller' => fn() => new Home\Controller($this),
     //'Home\Controller' => [Home\Controller::class, new Link],
     //'Home\Controller' => new Factory(Home\Factory::class),
     //'Home\Controller' => new \Plugin\Controller(Home\Controller::class), //custom plugin

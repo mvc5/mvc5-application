@@ -32,8 +32,7 @@ class Redirect
      */
     function __invoke(string $url, int $status, array $headers) : Invoke
     {
-        return new Invoke(function(Request $request) use($url, $status, $headers) {
-            return new Plugin(Arg::RESPONSE_REDIRECT, [$url, $status, $headers]);
-        });
+        return new Invoke(fn(Request $request) =>
+            new Plugin(Arg::RESPONSE_REDIRECT, [$url, $status, $headers]));
     }
 }

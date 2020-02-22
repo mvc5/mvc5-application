@@ -20,9 +20,7 @@ return [
             PHPCookies::delete('action');
             return $model = '<h1>Validate</h1>';
         },
-        function($model) {
-            return $model . '<h1>Remove</h1>';
-        },
+        fn($model) => $model . '<h1>Remove</h1>',
         function(Session $session, TemplateLayout $layout, $model = null) {
             $model .= '<h1>Respond</h1>';
             $model .= '<form method="POST">' .
@@ -44,9 +42,7 @@ return [
     }),*/
 
     'service\resolver' => [
-        function() {
-            return null;
-        },
+        fn() => null,
         'service\provider',
         'resolver\exception'
     ],
