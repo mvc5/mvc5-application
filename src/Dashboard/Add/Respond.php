@@ -16,6 +16,6 @@ class Respond
      */
     function __invoke(Response $response, ViewModel $model = null) : ViewModel
     {
-        return $model->with(['args' =>  array_merge([__CLASS__], $model['args'])]);
+        return $model->with(['args' =>  [__CLASS__, ...$model['args']]]);
     }
 }

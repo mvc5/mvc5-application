@@ -13,6 +13,6 @@ class Save
      */
     function __invoke(ViewModel $model) : ViewModel
     {
-        return $model->with(['args' =>  array_merge([__CLASS__], $model['args'])]);
+        return $model->with(['args' =>  [__CLASS__, ...$model['args']]]);
     }
 }
