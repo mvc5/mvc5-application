@@ -9,7 +9,7 @@ class Controller
     /**
      * @var string
      */
-    protected $message;
+    protected string $message;
 
     /**
      * @param string $message

@@ -16,7 +16,7 @@ class ViewModel
     /**
      * @var string
      */
-    private $title = 'Demo Application';
+    private string $title = 'Demo Application';
 
     /**
      * @return string

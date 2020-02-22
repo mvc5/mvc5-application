@@ -12,7 +12,7 @@ class Example
     /**
      * @var ViewModel
      */
-    protected $model;
+    protected ViewModel $model;
 
     /**
      * @param ViewModel $model
