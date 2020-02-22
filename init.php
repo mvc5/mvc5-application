@@ -14,16 +14,16 @@ include __DIR__ . '/vendor/psr/http-message/src/UriInterface.php';
 /**
  *
  */
-//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/create_uploaded_file.php';
-//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php';
-//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/marshal_uri_from_sapi.php';
-//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/normalize_server.php';
-//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php';
-//include __DIR__ . '/vendor/zendframework/zend-diactoros/src/functions/parse_cookie_header.php';
-include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Uri.php';
-include __DIR__ . '/vendor/zendframework/zend-diactoros/src/Stream.php';
-include __DIR__ . '/vendor/zendframework/zend-diactoros/src/PhpInputStream.php';
-include __DIR__ . '/vendor/zendframework/zend-diactoros/src/UploadedFile.php';
+//include __DIR__ . '/vendor/laminas/laminas-diactoros/src/functions/create_uploaded_file.php';
+//include __DIR__ . '/vendor/laminas/laminas-diactoros/src/functions/marshal_headers_from_sapi.php';
+//include __DIR__ . '/vendor/laminas/laminas-diactoros/src/functions/marshal_uri_from_sapi.php';
+//include __DIR__ . '/vendor/laminas/laminas-diactoros/src/functions/normalize_server.php';
+//include __DIR__ . '/vendor/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.php';
+//include __DIR__ . '/vendor/laminas/laminas-diactoros/src/functions/parse_cookie_header.php';
+include __DIR__ . '/vendor/laminas/laminas-diactoros/src/Uri.php';
+include __DIR__ . '/vendor/laminas/laminas-diactoros/src/Stream.php';
+include __DIR__ . '/vendor/laminas/laminas-diactoros/src/PhpInputStream.php';
+include __DIR__ . '/vendor/laminas/laminas-diactoros/src/UploadedFile.php';
 
 /**
  *

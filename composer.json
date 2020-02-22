@@ -13,10 +13,10 @@
     "require": {
         "php": "^7.4",
         "ext-json": "*",
-        "mvc5/mvc5": "^10.0",
-        "mvc5/view": "^6.0",
-        "mvc5/facade": "^5.0",
-        "mvc5/http-message": "^5.0"
+        "mvc5/mvc5": "^11.0",
+        "mvc5/view": "^7.0",
+        "mvc5/facade": "^6.0",
+        "mvc5/http-message": "^6.0"
     },
     "autoload": {
         "psr-4": {
