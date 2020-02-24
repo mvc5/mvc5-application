@@ -11,6 +11,7 @@ services:
       args:
         - XDEBUG=${XDEBUG}
         - NODE_JS=${NODE_JS}
+        - YARN=${YARN}
         - WP_CLI=${WP_CLI}
         - RELEASE_VERSION=${RELEASE_VERSION}
         - USER_ID=${USER_ID}
@@ -35,4 +36,5 @@ services:
     working_dir: /var/www
     volumes:
       - ~/.composer:/home/app/.composer
+      #- ~/.cache:/home/app/.cache
       - .:/var/www
