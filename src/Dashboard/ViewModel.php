@@ -5,10 +5,10 @@
 
 namespace Dashboard;
 
-use Mvc5\Overload;
+use Mvc5\ArrayOverload;
 
 class ViewModel
-    extends Overload
+    extends ArrayOverload
     implements \Mvc5\View\ViewModel
 {
     /**
