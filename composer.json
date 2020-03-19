@@ -28,6 +28,7 @@
         "mvc5/mvc5-tests": "^12.0",
         "guzzlehttp/guzzle": "^6.5",
         "vimeo/psalm": "^3.9.5",
-        "phpstan/phpstan": "^0.12.17"
+        "phpstan/phpstan": "^0.12.17",
+        "phpmetrics/phpmetrics": "^2.5"
     }
 }
