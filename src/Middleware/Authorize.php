@@ -5,10 +5,11 @@
 
 namespace Middleware;
 
-use Mvc5\Arg;
 use Mvc5\Plugins;
 use Mvc5\Http\Request;
 use Psr\Http\Message\ResponseInterface as Response;
+
+use const Mvc5\USER;
 
 class Authorize
 {
@@ -37,6 +38,6 @@ class Authorize
      */
     function __invoke(Request $request, Response $response, callable $next) : Response
     {
-        return 'phpdev' === $request[Arg::USER]->username() ? $next($request, $response) : $this->error();
+        return 'phpdev' === $request[USER]->username() ? $next($request, $response) : $this->error();
     }
 }

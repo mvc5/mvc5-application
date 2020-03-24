@@ -5,7 +5,6 @@
 
 namespace Login;
 
-use Mvc5\Arg;
 use Mvc5\Plugins;
 use Mvc5\Request\Request;
 use Mvc5\Response\HttpResponse;
@@ -13,6 +12,8 @@ use Mvc5\Session\CSRFToken;
 use Mvc5\Session\Session;
 use Mvc5\User\User;
 use Mvc5\View;
+
+use const Mvc5\{ SESSION, USER };
 
 class Controller
 {
@@ -78,6 +79,6 @@ class Controller
      */
     function __invoke(Request $request)
     {
-        return $this->login($request, $request[Arg::SESSION], $request[Arg::USER]);
+        return $this->login($request, $request[SESSION], $request[USER]);
     }
 }

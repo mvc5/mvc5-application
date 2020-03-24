@@ -5,11 +5,12 @@
 
 namespace Plugin;
 
-use Mvc5\Arg;
 use Mvc5\Http\Request;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Plugin;
+
+use const Mvc5\RESPONSE_REDIRECT;
 
 class Redirect
     extends Call
@@ -32,7 +33,6 @@ class Redirect
      */
     function __invoke(string $url, int $status, array $headers) : Invoke
     {
-        return new Invoke(fn(Request $request) =>
-            new Plugin(Arg::RESPONSE_REDIRECT, [$url, $status, $headers]));
+        return new Invoke(fn(Request $request) => new Plugin(RESPONSE_REDIRECT, [$url, $status, $headers]));
     }
 }

@@ -5,11 +5,12 @@
 
 namespace Plugin;
 
-use Mvc5\Arg;
 use Mvc5\Http\Request;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Plugin;
+
+use const Mvc5\{ REQUEST, VIEW_MODEL };
 
 class Page
     extends Call
@@ -31,6 +32,6 @@ class Page
     function __invoke(string $template, array $vars) : Invoke
     {
         return new Invoke(fn(Request $request) =>
-            new Plugin(Arg::VIEW_MODEL, [$template, $vars + [Arg::REQUEST => $request]]));
+            new Plugin(VIEW_MODEL, [$template, $vars + [REQUEST => $request]]));
     }
 }

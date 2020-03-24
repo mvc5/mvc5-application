@@ -5,10 +5,11 @@
 
 namespace Middleware;
 
-use Mvc5\Arg;
 use Mvc5\Plugins;
 use Mvc5\Http\Request;
 use Psr\Http\Message\ResponseInterface as Response;
+
+use const Mvc5\USER;
 
 class Authenticate
 {
@@ -27,7 +28,7 @@ class Authenticate
      */
     function __invoke(Request $request, Response $response, callable $next) : Response
     {
-        return $request[Arg::USER]->authenticated()
+        return $request[USER]->authenticated()
             ? $next($request, $response) : $this->redirect($this->url(['app', 'controller' => 'login']));
     }
 }
