@@ -28,6 +28,7 @@ include __DIR__ . '/vendor/laminas/laminas-diactoros/src/UploadedFile.php';
 /**
  *
  */
+//include __DIR__ . '/vendor/mvc5/mvc5/constants.php';
 include __DIR__ . '/vendor/mvc5/mvc5/init.php';
 include __DIR__ . '/vendor/mvc5/view/init.php';
 include __DIR__ . '/vendor/mvc5/facade/init.php';
