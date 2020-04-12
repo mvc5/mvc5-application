@@ -5,7 +5,7 @@
 
 namespace Dashboard\Add;
 
-class Save
+final class Save
 {
     /**
      * @param ViewModel $model

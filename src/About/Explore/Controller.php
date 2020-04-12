@@ -11,7 +11,7 @@ use Mvc5\Plugins;
 
 use const Mvc5\{ BODY, CHILD_MODEL };
 
-class Controller
+final class Controller
 {
     /**
      *

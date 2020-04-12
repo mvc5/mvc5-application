@@ -11,7 +11,7 @@ use Message;
 use Mvc5\Http;
 use View;
 
-class Controller
+final class Controller
 {
     /**
      * @return Http\Response

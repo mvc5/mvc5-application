@@ -5,7 +5,7 @@
 
 namespace Home;
 
-class ViewModel
+final class ViewModel
     extends \Mvc5\ViewModel
 {
     /**

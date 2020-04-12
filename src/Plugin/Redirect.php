@@ -12,7 +12,7 @@ use Mvc5\Plugin\Plugin;
 
 use const Mvc5\RESPONSE_REDIRECT;
 
-class Redirect
+final class Redirect
     extends Call
 {
     /**

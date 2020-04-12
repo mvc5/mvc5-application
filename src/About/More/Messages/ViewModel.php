@@ -5,7 +5,7 @@
 
 namespace About\More\Messages;
 
-class ViewModel
+final class ViewModel
     extends \Mvc5\ViewModel
 {
     /**

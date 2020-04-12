@@ -5,7 +5,7 @@
 
 namespace Dashboard\Add;
 
-class ViewModel
+final class ViewModel
     extends \Mvc5\ViewModel
 {
     /**

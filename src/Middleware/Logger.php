@@ -9,7 +9,7 @@ use Mvc5\Plugins;
 use Mvc5\Request\Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class Logger
+final class Logger
 {
     /**
      *

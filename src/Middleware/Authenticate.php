@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use const Mvc5\USER;
 
-class Authenticate
+final class Authenticate
 {
     /**
      *

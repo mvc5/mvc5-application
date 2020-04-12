@@ -7,7 +7,7 @@ namespace Dashboard;
 
 use Mvc5\View\Model;
 
-class Controller
+final class Controller
 {
     /**
      *

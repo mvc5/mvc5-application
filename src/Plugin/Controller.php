@@ -7,7 +7,7 @@ namespace Plugin;
 
 use Mvc5\Plugin\Config\Config;
 
-class Controller
+final class Controller
     implements Gem\Controller
 {
     /**

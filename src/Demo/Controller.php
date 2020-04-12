@@ -6,7 +6,7 @@ namespace Demo;
 
 use Mvc5\Response\Emitter\ReadFile;
 
-class Controller
+final class Controller
 {
     /**
      * @return ReadFile

@@ -12,7 +12,7 @@ use Mvc5\Plugin\Plugin;
 
 use const Mvc5\{ REQUEST, VIEW_MODEL };
 
-class Page
+final class Page
     extends Call
 {
     /**

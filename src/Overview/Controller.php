@@ -10,7 +10,7 @@ use Mvc5\View\ViewLayout;
 use Mvc5\Plugins;
 use Psr\Http\Message\RequestInterface as Request;
 
-class Controller
+final class Controller
 {
     /**
      *

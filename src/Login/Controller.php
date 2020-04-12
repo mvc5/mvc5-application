@@ -15,7 +15,7 @@ use Mvc5\View;
 
 use const Mvc5\{ SESSION, USER };
 
-class Controller
+final class Controller
 {
     /**
      *

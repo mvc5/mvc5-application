@@ -7,7 +7,7 @@ namespace Dashboard;
 
 use Mvc5\ArrayOverload;
 
-class ViewModel
+final class ViewModel
     extends ArrayOverload
     implements \Mvc5\View\ViewModel
 {

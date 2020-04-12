@@ -7,7 +7,7 @@ namespace Dashboard\Add;
 
 use Psr\Http\Message\ResponseInterface as Response;
 
-class Respond
+final class Respond
 {
     /**
      * @param Response $response

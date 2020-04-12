@@ -4,7 +4,7 @@
  */
 namespace About;
 
-class Controller
+final class Controller
 {
     /**
      * @var string

@@ -7,7 +7,7 @@ namespace Status;
 use Mvc5\Http;
 use Mvc5\Plugins;
 
-class Controller
+final class Controller
 {
     /**
      *

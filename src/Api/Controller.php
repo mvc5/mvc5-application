@@ -9,7 +9,7 @@ use Mvc5\Plugins\Response;
 use Mvc5\Plugins\Service;
 use Mvc5\Request\Request;
 
-class Controller
+final class Controller
 {
     /**
      *

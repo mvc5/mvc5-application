@@ -10,7 +10,7 @@ use Mvc5\Config;
 use Mvc5\Resolver\Resolver;
 use Mvc5\Service\Manager;
 
-class Provider
+final class Provider
     extends Config
     implements Manager
 {

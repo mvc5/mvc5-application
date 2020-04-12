@@ -7,7 +7,7 @@ namespace Home;
 
 use Mvc5\Plugins\Service;
 
-class Factory
+final class Factory
 {
     /**
      *

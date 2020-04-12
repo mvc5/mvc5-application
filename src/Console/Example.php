@@ -7,7 +7,7 @@ namespace Console;
 
 use Home\ViewModel;
 
-class Example
+final class Example
 {
     /**
      * @var ViewModel

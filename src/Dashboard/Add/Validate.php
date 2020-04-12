@@ -7,7 +7,7 @@ namespace Dashboard\Add;
 
 use Mvc5\Request\Request;
 
-class Validate
+final class Validate
 {
     /**
      * @param Request $request

@@ -8,7 +8,7 @@ namespace Home;
 use Mvc5\Plugins;
 use Psr\Http\Message\RequestInterface as Request;
 
-class Controller
+final class Controller
 {
     /**
      *
