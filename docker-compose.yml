@@ -28,6 +28,7 @@ services:
     environment:
       - APACHE_DOCUMENT_ROOT=/var/www/public
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.app.rule=Host(`mvc5playground`)"
       - "traefik.http.routers.app.tls=true"
     networks:
