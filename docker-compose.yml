@@ -29,8 +29,9 @@ services:
       - APACHE_DOCUMENT_ROOT=/var/www/public
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`mvc5playground`)"
-      - "traefik.http.routers.app.tls=true"
+      - "traefik.http.routers.mvc5playground.entrypoints=websecure"
+      - "traefik.http.routers.mvc5playground.rule=Host(`mvc5playground`)"
+      - "traefik.http.routers.mvc5playground.tls=true"
     networks:
       - public
     working_dir: /var/www
