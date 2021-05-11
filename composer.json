@@ -1,6 +1,6 @@
 {
     "name": "mvc5/mvc5-application",
-    "description": "A PHP 7 programming environment with named arguments.",
+    "description": "A PHP 8 programming environment with named arguments.",
     "keywords": ["config", "container", "dependency injection", "event", "middleware", "plugin", "psr-11", "psr", "route", "router", "view"],
     "homepage": "https://github.com/mvc5/mvc5-application",
     "license": "MIT",
@@ -11,12 +11,12 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "ext-json": "*",
-        "mvc5/mvc5": "^14.0",
-        "mvc5/view": "^10.0",
-        "mvc5/facade": "^9.0",
-        "mvc5/http-message": "^9.0"
+        "mvc5/mvc5": "^15.0",
+        "mvc5/view": "^11.0",
+        "mvc5/facade": "^10.0",
+        "mvc5/http-message": "^10.0"
     },
     "autoload": {
         "psr-4": {
@@ -24,11 +24,11 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "mvc5/mvc5-tests": "^14.0",
+        "phpunit/phpunit": "^9.5.4",
+        "mvc5/mvc5-tests": "^15.0",
         "guzzlehttp/guzzle": "^6.5",
-        "vimeo/psalm": "^3.9.5",
-        "phpstan/phpstan": "^0.12.17",
-        "phpmetrics/phpmetrics": "^2.5"
+        "vimeo/psalm": "^4.7.2",
+        "phpstan/phpstan": "^0.12.86",
+        "phpmetrics/phpmetrics": "^2.7.4"
     }
 }
