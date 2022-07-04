@@ -219,8 +219,8 @@
                 </li>
                 @assign($user, $this->plugin('user'))
                 @if($user->authenticated())
-                    <li class="nav-item{{ '/dashboard' == substr($path, 0, 10) ? ' active' : '' }}"><a class="nav-link" href="{{ $this->url(['dashboard']) }}">Dashboard</a></li>
-                    <li class="nav-item{{ '/explore' == substr($path, 0, 8) ? ' active' : '' }}"><a class="nav-link" href="{{ $this->url('explore') }}">Explore</a></li>
+                    <li class="nav-item{{ '/dashboard' == substr((string) $path, 0, 10) ? ' active' : '' }}"><a class="nav-link" href="{{ $this->url(['dashboard']) }}">Dashboard</a></li>
+                    <li class="nav-item{{ '/explore' == substr((string) $path, 0, 8) ? ' active' : '' }}"><a class="nav-link" href="{{ $this->url('explore') }}">Explore</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ $this->url(['app', 'controller' => 'logout']) }}">Logout</a></li>
                 @else
                     <li class="nav-item{{ '/login' == $path ? ' active' : '' }}"><a class="nav-link" href="{{ $this->url(['app', 'controller' => 'login']) }}">Login</a></li>
